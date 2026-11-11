@@ -11,19 +11,13 @@ export default function GlobalError({
 }) {
   useEffect(() => {
     console.error("Global system diagnostic:", error);
-    // Automatic recovery for ChunkLoadError or stale cached bundles
-    if (
-      typeof window !== "undefined" &&
-      (error?.message?.includes("Loading chunk") ||
-        error?.name === "ChunkLoadError" ||
-        error?.message?.includes("Failed to fetch dynamically imported module") ||
-        error?.message?.includes("CSS chunk"))
-    ) {
-      const reloadKey = "starehe_chunk_reload";
+    // Automatic immediate refresh for stale browser cache or chunk load error
+    if (typeof window !== "undefined") {
+      const reloadKey = "starehe_global_err_reload";
       const lastReload = sessionStorage.getItem(reloadKey);
       const now = Date.now();
-      // Reload automatically if not done in the last 10 seconds to avoid reload loop
-      if (!lastReload || now - parseInt(lastReload, 10) > 10000) {
+      // Reload automatically if not done in the last 15 seconds to prevent reload loops
+      if (!lastReload || now - parseInt(lastReload, 10) > 15000) {
         sessionStorage.setItem(reloadKey, now.toString());
         window.location.reload();
       }

@@ -104,6 +104,47 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                function isChunkError(err) {
+                  if (!err) return false;
+                  var str = (typeof err === 'string' ? err : (err.message || err.name || '')) + '';
+                  str = str.toLowerCase();
+                  return str.indexOf('chunk') !== -1 ||
+                         str.indexOf('loading chunk') !== -1 ||
+                         str.indexOf('chunkloaderror') !== -1 ||
+                         str.indexOf('failed to fetch dynamically imported module') !== -1 ||
+                         str.indexOf('minified react error #423') !== -1 ||
+                         str.indexOf('minified react error #418') !== -1;
+                }
+                window.addEventListener('error', function(e) {
+                  if (isChunkError(e.error) || isChunkError(e.message)) {
+                    var k = 'starehe_chunk_reload_ts';
+                    var last = sessionStorage.getItem(k);
+                    var now = Date.now();
+                    if (!last || now - parseInt(last, 10) > 8000) {
+                      sessionStorage.setItem(k, now.toString());
+                      window.location.reload();
+                    }
+                  }
+                });
+                window.addEventListener('unhandledrejection', function(e) {
+                  if (isChunkError(e.reason)) {
+                    var k = 'starehe_chunk_reload_ts';
+                    var last = sessionStorage.getItem(k);
+                    var now = Date.now();
+                    if (!last || now - parseInt(last, 10) > 8000) {
+                      sessionStorage.setItem(k, now.toString());
+                      window.location.reload();
+                    }
+                  }
+                });
+              })();
+            `,
+          }}
+        />
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
