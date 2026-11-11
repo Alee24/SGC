@@ -51,3 +51,4 @@ The design must radiate **academic distinction, venerable heritage, and servant 
 - Authentic Kenyan educational context:
   - Mention specific facts: "Operation Plus 5", "KCSE mean score of 8.90 (B)", "CBC Senior School STEM and Arts pathways", "47 counties", "Free Blue Application Form".
   - Strictly avoid generic AI boilerplate: "world-class", "seamlessly elevate", "cutting-edge solutions", "supercharge".
+

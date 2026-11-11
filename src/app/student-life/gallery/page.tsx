@@ -156,11 +156,10 @@ export default function GalleryPage() {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all ${
-                  selectedCategory === cat
+                className={`px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all ${selectedCategory === cat
                     ? "bg-starehe-blue-900 text-white shadow-sm"
                     : "bg-white text-slate-600 hover:text-slate-900 border border-slate-200"
-                }`}
+                  }`}
               >
                 {cat}
               </button>

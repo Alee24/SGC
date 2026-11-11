@@ -428,6 +428,46 @@ export const CLUBS_AND_SOCIETIES: ClubItem[] = [
   },
 ];
 
+export const AUTHENTIC_CO_CURRICULAR = {
+  clubs: [
+    "Young Farmers Club",
+    "German Language & Culture Club",
+    "Information Technology Club",
+    "Debate & Public Speaking Society",
+    "Drama Society",
+    "Environment & Wildlife Club",
+    "French Club",
+    "Home Science Club",
+    "Journalism & Media Club",
+    "Law Club",
+    "Mathematics Club",
+    "Red Cross Society",
+    "Tax Club",
+    "Interact Club",
+    "Fine Art Club",
+    "Renewable Energy (Cool Green Campaign — Zayed Sustainability Prize & Nation Media)",
+  ],
+  movements: [
+    "Girl Rangers",
+    "Kenya Scouts Association",
+    "St. John Ambulance Cadets",
+  ],
+  schemes: [
+    "Presidential Award Scheme Kenya (Gold & Silver Laureates)",
+    "Junior Achievement Kenya (JA Company Program)",
+  ],
+  societies: [
+    "Christian Union (CU)",
+    "Young Christian Society (YCS)",
+    "Muslim Students Association",
+    "Adventist Youth Society (AYS)",
+  ],
+  specialUnits: [
+    "The Acclaimed Starehe Girls' Brass & Woodwind Band",
+    "Competitive Sports & Inter-County Athletic Games",
+  ],
+};
+
 export const SPORTS_DISCIPLINES = [
   { name: "Basketball", description: "Competitive court with inter-county tournaments and dedicated coaching." },
   { name: "Volleyball", description: "High-energy training, competing at sub-county and county school championships." },

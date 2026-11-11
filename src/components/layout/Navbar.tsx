@@ -85,9 +85,15 @@ export const Navbar: React.FC = () => {
           icon: <ShieldCheck className="w-4 h-4 text-starehe-blue-800" />,
         },
         {
-          title: "Administration & Principal",
+          title: "Administration",
           href: "/about/administration",
-          description: "Executive leadership of Director Sr. Jane Soita & Principal Beatrice Shirao.",
+          description: "Executive leadership & welcome remarks from Director Sr. Jane Soita.",
+          icon: <Building className="w-4 h-4 text-starehe-blue-700" />,
+        },
+        {
+          title: "Principal's Desk",
+          href: "/about/principal",
+          description: "Welcome address, 'Operation Plus 5' and KCSE performance by Beatrice Shirao.",
           icon: <GraduationCap className="w-4 h-4 text-starehe-maroon-600" />,
         },
       ],

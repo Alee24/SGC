@@ -13,6 +13,21 @@ export default function Error({
 }) {
   useEffect(() => {
     console.error("Starehe runtime diagnostic:", error);
+    if (
+      typeof window !== "undefined" &&
+      (error?.message?.includes("Loading chunk") ||
+        error?.name === "ChunkLoadError" ||
+        error?.message?.includes("Failed to fetch dynamically imported module") ||
+        error?.message?.includes("CSS chunk"))
+    ) {
+      const reloadKey = "starehe_chunk_reload";
+      const lastReload = sessionStorage.getItem(reloadKey);
+      const now = Date.now();
+      if (!lastReload || now - parseInt(lastReload, 10) > 10000) {
+        sessionStorage.setItem(reloadKey, now.toString());
+        window.location.reload();
+      }
+    }
   }, [error]);
 
   return (

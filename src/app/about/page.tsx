@@ -27,7 +27,8 @@ export default function AboutOverviewPage() {
     { label: "Story & Heritage", href: "/about/history" },
     { label: "Board of Trustees", href: "/about/trustees" },
     { label: "Board of Management", href: "/about/management" },
-    { label: "Administration & Principal", href: "/about/administration" },
+    { label: "Administration", href: "/about/administration" },
+    { label: "Principal's Desk", href: "/about/principal" },
   ];
 
   const heroFacts: FactItem[] = [

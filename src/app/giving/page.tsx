@@ -85,13 +85,27 @@ export default function GivingPage() {
                 <h3 className="font-serif text-xl font-bold text-starehe-blue-950 mb-2">
                   Student Sponsorship
                 </h3>
-                <p className="text-xs text-slate-600 leading-relaxed mb-4">
-                  Sponsor one or more girls through their four-year secondary journey.
-                  Covers full tuition, boarding, uniform, textbooks, and health care.
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">
+                  Sponsor one or more girls through their secondary education journey.
+                  Sponsors receive termly reports and personal letters from their sponsored scholars.
                 </p>
+                <div className="space-y-1.5 p-3 rounded-xl bg-white border border-slate-200 text-xs text-slate-800">
+                  <div className="flex justify-between font-semibold">
+                    <span>1 Year (8.4.4):</span>
+                    <strong className="text-starehe-maroon-800 font-mono">Kshs. 90,000</strong>
+                  </div>
+                  <div className="flex justify-between font-semibold">
+                    <span>2 Years (8.4.4):</span>
+                    <strong className="text-starehe-maroon-800 font-mono">Kshs. 180,000</strong>
+                  </div>
+                  <div className="flex justify-between font-semibold">
+                    <span>3 Years (CBE Senior):</span>
+                    <strong className="text-starehe-blue-950 font-mono">Kshs. 270,000</strong>
+                  </div>
+                </div>
               </div>
-              <div className="text-xs font-bold text-starehe-maroon-800">
-                Annual / Termly Sponsorships
+              <div className="text-xs font-bold text-starehe-maroon-800 mt-4">
+                Full Educational Sponsorship
               </div>
             </div>
 

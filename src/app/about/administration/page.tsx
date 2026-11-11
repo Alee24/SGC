@@ -28,6 +28,7 @@ const ABOUT_SIDEBAR_LINKS = [
   { label: "Board of Trustees", href: "/about/trustees" },
   { label: "Board of Management (BOM)", href: "/about/management" },
   { label: "Administration & Leadership", href: "/about/administration", active: true },
+  { label: "Principal's Desk", href: "/about/principal" },
 ];
 
 export default function AdministrationPage() {
@@ -174,6 +175,13 @@ export default function AdministrationPage() {
               </div>
 
               <div className="mt-6 flex flex-wrap gap-3">
+                <Link
+                  href="/about/principal"
+                  className="px-5 py-2.5 rounded-full bg-starehe-blue-900 hover:bg-starehe-blue-800 text-white font-bold text-xs uppercase tracking-wider transition-colors inline-flex items-center space-x-1.5"
+                >
+                  <span>Full Principal&apos;s Message</span>
+                  <ArrowRight className="w-3.5 h-3.5 text-starehe-gold-accent" />
+                </Link>
                 <Link
                   href="/academics/performance"
                   className="px-5 py-2.5 rounded-full bg-starehe-maroon-800 hover:bg-starehe-maroon-700 text-white font-bold text-xs uppercase tracking-wider transition-colors inline-flex items-center space-x-1.5"

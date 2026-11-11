@@ -18,7 +18,8 @@ export default function HistoryPage() {
     { label: "About the Centre", href: "/about" },
     { label: "Board of Trustees", href: "/about/trustees" },
     { label: "Board of Management", href: "/about/management" },
-    { label: "Administration & Principal", href: "/about/administration" },
+    { label: "Administration", href: "/about/administration" },
+    { label: "Principal's Desk", href: "/about/principal" },
   ];
 
   const heroFacts: FactItem[] = [

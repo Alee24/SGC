@@ -50,12 +50,17 @@ export default function KuccpsPage() {
         <section className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/90 shadow-subtle">
           <div className="flex items-center justify-between border-b border-slate-100 pb-5 mb-5">
             <div>
-              <span className="text-[11px] uppercase font-bold text-starehe-maroon-800 tracking-wider">
-                Official Institutional Advisory
-              </span>
+              <div className="flex items-center space-x-2 text-[11px] uppercase font-bold text-starehe-maroon-800 tracking-wider">
+                <span>Official Institutional Advisory</span>
+                <span>•</span>
+                <span>Tuesday, January 28, 2025</span>
+              </div>
               <h2 className="font-serif text-xl sm:text-2xl font-bold text-starehe-blue-950 mt-1">
-                Information to the Graduating KCSE Class
+                Information to the KCSE Class of 2024 / 2025
               </h2>
+              <div className="text-xs font-semibold text-starehe-blue-900 mt-1">
+                RE: CONGRATULATIONS ON YOUR KCSE SUCCESS AND UNIVERSITY PLACEMENT INFORMATION
+              </div>
             </div>
             <div className="w-10 h-10 rounded-xl bg-starehe-blue-50 text-starehe-blue-900 flex items-center justify-center flex-shrink-0">
               <GraduationCap className="w-5 h-5" />

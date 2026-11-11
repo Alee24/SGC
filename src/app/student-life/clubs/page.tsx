@@ -2,7 +2,7 @@ import React from "react";
 import { Metadata } from "next";
 import { EditorialPageLayout } from "@/components/layout/EditorialPageLayout";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { CLUBS_AND_SOCIETIES } from "@/data/school-data";
+import { CLUBS_AND_SOCIETIES, AUTHENTIC_CO_CURRICULAR } from "@/data/school-data";
 import {
   Cpu,
   Award,
@@ -110,6 +110,79 @@ export default function ClubsPage() {
             </div>
           ))}
         </div>
+
+        {/* Complete Official Directory from School Archive */}
+        <section className="bg-stone-50 rounded-2xl p-6 sm:p-8 border border-stone-200 space-y-6">
+          <div>
+            <div className="text-[11px] uppercase font-bold text-starehe-maroon-800 tracking-wider">
+              Comprehensive Directory
+            </div>
+            <h3 className="font-serif text-xl font-bold text-starehe-blue-950 mt-1">
+              Active Extracurricular Organizations &amp; Movements
+            </h3>
+            <p className="text-xs text-stone-600 mt-1">
+              Complete inventory of registered student bodies operating at Starehe Girls&apos; Centre.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Registered Clubs */}
+            <div className="bg-white p-5 rounded-xl border border-stone-200/80 space-y-3">
+              <h4 className="font-serif font-bold text-sm text-starehe-blue-900 border-b border-stone-100 pb-2">
+                1. Academic &amp; Special Interest Clubs
+              </h4>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-stone-700">
+                {AUTHENTIC_CO_CURRICULAR.clubs.map((c) => (
+                  <li key={c} className="flex items-start space-x-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-starehe-maroon-800 mt-0.5 flex-shrink-0" />
+                    <span className="leading-tight">{c}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Movements & Schemes */}
+            <div className="space-y-4">
+              <div className="bg-white p-5 rounded-xl border border-stone-200/80 space-y-3">
+                <h4 className="font-serif font-bold text-sm text-starehe-blue-900 border-b border-stone-100 pb-2">
+                  2. Scout &amp; Youth Movements
+                </h4>
+                <ul className="space-y-2 text-xs text-stone-700">
+                  {AUTHENTIC_CO_CURRICULAR.movements.map((m) => (
+                    <li key={m} className="flex items-center space-x-2">
+                      <span className="w-2 h-2 rounded-full bg-starehe-gold-accent flex-shrink-0" />
+                      <span className="font-medium">{m}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="bg-white p-5 rounded-xl border border-stone-200/80 space-y-3">
+                <h4 className="font-serif font-bold text-sm text-starehe-blue-900 border-b border-stone-100 pb-2">
+                  3. Schemes &amp; Societies
+                </h4>
+                <div className="space-y-3 text-xs text-stone-700">
+                  <div>
+                    <span className="font-bold text-starehe-blue-950 block mb-1">Award Schemes:</span>
+                    <ul className="space-y-1 pl-2">
+                      {AUTHENTIC_CO_CURRICULAR.schemes.map((s) => (
+                        <li key={s} className="list-disc list-inside">{s}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <span className="font-bold text-starehe-blue-950 block mb-1">Faith Societies:</span>
+                    <ul className="space-y-1 pl-2">
+                      {AUTHENTIC_CO_CURRICULAR.societies.map((soc) => (
+                        <li key={soc} className="list-disc list-inside">{soc}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </EditorialPageLayout>
   );

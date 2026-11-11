@@ -17,7 +17,8 @@ const ABOUT_SIDEBAR_LINKS = [
   { label: "History & Heritage", href: "/about/history" },
   { label: "Board of Trustees", href: "/about/trustees", active: true },
   { label: "Board of Management (BOM)", href: "/about/management" },
-  { label: "Administration & Leadership", href: "/about/administration" },
+  { label: "Administration", href: "/about/administration" },
+  { label: "Principal's Desk", href: "/about/principal" },
 ];
 
 export default function TrusteesPage() {
