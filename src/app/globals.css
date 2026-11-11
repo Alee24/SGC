@@ -71,3 +71,11 @@ textarea:focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
+
+/* Keep card boxes and dividers from painting behind the floated sidebar while allowing flow text & subsections below it to spread 100% width */
+.editorial-main [class*="rounded-2xl"]:not([class*="flex"]):not([class*="grid"]),
+.editorial-main [class*="rounded-xl"]:not([class*="flex"]):not([class*="grid"]),
+.editorial-main [class*="border-l-4"],
+.editorial-main table {
+  display: flow-root;
+}

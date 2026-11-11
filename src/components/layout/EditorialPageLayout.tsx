@@ -134,23 +134,16 @@ export const EditorialPageLayout: React.FC<EditorialPageLayoutProps> = ({
         </div>
       </section>
 
-      {/* 2. MAIN EDITORIAL CONTENT + STICKY SIDEBAR */}
-      <section className="py-12 sm:py-16">
+      {/* 2. MAIN EDITORIAL CONTENT + FLOATED SIDEBAR (Content spreads 100% full width below Campus Help Desk) */}
+      <section className="py-10 sm:py-14">
         <div className="w-[92%] md:w-[90%] max-w-[1680px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-            {/* Main Content Area (8 Cols) */}
-            <main className="lg:col-span-8">
-              <div className="bg-white rounded-3xl p-6 sm:p-10 border border-stone-200/90 shadow-subtle">
-                {children}
-              </div>
-            </main>
-
-            {/* Sticky Sidebar (4 Cols) */}
-            <aside className="lg:col-span-4 space-y-6">
+          <div className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/90 shadow-subtle flex flex-col-reverse gap-8 lg:block lg:flow-root">
+            {/* Floated Sidebar (Top-right on desktop, stacked cleanly below main on mobile) */}
+            <aside className="lg:float-right lg:w-[32%] xl:w-[30%] lg:ml-10 lg:mb-8 space-y-6">
               {/* Sidebar Navigation */}
               {sidebarLinks && sidebarLinks.length > 0 && (
-                <div className="bg-white rounded-2xl p-6 border border-stone-200/90 shadow-subtle">
-                  <h3 className="font-serif text-base font-bold text-starehe-blue-950 pb-3 border-b border-stone-100 mb-4 flex items-center justify-between">
+                <div className="bg-slate-50/70 rounded-2xl p-6 border border-slate-200/90 shadow-subtle">
+                  <h3 className="font-serif text-base font-bold text-starehe-blue-950 pb-3 border-b border-slate-200/70 mb-4 flex items-center justify-between">
                     <span>{sidebarTitle}</span>
                     <span className="w-2 h-2 rounded-full bg-starehe-maroon-700" />
                   </h3>
@@ -162,7 +155,7 @@ export const EditorialPageLayout: React.FC<EditorialPageLayoutProps> = ({
                           className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl transition-all ${
                             link.active
                               ? "bg-starehe-maroon-50 text-starehe-maroon-900 border-l-4 border-starehe-maroon-800 font-bold"
-                              : "text-slate-700 hover:text-starehe-blue-950 hover:bg-stone-50"
+                              : "text-slate-700 hover:text-starehe-blue-950 hover:bg-white"
                           }`}
                         >
                           <span>{link.label}</span>
@@ -213,7 +206,7 @@ export const EditorialPageLayout: React.FC<EditorialPageLayoutProps> = ({
                 </p>
                 <Link
                   href="/giving"
-                  className="inline-flex items-center space-x-1.5 w-full justify-center py-2.5 rounded-full bg-white hover:bg-stone-100 text-starehe-maroon-900 font-bold text-xs tracking-wide transition-colors"
+                  className="inline-flex items-center space-x-1.5 w-full justify-center py-2.5 rounded-full bg-white hover:bg-slate-50 text-starehe-maroon-900 font-bold text-xs tracking-wide transition-colors"
                 >
                   <span>Support a Cause</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -221,8 +214,8 @@ export const EditorialPageLayout: React.FC<EditorialPageLayoutProps> = ({
               </div>
 
               {/* Official Contact Box */}
-              <div className="bg-white rounded-2xl p-6 border border-stone-200/90 shadow-subtle text-xs text-slate-700 space-y-3">
-                <h4 className="font-serif text-sm font-bold text-starehe-blue-950 pb-2 border-b border-stone-100">
+              <div className="bg-slate-50/70 rounded-2xl p-6 border border-slate-200/90 shadow-subtle text-xs text-slate-700 space-y-3">
+                <h4 className="font-serif text-sm font-bold text-starehe-blue-950 pb-2 border-b border-slate-200/70">
                   Campus Help Desk
                 </h4>
                 <div className="flex items-center space-x-2">
@@ -249,6 +242,11 @@ export const EditorialPageLayout: React.FC<EditorialPageLayoutProps> = ({
                 </div>
               </div>
             </aside>
+
+            {/* Main Content Area — wraps cleanly beside sidebar and expands 100% below Campus Help Desk */}
+            <main className="editorial-main min-w-0">
+              {children}
+            </main>
           </div>
         </div>
       </section>

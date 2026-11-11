@@ -241,4 +241,40 @@ test.describe("Starehe Girls' Centre Website Verification", () => {
       }
     }
   });
+
+  test("Editorial page content spreads across full width below the Campus Help Desk sidebar", async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto("/about/history", { waitUntil: "domcontentloaded" });
+    await page.waitForSelector("aside");
+
+    const layoutAudit = await page.evaluate(() => {
+      const aside = document.querySelector("aside");
+      const main = document.querySelector("main.editorial-main");
+      if (!aside || !main) return null;
+
+      const asideRect = aside.getBoundingClientRect();
+      const mainRect = main.getBoundingClientRect();
+
+      // Check sections inside main whose top is below aside.bottom
+      const sectionsBelowSidebar: number[] = [];
+      main.querySelectorAll("section").forEach((sec) => {
+        const r = sec.getBoundingClientRect();
+        if (r.top >= asideRect.bottom) {
+          sectionsBelowSidebar.push(r.width / mainRect.width);
+        }
+      });
+
+      return {
+        mainWidth: mainRect.width,
+        asideBottom: asideRect.bottom,
+        sectionsBelowSidebar,
+      };
+    });
+
+    expect(layoutAudit).not.toBeNull();
+    expect(layoutAudit!.sectionsBelowSidebar.length).toBeGreaterThan(0);
+    for (const widthRatio of layoutAudit!.sectionsBelowSidebar) {
+      expect(widthRatio).toBeGreaterThan(0.95);
+    }
+  });
 });
