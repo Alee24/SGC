@@ -107,3 +107,47 @@ export interface StoredApplication extends SeniorSchoolApplicationData {
   deletedAt: string | null;
 }
 
+export type FormSubmissionType =
+  | "CONTACT"
+  | "ADMISSIONS_APPLICATION"
+  | "GIVING_PLEDGE"
+  | "GENERAL_FORM";
+
+export type FormSubmissionStatus = "NEW" | "IN_PROGRESS" | "RESOLVED" | "ARCHIVED";
+
+export interface CreateFormSubmissionInput {
+  formType?: FormSubmissionType;
+  category?: string;
+  submitterName: string;
+  submitterEmail?: string;
+  submitterPhone?: string;
+  subject?: string;
+  message: string;
+  payload?: Record<string, unknown>;
+  sourcePath?: string;
+  ipAddress?: string;
+  userAgent?: string;
+}
+
+export interface StoredFormSubmission {
+  id: number;
+  referenceCode: string;
+  formType: FormSubmissionType;
+  category: string;
+  submitterName: string;
+  submitterEmail: string;
+  submitterPhone: string;
+  subject: string;
+  message: string;
+  payload: Record<string, unknown>;
+  sourcePath: string;
+  ipAddress: string;
+  userAgent: string;
+  status: FormSubmissionStatus;
+  adminNotes: string;
+  handledBy: string | null;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: string | null;
+}
+

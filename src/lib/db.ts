@@ -4,10 +4,14 @@ import initSqlJs, { Database, SqlJsStatic } from "sql.js";
 import { hashPassword, verifyPassword } from "./auth";
 import {
   ApplicationStatus,
+  CreateFormSubmissionInput,
+  FormSubmissionStatus,
+  FormSubmissionType,
   ParentParticulars,
   SeniorSchoolApplicationData,
   SiblingRecord,
   StoredApplication,
+  StoredFormSubmission,
 } from "@/types/application";
 
 const DATA_DIR = path.join(process.cwd(), "data");
@@ -390,7 +394,42 @@ export async function createApplication(
     [newId, `Online Grade 10 application submitted (${data.category})`]
   );
 
+  // Mirror summary into unified form_submissions log so all submitted forms are tracked centrally
+  db.run(
+    `INSERT OR IGNORE INTO form_submissions (
+      reference_code, form_type, category, submitter_name, submitter_email, submitter_phone,
+      subject, message, payload_json, source_path, status
+    ) VALUES (?, 'ADMISSIONS_APPLICATION', ?, ?, ?, ?, ?, ?, ?, '/admissions/apply', 'NEW')`,
+    [
+      applicationNumber,
+      data.category || "SPONSORED",
+      data.fullName.trim(),
+      data.parentCertEmail || "",
+      data.parentCertMobile || data.headteacherMobile || "",
+      `Grade 10 Senior School Application (${data.pathwaySelected || "Unspecified"})`,
+      `Applicant from ${data.county.trim()} (${data.juniorSchoolName.trim()}) — Assessment No: ${data.assessmentNo.trim()}`,
+      JSON.stringify({
+        applicationId: newId,
+        applicationNumber,
+        category: data.category,
+        pathwaySelected: data.pathwaySelected,
+        county: data.county,
+        juniorSchoolName: data.juniorSchoolName,
+      }),
+    ]
+  );
+
   saveDbToDisk(db);
+  console.info(
+    JSON.stringify({
+      event: "FORM_SUBMITTED",
+      formType: "ADMISSIONS_APPLICATION",
+      referenceCode: applicationNumber,
+      category: data.category,
+      county: data.county,
+      timestamp: new Date().toISOString(),
+    })
+  );
 
   const created = await getApplicationById(newId);
   if (!created) throw new Error("Failed to reload newly created application");
@@ -573,4 +612,261 @@ export async function getApplicationAuditLogs(applicationId: number) {
   stmt.free();
   return logs;
 }
+
+// =========================================================================
+// UNIFIED FORM & CONTACT SUBMISSIONS LOGGING
+// =========================================================================
+
+function generateSubmissionRef(formType: FormSubmissionType, db: Database): string {
+  const prefixMap: Record<FormSubmissionType, string> = {
+    CONTACT: "INQ",
+    ADMISSIONS_APPLICATION: "ADM",
+    GIVING_PLEDGE: "GIV",
+    GENERAL_FORM: "FRM",
+  };
+  const yr = String(new Date().getFullYear()).slice(-2);
+  const tag = prefixMap[formType] || "FRM";
+  const prefix = `SGC-${tag}-${yr}-`;
+  const res = db.exec(
+    `SELECT COUNT(*) FROM form_submissions WHERE reference_code LIKE '${prefix}%'`
+  );
+  const existing = res.length > 0 ? Number(res[0].values[0][0]) : 0;
+  const seq = String(existing + 1).padStart(4, "0");
+  const randSuffix = Math.floor(10 + Math.random() * 90);
+  return `${prefix}${seq}${randSuffix}`;
+}
+
+function mapRowToFormSubmission(row: Record<string, unknown>): StoredFormSubmission {
+  let payload: Record<string, unknown> = {};
+  if (typeof row.payload_json === "string" && row.payload_json) {
+    try {
+      payload = JSON.parse(row.payload_json) as Record<string, unknown>;
+    } catch {
+      payload = {};
+    }
+  }
+
+  return {
+    id: Number(row.id),
+    referenceCode: String(row.reference_code),
+    formType: (row.form_type as FormSubmissionType) || "CONTACT",
+    category: String(row.category || "General Inquiry"),
+    submitterName: String(row.submitter_name || ""),
+    submitterEmail: String(row.submitter_email || ""),
+    submitterPhone: String(row.submitter_phone || ""),
+    subject: String(row.subject || ""),
+    message: String(row.message || ""),
+    payload,
+    sourcePath: String(row.source_path || "/contact"),
+    ipAddress: String(row.ip_address || ""),
+    userAgent: String(row.user_agent || ""),
+    status: (row.status as FormSubmissionStatus) || "NEW",
+    adminNotes: String(row.admin_notes || ""),
+    handledBy: row.handled_by_username ? String(row.handled_by_username) : null,
+    createdAt: String(row.created_at || ""),
+    updatedAt: String(row.updated_at || ""),
+    deletedAt: row.deleted_at ? String(row.deleted_at) : null,
+  };
+}
+
+export async function createFormSubmission(
+  input: CreateFormSubmissionInput
+): Promise<StoredFormSubmission> {
+  const db = await getDatabase();
+  const formType: FormSubmissionType = input.formType || "CONTACT";
+  const referenceCode = generateSubmissionRef(formType, db);
+  const category = (input.category || "General Inquiry").trim();
+  const submitterName = input.submitterName.trim();
+  const submitterEmail = (input.submitterEmail || "").trim();
+  const submitterPhone = (input.submitterPhone || "").trim();
+  const subject = (input.subject || category || "Website Submission").trim();
+  const message = input.message.trim();
+  const sourcePath = (input.sourcePath || "/contact").trim();
+
+  db.run(
+    `INSERT INTO form_submissions (
+      reference_code, form_type, category, submitter_name, submitter_email, submitter_phone,
+      subject, message, payload_json, source_path, ip_address, user_agent, status
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'NEW')`,
+    [
+      referenceCode,
+      formType,
+      category,
+      submitterName,
+      submitterEmail,
+      submitterPhone,
+      subject,
+      message,
+      JSON.stringify(input.payload || {}),
+      sourcePath,
+      input.ipAddress || "",
+      (input.userAgent || "").slice(0, 300),
+    ]
+  );
+
+  const idRes = db.exec("SELECT last_insert_rowid() AS id");
+  const newId = Number(idRes[0].values[0][0]);
+
+  db.run(
+    `INSERT INTO form_submission_audit_logs (submission_id, actor_username, action, previous_status, new_status, notes)
+     VALUES (?, 'VISITOR', 'SUBMITTED', NULL, 'NEW', ?)`,
+    [newId, `${formType} submitted via ${sourcePath} (${category})`]
+  );
+
+  saveDbToDisk(db);
+  console.info(
+    JSON.stringify({
+      event: "FORM_SUBMITTED",
+      formType,
+      category,
+      referenceCode,
+      sourcePath,
+      timestamp: new Date().toISOString(),
+    })
+  );
+
+  const created = await getFormSubmissionById(newId);
+  if (!created) throw new Error("Failed to reload newly logged submission");
+  return created;
+}
+
+export async function getFormSubmissionById(
+  id: number
+): Promise<StoredFormSubmission | null> {
+  const db = await getDatabase();
+  const stmt = db.prepare(
+    `SELECT s.*, u.username AS handled_by_username
+     FROM form_submissions s
+     LEFT JOIN admin_users u ON s.handled_by_user_id = u.id
+     WHERE s.id = ? AND s.deleted_at IS NULL`
+  );
+  stmt.bind([id]);
+  if (!stmt.step()) {
+    stmt.free();
+    return null;
+  }
+  const submission = mapRowToFormSubmission(stmt.getAsObject());
+  stmt.free();
+  return submission;
+}
+
+export interface ListFormSubmissionsFilters {
+  search?: string;
+  formType?: string;
+  status?: string;
+}
+
+export async function listFormSubmissions(
+  filters: ListFormSubmissionsFilters = {}
+): Promise<StoredFormSubmission[]> {
+  const db = await getDatabase();
+  const whereClauses = ["s.deleted_at IS NULL"];
+  const params: (string | number)[] = [];
+
+  if (filters.formType && filters.formType !== "ALL") {
+    whereClauses.push("s.form_type = ?");
+    params.push(filters.formType);
+  }
+  if (filters.status && filters.status !== "ALL") {
+    whereClauses.push("s.status = ?");
+    params.push(filters.status);
+  }
+  if (filters.search && filters.search.trim()) {
+    const q = `%${filters.search.trim().toLowerCase()}%`;
+    whereClauses.push(
+      "(LOWER(s.submitter_name) LIKE ? OR LOWER(s.submitter_email) LIKE ? OR LOWER(s.reference_code) LIKE ? OR LOWER(s.category) LIKE ? OR LOWER(s.message) LIKE ?)"
+    );
+    params.push(q, q, q, q, q);
+  }
+
+  const sql = `
+    SELECT s.*, u.username AS handled_by_username
+    FROM form_submissions s
+    LEFT JOIN admin_users u ON s.handled_by_user_id = u.id
+    WHERE ${whereClauses.join(" AND ")}
+    ORDER BY s.created_at DESC, s.id DESC
+  `;
+
+  const stmt = db.prepare(sql);
+  stmt.bind(params);
+
+  const results: StoredFormSubmission[] = [];
+  while (stmt.step()) {
+    results.push(mapRowToFormSubmission(stmt.getAsObject()));
+  }
+  stmt.free();
+  return results;
+}
+
+export async function updateFormSubmissionStatus(
+  id: number,
+  updates: { status?: FormSubmissionStatus; adminNotes?: string },
+  actor: { userId: number; username: string }
+): Promise<StoredFormSubmission | null> {
+  const db = await getDatabase();
+  const existing = await getFormSubmissionById(id);
+  if (!existing) return null;
+
+  const newStatus = updates.status ?? existing.status;
+  const newNotes = updates.adminNotes ?? existing.adminNotes;
+
+  db.run(
+    `UPDATE form_submissions
+     SET status = ?, admin_notes = ?, handled_by_user_id = ?, updated_at = datetime('now')
+     WHERE id = ? AND deleted_at IS NULL`,
+    [newStatus, newNotes, actor.userId, id]
+  );
+
+  db.run(
+    `INSERT INTO form_submission_audit_logs (submission_id, actor_username, action, previous_status, new_status, notes)
+     VALUES (?, ?, 'STATUS_UPDATED', ?, ?, ?)`,
+    [id, actor.username, existing.status, newStatus, newNotes]
+  );
+
+  saveDbToDisk(db);
+  return getFormSubmissionById(id);
+}
+
+export async function softDeleteFormSubmission(
+  id: number,
+  actor: { userId: number; username: string }
+): Promise<boolean> {
+  const db = await getDatabase();
+  const existing = await getFormSubmissionById(id);
+  if (!existing) return false;
+
+  db.run(
+    `UPDATE form_submissions
+     SET deleted_at = datetime('now'), status = 'ARCHIVED', updated_at = datetime('now')
+     WHERE id = ?`,
+    [id]
+  );
+
+  db.run(
+    `INSERT INTO form_submission_audit_logs (submission_id, actor_username, action, previous_status, new_status, notes)
+     VALUES (?, ?, 'ARCHIVED', ?, 'ARCHIVED', 'Submission archived by administrator')`,
+    [id, actor.username, existing.status]
+  );
+
+  saveDbToDisk(db);
+  return true;
+}
+
+export async function getFormSubmissionAuditLogs(submissionId: number) {
+  const db = await getDatabase();
+  const stmt = db.prepare(
+    `SELECT id, actor_username, action, previous_status, new_status, notes, created_at
+     FROM form_submission_audit_logs
+     WHERE submission_id = ?
+     ORDER BY id DESC`
+  );
+  stmt.bind([submissionId]);
+  const logs: Array<Record<string, unknown>> = [];
+  while (stmt.step()) {
+    logs.push(stmt.getAsObject());
+  }
+  stmt.free();
+  return logs;
+}
+
 

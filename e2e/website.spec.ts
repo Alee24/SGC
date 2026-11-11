@@ -74,8 +74,9 @@ test.describe("Starehe Girls' Centre Website Verification", () => {
     // Submit form
     await page.click('button[type="submit"]');
 
-    // Verify success feedback
+    // Verify real backend persistence & reference code feedback
     await expect(page.locator("text=Message Received Successfully!")).toBeVisible({ timeout: 5000 });
+    await expect(page.locator("text=Reference: SGC-INQ-")).toBeVisible();
   });
 
   test("Photo Gallery and Lightbox modal operate seamlessly", async ({ page }) => {
@@ -183,6 +184,10 @@ test.describe("Starehe Girls' Centre Website Verification", () => {
 
     await expect(page).toHaveURL(/\/admin$/, { timeout: 10000 });
     await expect(page.locator("body")).not.toContainText("Sign-in failed");
+
+    // Verify Form & Contact Submissions log tab loads logged entries cleanly
+    await page.getByRole("button", { name: /Form & Contact Submissions/i }).click();
+    await expect(page.locator("text=jane.doe@example.com").first()).toBeVisible({ timeout: 5000 });
   });
 
   test("Layout spans 90% width on desktop with zero horizontal overflow or clipped buttons across viewports", async ({ page }) => {

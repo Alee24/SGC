@@ -10,6 +10,7 @@ import {
   Eye,
   FileSpreadsheet,
   FileText,
+  Inbox,
   Loader2,
   LogOut,
   Plus,
@@ -18,6 +19,7 @@ import {
   Trash2,
   X,
 } from "lucide-react";
+import SubmissionsLogTab from "./SubmissionsLogTab";
 import type {
   ApplicationStatus,
   StoredApplication,
@@ -105,7 +107,18 @@ function formatDateShort(iso: string): string {
 
 export default function AdminDashboard({ user }: { user: AdminUser }) {
   const router = useRouter();
+  const [activeTab, setActiveTab] = useState<"applications" | "submissions">("applications");
+  const [newSubmissionsCount, setNewSubmissionsCount] = useState(0);
   const [items, setItems] = useState<ListItem[]>([]);
+
+  useEffect(() => {
+    fetch("/api/submissions", { cache: "no-store" })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => {
+        if (d?.stats?.newCount !== undefined) setNewSubmissionsCount(d.stats.newCount);
+      })
+      .catch(() => {});
+  }, []);
   const [stats, setStats] = useState<SummaryStats>({
     total: 0,
     pending: 0,
@@ -403,11 +416,49 @@ export default function AdminDashboard({ user }: { user: AdminUser }) {
       </header>
 
       <main className="w-[92%] md:w-[90%] max-w-[1680px] mx-auto py-8 space-y-6">
-        {/* Summary metrics */}
-        <section
-          aria-label="Application summary statistics"
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5"
-        >
+        {/* Portal Section Tabs */}
+        <div className="flex flex-wrap items-center gap-2 border-b border-stone-200 pb-3">
+          <button
+            type="button"
+            onClick={() => setActiveTab("applications")}
+            className={`inline-flex items-center gap-2 rounded-lg px-4 py-2 text-xs sm:text-sm font-semibold transition-colors ${
+              activeTab === "applications"
+                ? "bg-starehe-blue-900 text-white shadow-sm"
+                : "bg-white text-stone-700 border border-stone-200 hover:bg-stone-50"
+            }`}
+          >
+            <FileText className="w-4 h-4" />
+            <span>Grade 10 Applications</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setActiveTab("submissions")}
+            className={`inline-flex items-center gap-2 rounded-lg px-4 py-2 text-xs sm:text-sm font-semibold transition-colors ${
+              activeTab === "submissions"
+                ? "bg-starehe-blue-900 text-white shadow-sm"
+                : "bg-white text-stone-700 border border-stone-200 hover:bg-stone-50"
+            }`}
+          >
+            <Inbox className="w-4 h-4" />
+            <span>Form &amp; Contact Submissions</span>
+            {newSubmissionsCount > 0 && (
+              <span className="ml-1 inline-flex items-center justify-center rounded-full bg-brand-secondary px-2 py-0.5 text-[10px] font-bold text-white">
+                {newSubmissionsCount}
+              </span>
+            )}
+          </button>
+        </div>
+
+        {activeTab === "submissions" ? (
+          <SubmissionsLogTab onNewCountChange={setNewSubmissionsCount} />
+        ) : (
+          <>
+            {/* Summary metrics */}
+            <section
+              aria-label="Application summary statistics"
+              className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5"
+            >
           {[
             { label: "Total received", value: stats.total, sub: `${countyCount} counties in view` },
             { label: "Pending review", value: stats.pending, sub: "Awaiting committee" },
@@ -666,6 +717,8 @@ export default function AdminDashboard({ user }: { user: AdminUser }) {
             </div>
           )}
         </section>
+          </>
+        )}
       </main>
 
       {/* Application Detail & Committee Review Modal */}

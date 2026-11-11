@@ -27,14 +27,29 @@ export default function ContactPage() {
 
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [referenceCode, setReferenceCode] = useState<string>("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setErrorMsg(null);
 
-    // Simulate submission delay
-    setTimeout(() => {
-      setLoading(false);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formState),
+      });
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        throw new Error(
+          json.error ||
+            "Your inquiry could not be submitted right now. Please check all required fields or call 0707 900 852."
+        );
+      }
+
+      setReferenceCode(json.referenceCode || "");
       setSubmitted(true);
       setFormState({
         name: "",
@@ -43,7 +58,14 @@ export default function ContactPage() {
         category: "General Inquiry",
         message: "",
       });
-    }, 1200);
+    } catch (err) {
+      setErrorMsg(
+        (err as Error).message ||
+          "Unable to reach the server. Please verify your internet connection or call 0707 900 852."
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -187,12 +209,20 @@ export default function ContactPage() {
                     <h3 className="font-serif text-xl font-bold text-emerald-950">
                       Message Received Successfully!
                     </h3>
+                    {referenceCode && (
+                      <div className="mt-2 inline-block px-3 py-1 rounded-full bg-white border border-emerald-200 font-mono text-xs font-bold text-emerald-900">
+                        Reference: {referenceCode}
+                      </div>
+                    )}
                     <p className="text-xs sm:text-sm text-emerald-800 mt-2 leading-relaxed max-w-md mx-auto">
                       Thank you for contacting Starehe Girls&apos; Centre. A confirmation
                       has been logged in our registry, and an officer will reach out shortly.
                     </p>
                     <button
-                      onClick={() => setSubmitted(false)}
+                      onClick={() => {
+                        setSubmitted(false);
+                        setReferenceCode("");
+                      }}
                       className="mt-6 px-6 py-2.5 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-xs transition-colors"
                     >
                       Send Another Message
@@ -200,6 +230,15 @@ export default function ContactPage() {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-5">
+                    {errorMsg && (
+                      <div
+                        role="alert"
+                        className="flex items-start gap-2.5 rounded-xl bg-rose-50 border border-rose-200 px-4 py-3 text-xs sm:text-sm text-rose-900"
+                      >
+                        <AlertCircle className="w-4 h-4 text-rose-700 flex-shrink-0 mt-0.5" />
+                        <span>{errorMsg}</span>
+                      </div>
+                    )}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div>
                         <label className="block text-xs font-bold text-slate-900 uppercase tracking-wider mb-1.5">
