@@ -60,21 +60,21 @@ export const EditorialPageLayout: React.FC<EditorialPageLayoutProps> = ({
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-starehe-blue-950 via-starehe-blue-950/95 to-starehe-blue-900/80" />
 
-        <div className="relative z-10 w-[92%] md:w-[90%] max-w-[1680px] mx-auto pt-8 pb-14 sm:pb-16">
+        <div className="relative z-10 w-[92%] md:w-[90%] max-w-[1680px] mx-auto pt-6 pb-12 sm:pb-14">
           {/* Integrated Breadcrumb Trail */}
-          <nav aria-label="Breadcrumb" className="mb-6 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-slate-300">
+          <nav aria-label="Breadcrumb" className="mb-4 flex flex-wrap items-center gap-x-1.5 gap-y-0.5 text-[11px] text-slate-300">
             <Link
               href="/"
               className="flex items-center space-x-1 hover:text-starehe-gold-300 transition-colors"
             >
-              <Home className="w-3.5 h-3.5 text-starehe-gold-accent" />
+              <Home className="w-3 h-3 text-starehe-gold-accent" />
               <span>Home</span>
             </Link>
             {breadcrumbs.map((b, idx) => {
               const isLast = idx === breadcrumbs.length - 1;
               return (
                 <React.Fragment key={idx}>
-                  <ChevronRight className="w-3 h-3 text-slate-500" />
+                  <ChevronRight className="w-2.5 h-2.5 text-slate-500" />
                   {isLast || !b.href ? (
                     <span className="text-starehe-gold-300 font-semibold truncate max-w-xs sm:max-w-md">
                       {b.label}

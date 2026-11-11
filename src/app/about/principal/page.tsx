@@ -245,7 +245,7 @@ export default function PrincipalPage() {
           <div className="pt-4 border-t border-stone-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <p className="text-xs font-serif italic text-starehe-maroon-800 text-base font-bold">
-                &ldquo;Elimu Yetu, Nguvu Yetu&rdquo; — Our Education, Our Strength
+                Elimu Yetu, Nguvu Yetu — Our Education, Our Strength
               </p>
               <div className="mt-2">
                 <p className="text-sm font-bold text-starehe-blue-950">Mrs. Beatrice Shirao</p>

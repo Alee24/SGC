@@ -116,7 +116,7 @@ export default function AdministrationPage() {
                 <p>
                   Today, our community has grown to over <strong>800 students</strong>. 70% are
                   sponsored students on full charitable scholarships, while 30% are self-supported.
-                  Our motto, <em>&ldquo;Elimu Yetu, Nguvu Yetu&rdquo;</em> (Our Education, Our Strength),
+                  Our motto, <em>Elimu Yetu, Nguvu Yetu</em> (Our Education, Our Strength),
                   reflects our unwavering dedication to academic achievement. Over the last eighteen years
                   of KCSE examinations, an average of <strong>95 percent of graduates have been admitted
                   to universities</strong> in Kenya and overseas.

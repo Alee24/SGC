@@ -50,7 +50,7 @@ export const Footer: React.FC = () => {
                 Our School Motto
               </div>
               <div className="font-serif italic text-sm text-white font-medium">
-                &ldquo;Elimu Yetu, Nguvu Yetu&rdquo;
+                Elimu Yetu, Nguvu Yetu
               </div>
               <div className="text-xs text-slate-400 mt-0.5">
                 (Our Education, Our Strength)

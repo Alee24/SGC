@@ -69,7 +69,7 @@ export default function HomePage() {
             </p>
 
             <div className="mt-4 flex items-center space-x-2 text-starehe-gold-300 italic text-base">
-              <span>&ldquo;Elimu Yetu, Nguvu Yetu&rdquo;</span>
+              <span>Elimu Yetu, Nguvu Yetu</span>
               <span className="text-slate-400 not-italic font-normal text-xs">
                 &bull; (Our Education, Our Strength)
               </span>

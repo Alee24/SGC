@@ -12,6 +12,8 @@ test.describe("Starehe Girls' Centre Website Verification", () => {
     await expect(page.locator("header").first()).not.toContainText("National Girls' High School");
     await expect(page).not.toHaveTitle(/National Girls' High School/);
     await expect(page.locator("text=Elimu Yetu, Nguvu Yetu").first()).toBeVisible();
+    await expect(page.locator("body")).not.toContainText("“Elimu Yetu, Nguvu Yetu”");
+    await expect(page.locator("body")).not.toContainText('"Elimu Yetu, Nguvu Yetu"');
 
     // Verify Core Statistics
     await expect(page.locator("text=800+").first()).toBeVisible();

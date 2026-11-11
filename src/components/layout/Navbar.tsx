@@ -312,7 +312,7 @@ export const Navbar: React.FC = () => {
                 Starehe Girls&apos; Centre
               </span>
               <span className="text-[10px] sm:text-[11px] text-slate-500 font-serif italic whitespace-nowrap mt-0.5">
-                &ldquo;Elimu Yetu, Nguvu Yetu&rdquo;
+                Elimu Yetu, Nguvu Yetu
               </span>
             </div>
           </Link>

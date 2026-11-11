@@ -72,7 +72,7 @@ const GALLERY_IMAGES: GalleryImage[] = [
     src: "/images/brand/logo.png",
     title: "Official Starehe Girls' Centre Crest",
     category: "Heritage",
-    caption: "Official institutional crest featuring the motto 'Elimu Yetu, Nguvu Yetu' (Our Education, Our Strength).",
+    caption: "Official institutional crest featuring the motto Elimu Yetu, Nguvu Yetu (Our Education, Our Strength).",
   },
 ];
 
