@@ -351,8 +351,8 @@ export const Navbar: React.FC = () => {
                       }
                       className={`inline-flex items-center space-x-1 px-3 py-2 text-xs font-semibold tracking-wide transition-colors whitespace-nowrap ${
                         isActive || isOpenMenu
-                          ? "text-starehe-maroon-800 border-b-2 border-starehe-maroon-800"
-                          : "text-slate-700 hover:text-starehe-blue-950 hover:bg-slate-50 rounded-md"
+                          ? "text-brand-secondary border-b-2 border-brand-secondary"
+                          : "text-brand-navy hover:text-brand-primary hover:bg-brand-primaryLight rounded-md"
                       }`}
                       aria-haspopup="true"
                       aria-expanded={isOpenMenu}
@@ -383,16 +383,16 @@ export const Navbar: React.FC = () => {
                                 href={subItem.href}
                                 role="menuitem"
                                 onClick={closeDropdownImmediately}
-                                className="flex items-start p-2.5 rounded-xl hover:bg-slate-50 transition-colors group/item"
+                                className="flex items-start p-2.5 rounded-xl hover:bg-brand-primaryLight transition-colors group/item"
                               >
-                                <div className="p-2 rounded-lg bg-slate-100 group-hover/item:bg-white group-hover/item:shadow-sm mr-3 mt-0.5 transition-all flex-shrink-0">
+                                <div className="p-2 rounded-lg bg-slate-50 group-hover/item:bg-white group-hover/item:shadow-sm mr-3 mt-0.5 transition-all flex-shrink-0">
                                   {subItem.icon}
                                 </div>
                                 <div>
-                                  <div className="text-xs font-bold text-slate-900 group-hover/item:text-starehe-maroon-800 transition-colors whitespace-nowrap">
+                                  <div className="text-xs font-bold text-brand-navy group-hover/item:text-brand-primary transition-colors whitespace-nowrap">
                                     {subItem.title}
                                   </div>
-                                  <p className="text-[11px] text-slate-500 leading-snug line-clamp-2 mt-0.5">
+                                  <p className="text-[11px] text-brand-textSecondary leading-snug line-clamp-2 mt-0.5">
                                     {subItem.description}
                                   </p>
                                 </div>
@@ -412,8 +412,8 @@ export const Navbar: React.FC = () => {
                   href={item.href}
                   className={`px-3 py-2 text-xs font-semibold tracking-wide transition-colors whitespace-nowrap ${
                     isActive
-                      ? "text-starehe-maroon-800 border-b-2 border-starehe-maroon-800"
-                      : "text-slate-700 hover:text-starehe-blue-950 hover:bg-slate-50 rounded-md"
+                      ? "text-brand-secondary border-b-2 border-brand-secondary"
+                      : "text-brand-navy hover:text-brand-primary hover:bg-brand-primaryLight rounded-md"
                   }`}
                 >
                   {item.label}
@@ -426,18 +426,18 @@ export const Navbar: React.FC = () => {
           <div className="hidden lg:flex items-center space-x-3 flex-shrink-0">
             <Link
               href="/giving"
-              className="group inline-flex items-center space-x-1.5 text-xs font-bold text-starehe-maroon-800 hover:text-white bg-starehe-maroon-50 hover:bg-starehe-maroon-800 border border-starehe-maroon-200 hover:border-starehe-maroon-800 px-3.5 py-2 rounded-full transition-all whitespace-nowrap"
+              className="group inline-flex items-center space-x-1.5 text-xs font-bold text-white bg-brand-secondary hover:bg-brand-secondaryHover px-3.5 py-2 rounded-full transition-all whitespace-nowrap shadow-subtle"
             >
-              <HeartHandshake className="w-3.5 h-3.5 text-starehe-maroon-700 group-hover:text-white transition-colors" />
+              <HeartHandshake className="w-3.5 h-3.5 text-white transition-colors" />
               <span>Support a Girl</span>
             </Link>
 
             <Link
               href="/admissions"
-              className="inline-flex items-center space-x-1.5 text-xs font-bold text-white bg-starehe-blue-950 hover:bg-starehe-blue-900 px-4 py-2 rounded-full shadow-subtle hover:shadow transition-all whitespace-nowrap border border-starehe-blue-900"
+              className="inline-flex items-center space-x-1.5 text-xs font-bold text-white bg-brand-primary hover:bg-brand-primaryHover px-4 py-2 rounded-full shadow-subtle hover:shadow transition-all whitespace-nowrap"
             >
               <span>Admissions</span>
-              <ArrowRight className="w-3.5 h-3.5 text-starehe-gold-accent" />
+              <ArrowRight className="w-3.5 h-3.5 text-white" />
             </Link>
           </div>
 
@@ -509,16 +509,16 @@ export const Navbar: React.FC = () => {
           </div>
 
           {/* Mobile CTAs */}
-          <div className="mt-6 pt-4 border-t border-slate-200 flex flex-col space-y-3">
+          <div className="mt-6 pt-4 border-t border-brand-border flex flex-col space-y-3">
             <Link
               href="/admissions"
-              className="w-full text-center py-3 rounded-full bg-starehe-blue-950 text-white font-semibold text-xs tracking-wide shadow-sm"
+              className="w-full text-center py-3 rounded-full bg-brand-primary hover:bg-brand-primaryHover text-white font-semibold text-xs tracking-wide shadow-sm transition-colors"
             >
               Admissions &amp; Blue Form
             </Link>
             <Link
               href="/giving"
-              className="w-full text-center py-3 rounded-full border border-starehe-maroon-800 text-starehe-maroon-800 font-semibold text-xs tracking-wide hover:bg-starehe-maroon-50"
+              className="w-full text-center py-3 rounded-full bg-brand-secondary hover:bg-brand-secondaryHover text-white font-semibold text-xs tracking-wide transition-colors"
             >
               Support a Disadvantaged Girl
             </Link>

@@ -7,18 +7,46 @@
 :root {
   --font-serif: 'Merriweather', Georgia, serif;
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --color-primary: #0c2340;
-  --color-maroon: #8b1e22;
-  --color-gold: #d4af37;
-  --bg-sand: #faf8f5;
+
+  /* Brand colours */
+  --primary: #07529A;
+  --primary-hover: #06427C;
+  --primary-light: #EAF3FC;
+
+  --secondary: #E32620;
+  --secondary-hover: #BD1F1A;
+
+  --navy: #092D50;
+
+  /* Backgrounds */
+  --background: #FFFFFF;
+  --background-secondary: #F4F6F9;
+  --surface: #FFFFFF;
+
+  /* Typography */
+  --text-primary: #092D50;
+  --text-secondary: #4B5563;
+  --text-muted: #6B7280;
+
+  /* Borders */
+  --border: #E5E7EB;
+
+  /* Buttons */
+  --button-primary: #07529A;
+  --button-accent: #E32620;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
-    color: #1e293b;
-    background-color: #faf8f5;
+    color: var(--text-primary);
+    background-color: var(--background);
     font-family: var(--font-sans);
+  }
+
+  body {
+    color: var(--text-primary);
+    background-color: var(--background);
   }
 
   h1, h2, h3, h4, .font-serif {
@@ -28,7 +56,7 @@
 
 /* Editorial selection */
 ::selection {
-  background-color: #8b1e22;
+  background-color: var(--secondary);
   color: #ffffff;
 }
 
@@ -38,6 +66,6 @@ button:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 2px solid #8b1e22;
+  outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
