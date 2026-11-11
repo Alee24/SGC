@@ -6,7 +6,7 @@ import { EditorialPageLayout } from "@/components/layout/EditorialPageLayout";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import {
   Users,
-  Sparkles,
+  Compass,
   Trophy,
   Building,
   Heart,
@@ -58,7 +58,7 @@ export default function StudentLifePage() {
           <div className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-subtle hover:border-starehe-blue-300 transition-all flex flex-col justify-between">
             <div>
               <div className="w-10 h-10 rounded-xl bg-starehe-blue-100 text-starehe-blue-900 flex items-center justify-center mb-4">
-                <Sparkles className="w-5 h-5" />
+                <Compass className="w-5 h-5" />
               </div>
               <h3 className="font-serif text-lg font-bold text-starehe-blue-950 mb-1.5">
                 Clubs &amp; Societies
@@ -183,15 +183,15 @@ export default function StudentLifePage() {
 
               <div className="mt-4 space-y-2 text-xs text-slate-700 border-t border-slate-100 pt-3">
                 <div className="flex items-center space-x-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-starehe-maroon-800 flex-shrink-0" />
                   <span>Zero-tolerance policy towards bullying or hazing</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-starehe-maroon-800 flex-shrink-0" />
                   <span>Student leadership council with elected captains and prefects</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-starehe-maroon-800 flex-shrink-0" />
                   <span>Weekly ecumenical and inter-faith spiritual guidance</span>
                 </div>
               </div>

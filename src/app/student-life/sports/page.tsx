@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { EditorialPageLayout } from "@/components/layout/EditorialPageLayout";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { SPORTS_DISCIPLINES } from "@/data/school-data";
-import { Trophy, Compass, CheckCircle2, Award, Sparkles } from "lucide-react";
+import { Trophy, Compass, CheckCircle2, Award } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Sports & Athletics | Physical Wellness & Inter-School Tournaments",

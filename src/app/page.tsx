@@ -8,7 +8,6 @@ import {
   BookOpen,
   ArrowRight,
   Shield,
-  Sparkles,
   Users,
   Building,
   CheckCircle2,
@@ -51,24 +50,21 @@ export default function HomePage() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 text-white">
           <div className="max-w-3xl">
             {/* National School Status Pill */}
-            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold tracking-wider uppercase text-starehe-gold-300 mb-6">
+            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-starehe-blue-900/90 border border-white/20 text-xs font-semibold text-starehe-gold-300 mb-6 shadow-sm">
               <Award className="w-4 h-4 text-starehe-gold-accent" />
               <span>National Girls&apos; High School &amp; Charitable Trust</span>
             </div>
 
             {/* Main Headline */}
             <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.15] text-white">
-              Nurturing Exemplary Leaders,{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-starehe-gold-300 via-starehe-gold-accent to-starehe-gold-400">
-                Transforming Society.
-              </span>
+              Nurturing Exemplary Leaders, Transforming Society.
             </h1>
 
             {/* School Motto & Subhead */}
             <p className="mt-6 text-lg sm:text-xl text-slate-200 leading-relaxed font-light">
               Founded on the enduring legacy of Dr. Geoffrey Griffin and sustained
               by the doctrine of <strong className="text-white font-medium">&ldquo;The Starehe Way&rdquo;</strong>.
-              Providing world-class holistic secondary education and full boarding
+              Providing comprehensive holistic secondary education and full boarding
               scholarships to academically gifted girls from all 47 counties of Kenya.
             </p>
 
@@ -221,27 +217,27 @@ export default function HomePage() {
               {/* Pillars list */}
               <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div className="flex items-start space-x-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-1 flex-shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-starehe-maroon-800 mt-1 flex-shrink-0" />
                   <span className="text-xs sm:text-sm text-slate-700 font-medium">
                     Rigorous Academic Excellence &amp; &ldquo;Operation Plus 5&rdquo;
                   </span>
                 </div>
                 <div className="flex items-start space-x-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-1 flex-shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-starehe-maroon-800 mt-1 flex-shrink-0" />
                   <span className="text-xs sm:text-sm text-slate-700 font-medium">
                     Strict Disciplinary Standard &amp; &ldquo;The Starehe Way&rdquo;
                   </span>
                 </div>
                 <div className="flex items-start space-x-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-1 flex-shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-starehe-maroon-800 mt-1 flex-shrink-0" />
                   <span className="text-xs sm:text-sm text-slate-700 font-medium">
                     Comprehensive Holistic Mentorship &amp; Psychosocial Care
                   </span>
                 </div>
                 <div className="flex items-start space-x-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-1 flex-shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-starehe-maroon-800 mt-1 flex-shrink-0" />
                   <span className="text-xs sm:text-sm text-slate-700 font-medium">
-                    Seamless Senior School CBC / CBE Transition
+                    Structured Senior School CBC / CBE Transition
                   </span>
                 </div>
               </div>
@@ -306,10 +302,10 @@ export default function HomePage() {
             <div className="bg-starehe-blue-950 text-white rounded-2xl p-7 shadow-elevation relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-starehe-gold-accent/10 rounded-full blur-2xl pointer-events-none" />
               <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-bold uppercase tracking-wider text-starehe-gold-300 bg-white/10 px-2.5 py-1 rounded">
+                <span className="text-xs font-bold tracking-wide text-starehe-gold-300 bg-white/10 px-2.5 py-1 rounded">
                   Signature Strategy
                 </span>
-                <Sparkles className="w-5 h-5 text-starehe-gold-accent" />
+                <Award className="w-5 h-5 text-starehe-gold-accent" />
               </div>
               <div className="font-serif text-2xl font-bold text-white">
                 &ldquo;Operation Plus 5&rdquo;

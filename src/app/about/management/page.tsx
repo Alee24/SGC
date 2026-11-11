@@ -41,11 +41,11 @@ export default function ManagementPage() {
     >
       <div className="space-y-12">
         {/* Statutory Role Narrative */}
-        <section className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-subtle">
+        <section className="bg-white rounded-2xl p-6 sm:p-8 border border-stone-200/90 shadow-subtle">
           <h2 className="font-serif text-xl sm:text-2xl font-bold text-starehe-blue-950 mb-3">
             Stewarding Daily Educational Excellence
           </h2>
-          <p className="text-slate-700 leading-relaxed text-sm sm:text-base">
+          <p className="text-stone-700 leading-relaxed text-sm sm:text-base">
             Chaired by Prof. Mary Getui, EBS, the Board of Management works hand-in-hand with the
             School Administration and the Ministry of Education to uphold the rigorous ethos of
             &ldquo;The Starehe Way&rdquo;. The BOM ensures institutional resources translate into
@@ -53,34 +53,34 @@ export default function ManagementPage() {
           </p>
 
           <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-5">
-            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/70">
-              <div className="flex items-center space-x-2 text-starehe-blue-900 font-bold text-xs uppercase tracking-wider mb-2">
+            <div className="p-4 rounded-xl bg-stone-50 border border-stone-200/80">
+              <div className="flex items-center space-x-2 text-starehe-blue-900 font-bold text-xs tracking-wide mb-2">
                 <BookOpen className="w-4 h-4 text-starehe-gold-accent" />
                 <span>1. Academic Strategy</span>
               </div>
-              <p className="text-xs text-slate-600 leading-relaxed">
+              <p className="text-xs text-stone-600 leading-relaxed">
                 Monitoring examination preparedness, CBC Senior School rollout, STEM laboratory equipment,
                 and syllabus coverage standards across all departments.
               </p>
             </div>
 
-            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/70">
-              <div className="flex items-center space-x-2 text-starehe-blue-900 font-bold text-xs uppercase tracking-wider mb-2">
-                <Users className="w-4 h-4 text-starehe-gold-accent" />
+            <div className="p-4 rounded-xl bg-stone-50 border border-stone-200/80">
+              <div className="flex items-center space-x-2 text-starehe-blue-900 font-bold text-xs tracking-wide mb-2">
+                <Users className="w-4 h-4 text-starehe-maroon-800" />
                 <span>2. Student Welfare</span>
               </div>
-              <p className="text-xs text-slate-600 leading-relaxed">
+              <p className="text-xs text-stone-600 leading-relaxed">
                 Supervising child protection protocols, nutritional standards, dormitory well-being,
                 counselling services, and healthcare for all 800 boarding students.
               </p>
             </div>
 
-            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/70">
-              <div className="flex items-center space-x-2 text-starehe-blue-900 font-bold text-xs uppercase tracking-wider mb-2">
+            <div className="p-4 rounded-xl bg-stone-50 border border-stone-200/80">
+              <div className="flex items-center space-x-2 text-starehe-blue-900 font-bold text-xs tracking-wide mb-2">
                 <ShieldCheck className="w-4 h-4 text-starehe-gold-accent" />
                 <span>3. Fiscal Integrity</span>
               </div>
-              <p className="text-xs text-slate-600 leading-relaxed">
+              <p className="text-xs text-stone-600 leading-relaxed">
                 Overseeing competitive procurement tenders, institutional operating budgets, and internal
                 audits in compliance with the Public Procurement &amp; Asset Disposal Act.
               </p>
@@ -109,17 +109,17 @@ export default function ManagementPage() {
         <section className="bg-starehe-blue-50/70 rounded-2xl p-6 sm:p-8 border border-starehe-blue-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           <div className="space-y-1">
             <div className="flex items-center space-x-2 text-starehe-blue-900 font-bold text-sm">
-              <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-              <span>Ministry of Education Oversight</span>
+              <CheckCircle2 className="w-4 h-4 text-starehe-maroon-800" />
+              <span>Ministry of Education Statutory Oversight</span>
             </div>
-            <p className="text-xs text-slate-600 max-w-xl leading-relaxed">
+            <p className="text-xs text-stone-600 max-w-xl leading-relaxed">
               The BOM reports biannually to the Kasarani Sub-County and Nairobi County Education Boards,
               ensuring 100% compliance with national education directives and teacher performance appraisals.
             </p>
           </div>
           <a
             href="/careers-tenders"
-            className="px-5 py-2.5 rounded-full bg-starehe-blue-900 hover:bg-starehe-blue-800 text-white font-bold text-xs uppercase tracking-wider transition-colors flex-shrink-0"
+            className="px-5 py-2.5 rounded-full bg-starehe-blue-900 hover:bg-starehe-blue-800 text-white font-semibold text-xs tracking-wide transition-colors flex-shrink-0"
           >
             View BOM Tenders
           </a>

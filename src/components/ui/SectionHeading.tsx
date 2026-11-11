@@ -28,10 +28,10 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
     >
       {badge && (
         <div
-          className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase mb-3 ${
+          className={`inline-flex items-center px-3.5 py-1 rounded-full text-xs font-semibold tracking-wide mb-3 ${
             isDark
               ? "bg-starehe-gold-accent/20 text-starehe-gold-300 border border-starehe-gold-accent/30"
-              : "bg-starehe-maroon-50 text-starehe-maroon-800 border border-starehe-maroon-200"
+              : "bg-starehe-maroon-50 text-starehe-maroon-900 border border-starehe-maroon-200"
           }`}
         >
           {badge}
@@ -47,7 +47,7 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
       {description && (
         <p
           className={`mt-4 text-base sm:text-lg leading-relaxed ${
-            isDark ? "text-slate-300" : "text-slate-600"
+            isDark ? "text-slate-300" : "text-stone-600"
           }`}
         >
           {description}

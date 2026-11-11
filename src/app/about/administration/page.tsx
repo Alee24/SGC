@@ -13,7 +13,7 @@ import {
   Phone,
   Building,
   ArrowRight,
-  Sparkles,
+  Award,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -90,8 +90,8 @@ export default function AdministrationPage() {
             </div>
 
             <div className="md:col-span-8">
-              <div className="inline-flex items-center space-x-1 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-starehe-blue-50 text-starehe-blue-900 border border-starehe-blue-200 mb-3">
-                <Sparkles className="w-3.5 h-3.5 text-starehe-gold-accent" />
+              <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-semibold bg-starehe-blue-50 text-starehe-blue-900 border border-starehe-blue-200 mb-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-starehe-blue-800" />
                 <span>Message from the Director</span>
               </div>
               <h2 className="font-serif text-xl sm:text-2xl font-bold text-starehe-blue-950 leading-snug">
@@ -134,8 +134,8 @@ export default function AdministrationPage() {
         <section className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-subtle">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
             <div className="md:col-span-8 order-2 md:order-1">
-              <div className="inline-flex items-center space-x-1 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-starehe-maroon-50 text-starehe-maroon-800 border border-starehe-maroon-200 mb-3">
-                <Sparkles className="w-3.5 h-3.5 text-starehe-gold-accent" />
+              <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-semibold bg-starehe-maroon-50 text-starehe-maroon-900 border border-starehe-maroon-200 mb-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-starehe-maroon-800" />
                 <span>Message from the Principal</span>
               </div>
               <h2 className="font-serif text-xl sm:text-2xl font-bold text-starehe-blue-950 leading-snug">
@@ -258,10 +258,10 @@ export default function AdministrationPage() {
             </div>
 
             <div className="p-4 rounded-xl bg-white border border-slate-200/80 text-center shadow-subtle">
-              <div className="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-800 mx-auto flex items-center justify-center mb-2">
+              <div className="w-10 h-10 rounded-lg bg-starehe-maroon-50 text-starehe-maroon-800 mx-auto flex items-center justify-center mb-2">
                 <Building className="w-5 h-5" />
               </div>
-              <div className="font-serif text-2xl font-black text-emerald-700">
+              <div className="font-serif text-2xl font-black text-starehe-maroon-900">
                 800 Girls
               </div>
               <div className="text-[11px] font-bold text-slate-700 mt-1">Total Enrolled</div>

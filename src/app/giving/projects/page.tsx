@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import { EditorialPageLayout } from "@/components/layout/EditorialPageLayout";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CAPITAL_PROJECTS } from "@/data/school-data";
-import { Building, ArrowRight, Sparkles } from "lucide-react";
+import { Building, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Capital Infrastructure Needs | Building Starehe's Future",

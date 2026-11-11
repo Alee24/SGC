@@ -10,7 +10,6 @@ import {
   Mail,
   Phone,
   CheckCircle2,
-  Sparkles,
 } from "lucide-react";
 
 export const metadata: Metadata = {

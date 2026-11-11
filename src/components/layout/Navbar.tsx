@@ -14,11 +14,12 @@ import {
   Users,
   Compass,
   FileText,
-  Sparkles,
+  Award,
   ArrowRight,
   ShieldCheck,
   Building,
   Trophy,
+  Sparkles,
 } from "lucide-react";
 
 interface NavDropdownItem {
@@ -105,7 +106,7 @@ export const Navbar: React.FC = () => {
           title: "KCSE Performance",
           href: "/academics/performance",
           description: "2025 Mean Score 8.90 (B) positive deviation and 'Operation Plus 5'.",
-          icon: <Sparkles className="w-4 h-4 text-starehe-gold-600" />,
+          icon: <Award className="w-4 h-4 text-starehe-gold-600" />,
         },
         {
           title: "Curriculum & CBC Transition",
@@ -171,7 +172,7 @@ export const Navbar: React.FC = () => {
           title: "Clubs & Societies",
           href: "/student-life/clubs",
           description: "Robotics, Presidential Award, Model UN, Red Cross, Journalism, Drama.",
-          icon: <Sparkles className="w-4 h-4 text-starehe-gold-600" />,
+          icon: <Compass className="w-4 h-4 text-starehe-maroon-700" />,
         },
         {
           title: "Sports & Athletics",
@@ -253,7 +254,7 @@ export const Navbar: React.FC = () => {
               <span className="font-serif font-bold text-lg md:text-xl text-starehe-blue-950 group-hover:text-starehe-maroon-800 transition-colors tracking-tight leading-tight whitespace-nowrap">
                 Starehe Girls&apos; Centre
               </span>
-              <span className="text-[10px] md:text-[11px] text-starehe-maroon-800 font-bold tracking-wider uppercase whitespace-nowrap mt-0.5">
+              <span className="text-[11px] text-starehe-maroon-800 font-semibold tracking-wide whitespace-nowrap mt-0.5">
                 National Girls&apos; High School
               </span>
               <span className="text-[10px] text-slate-500 font-serif italic hidden sm:block whitespace-nowrap">
@@ -281,7 +282,7 @@ export const Navbar: React.FC = () => {
                     onMouseLeave={() => setActiveDropdown(null)}
                   >
                     <button
-                      className={`inline-flex items-center space-x-1 px-3 py-2 text-xs font-semibold tracking-wide uppercase transition-colors whitespace-nowrap ${
+                      className={`inline-flex items-center space-x-1 px-3 py-2 text-xs font-semibold tracking-wide transition-colors whitespace-nowrap ${
                         isActive
                           ? "text-starehe-maroon-800 border-b-2 border-starehe-maroon-800"
                           : "text-slate-700 hover:text-starehe-blue-950 hover:bg-slate-50 rounded-md"
@@ -330,7 +331,7 @@ export const Navbar: React.FC = () => {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className={`px-3 py-2 text-xs font-semibold tracking-wide uppercase transition-colors whitespace-nowrap ${
+                  className={`px-3 py-2 text-xs font-semibold tracking-wide transition-colors whitespace-nowrap ${
                     isActive
                       ? "text-starehe-maroon-800 border-b-2 border-starehe-maroon-800"
                       : "text-slate-700 hover:text-starehe-blue-950 hover:bg-slate-50 rounded-md"
@@ -432,13 +433,13 @@ export const Navbar: React.FC = () => {
           <div className="mt-6 pt-4 border-t border-slate-200 flex flex-col space-y-3">
             <Link
               href="/admissions"
-              className="w-full text-center py-3 rounded-full bg-starehe-blue-950 text-white font-bold text-xs uppercase tracking-wider shadow-sm"
+              className="w-full text-center py-3 rounded-full bg-starehe-blue-950 text-white font-semibold text-xs tracking-wide shadow-sm"
             >
               Admissions &amp; Blue Form
             </Link>
             <Link
               href="/giving"
-              className="w-full text-center py-3 rounded-full border border-starehe-maroon-800 text-starehe-maroon-800 font-bold text-xs uppercase tracking-wider hover:bg-starehe-maroon-50"
+              className="w-full text-center py-3 rounded-full border border-starehe-maroon-800 text-starehe-maroon-800 font-semibold text-xs tracking-wide hover:bg-starehe-maroon-50"
             >
               Support a Disadvantaged Girl
             </Link>

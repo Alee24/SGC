@@ -9,7 +9,6 @@ import {
   HeartHandshake,
   FileText,
   Award,
-  Sparkles,
   ArrowRight,
   ShieldCheck,
 } from "lucide-react";
@@ -47,10 +46,10 @@ export const EditorialPageLayout: React.FC<EditorialPageLayoutProps> = ({
   children,
 }) => {
   return (
-    <div className="bg-slate-50 min-h-screen">
+    <div className="bg-[#faf8f5] min-h-screen">
       {/* 1. EDITORIAL HERO HEADER */}
       <section className="relative bg-starehe-blue-950 text-white overflow-hidden border-b-4 border-starehe-maroon-800">
-        {/* Subtle Watermark Crest & Gradient */}
+        {/* Subtle Watermark Crest */}
         <div className="absolute right-0 top-0 bottom-0 w-1/3 opacity-10 pointer-events-none hidden lg:block">
           <Image
             src="/images/brand/logo.png"
@@ -59,7 +58,7 @@ export const EditorialPageLayout: React.FC<EditorialPageLayoutProps> = ({
             className="object-contain object-right"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-starehe-blue-950 via-starehe-blue-950/95 to-starehe-blue-900/70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-starehe-blue-950 via-starehe-blue-950/95 to-starehe-blue-900/80" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-14 sm:pb-16">
           {/* Integrated Breadcrumb Trail */}
@@ -96,8 +95,8 @@ export const EditorialPageLayout: React.FC<EditorialPageLayoutProps> = ({
           {/* Hero Content Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-8">
-              <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-starehe-gold-accent/20 text-starehe-gold-300 border border-starehe-gold-accent/30 mb-4">
-                <Sparkles className="w-3.5 h-3.5 text-starehe-gold-accent" />
+              <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-semibold bg-starehe-gold-accent/15 text-starehe-gold-200 border border-starehe-gold-accent/30 mb-4">
+                <span className="w-1.5 h-1.5 rounded-full bg-starehe-gold-accent" />
                 <span>{kicker}</span>
               </div>
 
@@ -112,15 +111,15 @@ export const EditorialPageLayout: React.FC<EditorialPageLayoutProps> = ({
 
             {/* Optional Right Facts Box */}
             {heroFacts && heroFacts.length > 0 && (
-              <div className="lg:col-span-4 bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/15">
-                <div className="text-[11px] font-bold uppercase tracking-wider text-starehe-gold-300 mb-3 flex items-center space-x-1.5">
-                  <Award className="w-3.5 h-3.5" />
-                  <span>Key Institutional Facts</span>
+              <div className="lg:col-span-4 bg-starehe-blue-900/90 rounded-2xl p-5 border border-white/15 shadow-elevation">
+                <div className="text-xs font-bold text-starehe-gold-300 mb-3 flex items-center space-x-2">
+                  <Award className="w-4 h-4 text-starehe-gold-accent" />
+                  <span>Institutional Highlights</span>
                 </div>
                 <div className="grid grid-cols-2 gap-3 text-xs">
                   {heroFacts.map((fact, i) => (
-                    <div key={i} className="p-2.5 rounded-lg bg-black/20 border border-white/10">
-                      <div className="text-[10px] text-slate-400 uppercase tracking-wide">
+                    <div key={i} className="p-2.5 rounded-lg bg-starehe-blue-950/80 border border-white/10">
+                      <div className="text-[11px] text-slate-300 font-medium">
                         {fact.label}
                       </div>
                       <div className="font-serif font-bold text-white text-sm mt-0.5">
@@ -141,7 +140,7 @@ export const EditorialPageLayout: React.FC<EditorialPageLayoutProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
             {/* Main Content Area (8 Cols) */}
             <main className="lg:col-span-8">
-              <div className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/80 shadow-subtle">
+              <div className="bg-white rounded-3xl p-6 sm:p-10 border border-stone-200/90 shadow-subtle">
                 {children}
               </div>
             </main>
@@ -150,8 +149,8 @@ export const EditorialPageLayout: React.FC<EditorialPageLayoutProps> = ({
             <aside className="lg:col-span-4 space-y-6">
               {/* Sidebar Navigation */}
               {sidebarLinks && sidebarLinks.length > 0 && (
-                <div className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-subtle">
-                  <h3 className="font-serif text-base font-bold text-starehe-blue-950 pb-3 border-b border-slate-100 mb-4 flex items-center justify-between">
+                <div className="bg-white rounded-2xl p-6 border border-stone-200/90 shadow-subtle">
+                  <h3 className="font-serif text-base font-bold text-starehe-blue-950 pb-3 border-b border-stone-100 mb-4 flex items-center justify-between">
                     <span>{sidebarTitle}</span>
                     <span className="w-2 h-2 rounded-full bg-starehe-maroon-700" />
                   </h3>
@@ -163,7 +162,7 @@ export const EditorialPageLayout: React.FC<EditorialPageLayoutProps> = ({
                           className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl transition-all ${
                             link.active
                               ? "bg-starehe-maroon-50 text-starehe-maroon-900 border-l-4 border-starehe-maroon-800 font-bold"
-                              : "text-slate-700 hover:text-starehe-blue-950 hover:bg-slate-50"
+                              : "text-slate-700 hover:text-starehe-blue-950 hover:bg-stone-50"
                           }`}
                         >
                           <span>{link.label}</span>
@@ -193,7 +192,7 @@ export const EditorialPageLayout: React.FC<EditorialPageLayoutProps> = ({
                 </p>
                 <Link
                   href="/admissions/form-one"
-                  className="inline-flex items-center space-x-1.5 w-full justify-center py-2.5 rounded-full bg-starehe-gold-accent hover:bg-starehe-gold-400 text-starehe-blue-950 font-bold text-xs uppercase tracking-wider transition-colors"
+                  className="inline-flex items-center space-x-1.5 w-full justify-center py-2.5 rounded-full bg-starehe-gold-accent hover:bg-starehe-gold-400 text-starehe-blue-950 font-bold text-xs tracking-wide transition-colors"
                 >
                   <span>Blue Form Guide</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -210,11 +209,11 @@ export const EditorialPageLayout: React.FC<EditorialPageLayoutProps> = ({
                 </h4>
                 <p className="text-xs text-starehe-maroon-100 leading-relaxed mb-4">
                   Enable a brilliant young woman from a vulnerable background to receive
-                  world-class secondary education, medical care, and residential dignity.
+                  comprehensive secondary education, medical care, and residential dignity.
                 </p>
                 <Link
                   href="/giving"
-                  className="inline-flex items-center space-x-1.5 w-full justify-center py-2.5 rounded-full bg-white hover:bg-slate-100 text-starehe-maroon-900 font-bold text-xs uppercase tracking-wider transition-colors"
+                  className="inline-flex items-center space-x-1.5 w-full justify-center py-2.5 rounded-full bg-white hover:bg-stone-100 text-starehe-maroon-900 font-bold text-xs tracking-wide transition-colors"
                 >
                   <span>Support a Cause</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -222,8 +221,8 @@ export const EditorialPageLayout: React.FC<EditorialPageLayoutProps> = ({
               </div>
 
               {/* Official Contact Box */}
-              <div className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-subtle text-xs text-slate-700 space-y-3">
-                <h4 className="font-serif text-sm font-bold text-starehe-blue-950 pb-2 border-b border-slate-100">
+              <div className="bg-white rounded-2xl p-6 border border-stone-200/90 shadow-subtle text-xs text-slate-700 space-y-3">
+                <h4 className="font-serif text-sm font-bold text-starehe-blue-950 pb-2 border-b border-stone-100">
                   Campus Help Desk
                 </h4>
                 <div className="flex items-center space-x-2">

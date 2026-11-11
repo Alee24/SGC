@@ -58,7 +58,7 @@ export const Footer: React.FC = () => {
             </div>
 
             <div className="flex items-center space-x-2 text-xs text-slate-400">
-              <ShieldCheck className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+              <ShieldCheck className="w-4 h-4 text-starehe-gold-accent flex-shrink-0" />
               <span>Registered Trust under Cap 164 &amp; Basic Education Act</span>
             </div>
           </div>

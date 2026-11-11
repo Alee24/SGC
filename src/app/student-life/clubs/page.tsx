@@ -4,7 +4,7 @@ import { EditorialPageLayout } from "@/components/layout/EditorialPageLayout";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CLUBS_AND_SOCIETIES } from "@/data/school-data";
 import {
-  Sparkles,
+  Cpu,
   Award,
   Globe2,
   Heart,
@@ -32,7 +32,7 @@ const STUDENT_LIFE_SIDEBAR_LINKS = [
 export default function ClubsPage() {
   const clubIcons: Record<string, React.ReactNode> = {
     "Presidential Award Kenya": <Award className="w-5 h-5 text-starehe-gold-600" />,
-    "Robotics & Science Innovation Club": <Sparkles className="w-5 h-5 text-starehe-blue-700" />,
+    "Robotics & Science Innovation Club": <Cpu className="w-5 h-5 text-starehe-blue-700" />,
     "Model United Nations (MUN)": <Globe2 className="w-5 h-5 text-starehe-blue-800" />,
     "Kenya Red Cross Society": <Heart className="w-5 h-5 text-starehe-maroon-700" />,
     "Journalism & Media Club": <Newspaper className="w-5 h-5 text-purple-700" />,

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { X, ChevronLeft, ChevronRight, Maximize2, Sparkles } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
 
 interface GalleryImage {
   src: string;

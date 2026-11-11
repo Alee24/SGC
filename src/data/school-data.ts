@@ -196,7 +196,7 @@ export const TRUSTEES: Leader[] = [
     role: "Member, Board of Trustees",
     title: "Senior Educationalist & Former Director of Education",
     image: "/images/leadership/trustee-naomy-wangai.png",
-    bio: "Renowned veteran educator with decades of national curriculum policymaking, ensuring Starehe maintains gold-standard pedagogy and seamless CBC integration.",
+    bio: "Renowned veteran educator with decades of national curriculum policymaking, ensuring Starehe maintains exemplary pedagogy and structured CBC integration.",
     category: "trustee",
   },
   {

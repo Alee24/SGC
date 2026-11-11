@@ -7,7 +7,6 @@ import {
   GraduationCap,
   TrendingUp,
   Award,
-  Sparkles,
   CheckCircle2,
   FileCheck,
   Target,
@@ -56,7 +55,7 @@ export default function PerformancePage() {
             <div className="font-serif text-3xl font-extrabold text-starehe-blue-950 mt-1">
               8.90 (B)
             </div>
-            <div className="text-[11px] text-emerald-700 font-bold mt-1">
+            <div className="text-[11px] text-starehe-blue-900 font-bold mt-1">
               +0.07 Deviation
             </div>
           </div>
@@ -143,7 +142,7 @@ export default function PerformancePage() {
                         {row.meanGrade}
                       </span>
                     </td>
-                    <td className="py-3.5 px-5 text-emerald-700 font-bold">
+                    <td className="py-3.5 px-5 text-starehe-blue-900 font-bold">
                       {row.deviation}
                     </td>
                     <td className="py-3.5 px-5 font-semibold text-starehe-maroon-800">

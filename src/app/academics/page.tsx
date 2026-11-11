@@ -5,7 +5,6 @@ import { EditorialPageLayout } from "@/components/layout/EditorialPageLayout";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import {
   GraduationCap,
-  Sparkles,
   BookOpen,
   ArrowRight,
   CheckCircle2,
@@ -79,7 +78,7 @@ export default function AcademicsPage() {
           <div className="bg-starehe-blue-950 text-white rounded-2xl p-6 shadow-elevation relative overflow-hidden flex flex-col justify-between">
             <div>
               <div className="w-10 h-10 rounded-xl bg-starehe-gold-accent/20 text-starehe-gold-300 flex items-center justify-center mb-4">
-                <Sparkles className="w-5 h-5" />
+                <Award className="w-5 h-5" />
               </div>
               <h3 className="font-serif text-lg font-bold text-white mb-2">
                 &ldquo;Operation Plus 5&rdquo;

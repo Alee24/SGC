@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import { EditorialPageLayout } from "@/components/layout/EditorialPageLayout";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { SCHOOL_INFO } from "@/data/school-data";
-import { Calendar, Sparkles, Trophy, Users, HeartHandshake, ArrowRight } from "lucide-react";
+import { Calendar, Award, Trophy, Users, HeartHandshake, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Annual Charity Events | Charity Golf, Walk & Gala Dinner",
@@ -22,7 +22,7 @@ export default function CharityEventsPage() {
   const eventIcons = [
     <Trophy key="golf" className="w-5 h-5 text-starehe-gold-600" />,
     <Users key="walk" className="w-5 h-5 text-starehe-maroon-700" />,
-    <Sparkles key="dinner" className="w-5 h-5 text-starehe-blue-900" />,
+    <Award key="dinner" className="w-5 h-5 text-starehe-blue-900" />,
   ];
 
   return (
