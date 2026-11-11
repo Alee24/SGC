@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Metadata } from "next";
 import { EditorialPageLayout, SidebarLink, FactItem } from "@/components/layout/EditorialPageLayout";
-import { HISTORY_TIMELINE } from "@/data/school-data";
+import { HeritageTimeline } from "@/components/ui/HeritageTimeline";
 import { BookOpen, Calendar, Award, Heart, CheckCircle2, Quote, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -215,27 +215,17 @@ export default function HistoryPage() {
         </section>
 
         {/* Section 4: Chronological Milestone Roadmap */}
-        <section className="space-y-6 pt-4 border-t border-slate-100">
-          <h2 className="font-serif text-2xl font-bold text-starehe-blue-950 tracking-tight">
-            Two Decades of Excellence: Milestone Timeline
-          </h2>
-
-          <div className="relative pl-6 border-l-2 border-starehe-blue-900/30 space-y-8">
-            {HISTORY_TIMELINE.map((item, idx) => (
-              <div key={idx} className="relative group">
-                <span className="absolute -left-[31px] top-1.5 w-3.5 h-3.5 rounded-full bg-starehe-maroon-800 ring-4 ring-white" />
-                <span className="text-xs font-mono font-bold text-starehe-maroon-800 uppercase tracking-wider">
-                  {item.year}
-                </span>
-                <h3 className="font-serif text-lg font-bold text-starehe-blue-950 mt-1">
-                  {item.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
-            ))}
+        <section className="space-y-6 pt-6 border-t border-slate-100">
+          <div className="text-center max-w-2xl mx-auto">
+            <span className="inline-block text-xs font-bold uppercase tracking-widest text-brand-secondary mb-1">
+              Starehe Heritage Timeline
+            </span>
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-starehe-blue-950 tracking-tight">
+              Two Decades of Excellence: Milestone Timeline
+            </h2>
           </div>
+
+          <HeritageTimeline />
         </section>
 
         {/* Footer Navigation within Article */}

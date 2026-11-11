@@ -276,5 +276,15 @@ test.describe("Starehe Girls' Centre Website Verification", () => {
     for (const widthRatio of layoutAudit!.sectionsBelowSidebar) {
       expect(widthRatio).toBeGreaterThan(0.95);
     }
+
+    // Verify authentic Heritage Timeline cards render without placeholder text or overflow
+    await expect(page.locator("text=Conception of the Dream")).toBeVisible();
+    await expect(page.getByText("February 12, 2005", { exact: true })).toBeVisible();
+    await expect(page.locator("body")).not.toContainText("Lorem");
+    await expect(page.locator("body")).not.toContainText("Mario");
+
+    await page.setViewportSize({ width: 375, height: 812 });
+    const mobileOverflow = await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth);
+    expect(mobileOverflow).toBe(true);
   });
 });
