@@ -60,9 +60,9 @@ export const EditorialPageLayout: React.FC<EditorialPageLayoutProps> = ({
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-starehe-blue-950 via-starehe-blue-950/95 to-starehe-blue-900/80" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-14 sm:pb-16">
+        <div className="relative z-10 w-[92%] md:w-[90%] max-w-[1680px] mx-auto pt-8 pb-14 sm:pb-16">
           {/* Integrated Breadcrumb Trail */}
-          <nav aria-label="Breadcrumb" className="mb-6 flex items-center space-x-2 text-xs text-slate-300">
+          <nav aria-label="Breadcrumb" className="mb-6 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-slate-300">
             <Link
               href="/"
               className="flex items-center space-x-1 hover:text-starehe-gold-300 transition-colors"
@@ -136,7 +136,7 @@ export const EditorialPageLayout: React.FC<EditorialPageLayoutProps> = ({
 
       {/* 2. MAIN EDITORIAL CONTENT + STICKY SIDEBAR */}
       <section className="py-12 sm:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-[92%] md:w-[90%] max-w-[1680px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
             {/* Main Content Area (8 Cols) */}
             <main className="lg:col-span-8">

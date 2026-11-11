@@ -47,7 +47,7 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-t from-starehe-blue-950 via-transparent to-transparent" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28 text-white">
+        <div className="relative z-10 w-[92%] md:w-[90%] max-w-[1680px] mx-auto py-20 lg:py-28 text-white">
           <div className="max-w-3xl">
             {/* National School Status Pill */}
             <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-starehe-blue-900/90 border border-white/20 text-xs font-semibold text-starehe-gold-300 mb-6 shadow-sm">
@@ -103,7 +103,7 @@ export default function HomePage() {
         </div>
 
         {/* Quick Highlights Floating Bar */}
-        <div className="absolute bottom-0 left-0 right-0 transform translate-y-1/2 z-20 hidden md:block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="absolute bottom-0 left-0 right-0 transform translate-y-1/2 z-20 hidden md:block w-[92%] md:w-[90%] max-w-[1680px] mx-auto">
           <div className="bg-white rounded-2xl shadow-elevation border border-slate-100 p-6 grid grid-cols-4 gap-6">
             <div className="border-r border-slate-100 pr-4">
               <div className="font-serif text-3xl font-extrabold text-starehe-blue-950">
@@ -158,7 +158,7 @@ export default function HomePage() {
 
       {/* 2. INSTITUTIONAL WELCOME FROM LEADERSHIP */}
       <section className="py-20 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-[92%] md:w-[90%] max-w-[1680px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left: Imagery Grid */}
             <div className="lg:col-span-5 relative">
@@ -265,7 +265,7 @@ export default function HomePage() {
 
       {/* 3. ACADEMIC EXCELLENCE & OPERATION PLUS 5 */}
       <section className="py-20 bg-white border-y border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-[92%] md:w-[90%] max-w-[1680px] mx-auto">
           <SectionHeading
             badge="Academic Rigour &amp; Performance"
             title="Consistent Positive Deviation &amp; University Transition"
@@ -374,7 +374,7 @@ export default function HomePage() {
 
       {/* 4. HERITAGE & THE STAREHE WAY */}
       <section className="py-20 bg-starehe-blue-950 text-white relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-[92%] md:w-[90%] max-w-[1680px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Heritage Text */}
             <div className="lg:col-span-7">
@@ -460,7 +460,7 @@ export default function HomePage() {
 
       {/* 5. CAMPUS FACILITIES & ENVIRONMENT */}
       <section className="py-20 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-[92%] md:w-[90%] max-w-[1680px] mx-auto">
           <SectionHeading
             badge="55-Acre Sanctuary"
             title="A Serene Environment Built for Holistic Growth"
@@ -546,7 +546,7 @@ export default function HomePage() {
 
       {/* 6. SUPPORT A CAUSE / PHILANTHROPY & CAPITAL PROJECTS */}
       <section className="py-20 bg-starehe-maroon-900 text-white relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-[92%] md:w-[90%] max-w-[1680px] mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-14">
             <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase bg-white/10 text-starehe-gold-300 border border-white/20 mb-3">
               Giving &amp; Philanthropy
@@ -659,7 +659,7 @@ export default function HomePage() {
 
       {/* 7. ACTIVE NOTICES: TENDERS & VACANCIES */}
       <section className="py-20 bg-slate-50 border-t border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-[92%] md:w-[90%] max-w-[1680px] mx-auto">
           <SectionHeading
             badge="Institutional Governance &amp; Careers"
             title="Active Tenders &amp; Professional Vacancies"
@@ -773,7 +773,7 @@ export default function HomePage() {
 
       {/* 8. ADMISSIONS & BLUE FORM CALLOUT BANNER */}
       <section className="py-16 bg-starehe-blue-900 text-white border-t border-starehe-blue-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-[92%] md:w-[90%] max-w-[1680px] mx-auto">
           <div className="bg-starehe-blue-950 rounded-3xl p-8 sm:p-12 border border-starehe-blue-800 shadow-elevation relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8">
             <div className="max-w-2xl">
               <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-starehe-gold-accent/20 text-starehe-gold-300 border border-starehe-gold-accent/30 mb-4">

@@ -394,7 +394,7 @@ export default function ApplyPage() {
     <div className="bg-starehe-cream min-h-screen">
       {/* Header */}
       <section className="bg-starehe-blue-900 text-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
+        <div className="w-[92%] md:w-[90%] max-w-[1680px] mx-auto py-10 sm:py-14">
           <nav aria-label="Breadcrumb" className="text-xs text-starehe-blue-200 mb-4">
             <Link href="/admissions" className="hover:text-white">Admissions</Link>
             <span className="mx-2">/</span>
@@ -427,7 +427,7 @@ export default function ApplyPage() {
         </div>
       </section>
 
-      <div ref={topRef} className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12 scroll-mt-24">
+      <div ref={topRef} className="w-[92%] md:w-[90%] max-w-[1680px] mx-auto py-8 sm:py-12 scroll-mt-24">
         {result ? (
           <SuccessPanel
             result={result}

@@ -182,4 +182,49 @@ test.describe("Starehe Girls' Centre Website Verification", () => {
     await expect(page).toHaveURL(/\/admin$/, { timeout: 10000 });
     await expect(page.locator("body")).not.toContainText("Sign-in failed");
   });
+
+  test("Layout spans 90% width on desktop with zero horizontal overflow or clipped buttons across viewports", async ({ page }) => {
+    const viewports = [
+      { width: 375, height: 812 },
+      { width: 768, height: 1024 },
+      { width: 1024, height: 768 },
+      { width: 1280, height: 800 },
+      { width: 1440, height: 900 },
+    ];
+
+    await page.goto("/", { waitUntil: "domcontentloaded" });
+    await page.waitForSelector("header");
+
+    for (const vp of viewports) {
+      await page.setViewportSize(vp);
+      await page.waitForTimeout(150);
+
+      const audit = await page.evaluate(() => {
+        const vw = window.innerWidth;
+        const docScrollWidth = document.documentElement.scrollWidth;
+        const headerEl = document.querySelector("header > div");
+        const headerContainerWidth = headerEl ? headerEl.getBoundingClientRect().width : 0;
+
+        const clippedItems: string[] = [];
+        const controls = document.querySelectorAll("header a, header button");
+        controls.forEach((el) => {
+          const rect = el.getBoundingClientRect();
+          if (rect.width === 0 || rect.height === 0) return;
+          if (rect.left < -1 || rect.right > vw + 1) {
+            clippedItems.push(`${el.textContent?.trim() || "icon"}: left=${Math.round(rect.left)}, right=${Math.round(rect.right)}, vw=${vw}`);
+          }
+        });
+
+        return { vw, docScrollWidth, headerContainerWidth, clippedItems };
+      });
+
+      expect(audit.docScrollWidth).toBeLessThanOrEqual(audit.vw);
+      expect(audit.clippedItems).toEqual([]);
+      if (vp.width >= 1280) {
+        const ratio = audit.headerContainerWidth / audit.vw;
+        expect(ratio).toBeGreaterThanOrEqual(0.88);
+        expect(ratio).toBeLessThanOrEqual(0.92);
+      }
+    }
+  });
 });

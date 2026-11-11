@@ -352,7 +352,7 @@ export default function AdminDashboard({ user }: { user: AdminUser }) {
     <div className="bg-starehe-cream min-h-screen">
       {/* Top header */}
       <header className="bg-starehe-blue-900 text-white border-b border-starehe-blue-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-7 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div className="w-[92%] md:w-[90%] max-w-[1680px] mx-auto py-7 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
             <p className="text-xs font-semibold text-starehe-gold-300">
               Starehe Girls&apos; Centre &bull; Admissions Committee Portal
@@ -402,7 +402,7 @@ export default function AdminDashboard({ user }: { user: AdminUser }) {
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-6">
+      <main className="w-[92%] md:w-[90%] max-w-[1680px] mx-auto py-8 space-y-6">
         {/* Summary metrics */}
         <section
           aria-label="Application summary statistics"

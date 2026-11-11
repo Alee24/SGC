@@ -62,7 +62,7 @@ export default function ContactPage() {
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-starehe-blue-950 via-starehe-blue-950/95 to-starehe-blue-900/70" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 w-[92%] md:w-[90%] max-w-[1680px] mx-auto">
           <div className="max-w-3xl">
             <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-starehe-gold-accent/20 text-starehe-gold-300 border border-starehe-gold-accent/30 mb-4">
               Get in Touch
@@ -80,7 +80,7 @@ export default function ContactPage() {
 
       {/* Contact Grid: Details & Form */}
       <section className="py-20 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-[92%] md:w-[90%] max-w-[1680px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             {/* Left: Contact Info & Driving Directions */}
             <div className="lg:col-span-5 space-y-8">

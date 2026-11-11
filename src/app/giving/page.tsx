@@ -49,7 +49,7 @@ export default function GivingPage() {
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-starehe-blue-950 via-starehe-blue-950/95 to-starehe-maroon-900/60" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 w-[92%] md:w-[90%] max-w-[1680px] mx-auto">
           <div className="max-w-3xl">
             <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-starehe-gold-accent/20 text-starehe-gold-300 border border-starehe-gold-accent/30 mb-4">
               Philanthropy &amp; Giving
@@ -68,7 +68,7 @@ export default function GivingPage() {
 
       {/* 4 Pillars of Giving */}
       <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-[92%] md:w-[90%] max-w-[1680px] mx-auto">
           <SectionHeading
             badge="Philanthropic Channels"
             title="Ways to Support Starehe Girls' Centre"
