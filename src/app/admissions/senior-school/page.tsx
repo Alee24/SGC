@@ -22,6 +22,7 @@ export const metadata: Metadata = {
 
 const ADMISSIONS_SIDEBAR_LINKS = [
   { label: "Admissions Overview", href: "/admissions" },
+  { label: "Online Grade 10 Application", href: "/admissions/apply" },
   { label: "Form 1 & The Blue Form", href: "/admissions/form-one" },
   { label: "CBC Senior School (Grade 10)", href: "/admissions/senior-school", active: true },
   { label: "Fees & Sponsorship Aid", href: "/admissions/fees-aid" },
@@ -183,13 +184,21 @@ export default function SeniorSchoolAdmissionPage() {
             </p>
           </div>
 
-          <Link
-            href="/contact"
-            className="flex-shrink-0 px-6 py-3 rounded-full bg-starehe-blue-900 hover:bg-starehe-blue-800 text-white font-bold text-xs uppercase tracking-wider transition-colors shadow-sm inline-flex items-center space-x-1.5"
-          >
-            <span>Inquire About 2027 Intake</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
+          <div className="flex flex-wrap gap-3 flex-shrink-0">
+            <Link
+              href="/admissions/apply"
+              className="px-6 py-3 rounded-lg bg-starehe-maroon-800 hover:bg-starehe-maroon-700 text-white font-semibold text-xs tracking-wide transition-colors shadow-sm inline-flex items-center space-x-1.5"
+            >
+              <span>Apply Online (Grade 10)</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+            <a
+              href="/api/applications/form-pdf"
+              className="px-5 py-3 rounded-lg bg-starehe-blue-900 hover:bg-starehe-blue-800 text-white font-semibold text-xs tracking-wide transition-colors shadow-sm inline-flex items-center space-x-1.5"
+            >
+              <span>Download Blank Form (PDF)</span>
+            </a>
+          </div>
         </section>
       </div>
     </EditorialPageLayout>

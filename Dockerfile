@@ -17,6 +17,7 @@ COPY . .
 
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV=production
+ENV DOCKER_BUILD=1
 
 RUN npm run build
 
@@ -33,13 +34,14 @@ RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
 COPY --from=builder /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/migrations ./migrations
 
-# Set up standalone output
-RUN mkdir .next
-RUN chown nextjs:nodejs .next
+# Set up standalone output and persistent SQLite data directory
+RUN mkdir -p .next data && chown -R nextjs:nodejs .next data
 
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=builder --chown=nextjs:nodejs /app/node_modules/sql.js/dist ./node_modules/sql.js/dist
 
 USER nextjs
 

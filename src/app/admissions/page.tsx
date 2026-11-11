@@ -22,6 +22,7 @@ export const metadata: Metadata = {
 
 const ADMISSIONS_SIDEBAR_LINKS = [
   { label: "Admissions Overview", href: "/admissions", active: true },
+  { label: "Online Grade 10 Application", href: "/admissions/apply" },
   { label: "Form 1 & The Blue Form", href: "/admissions/form-one" },
   { label: "CBC Senior School (Grade 10)", href: "/admissions/senior-school" },
   { label: "Fees & Sponsorship Aid", href: "/admissions/fees-aid" },
@@ -152,13 +153,22 @@ export default function AdmissionsOverviewPage() {
                 </div>
               </div>
 
-              <Link
-                href="/admissions/senior-school"
-                className="w-full inline-flex items-center justify-center space-x-2 py-2.5 px-5 rounded-full bg-starehe-blue-900 hover:bg-starehe-blue-800 text-white font-semibold text-xs tracking-wide transition-colors shadow-sm"
-              >
-                <span>Senior School CBC Guide</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
+              <div className="space-y-2.5">
+                <Link
+                  href="/admissions/apply"
+                  className="w-full inline-flex items-center justify-center space-x-2 py-2.5 px-5 rounded-full bg-starehe-maroon-800 hover:bg-starehe-maroon-700 text-white font-semibold text-xs tracking-wide transition-colors shadow-sm"
+                >
+                  <span>Apply Online (Grade 10 Form)</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+                <Link
+                  href="/admissions/senior-school"
+                  className="w-full inline-flex items-center justify-center space-x-2 py-2 px-5 rounded-full border border-starehe-blue-900 text-starehe-blue-900 hover:bg-starehe-blue-50 font-semibold text-xs tracking-wide transition-colors"
+                >
+                  <span>Senior School CBC Guide</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
             </div>
           </div>
         </section>

@@ -1,3 +1,5 @@
+import fs from "fs";
+import path from "path";
 import { test, expect } from "@playwright/test";
 
 test.describe("Starehe Girls' Centre Website Verification", () => {
@@ -5,9 +7,11 @@ test.describe("Starehe Girls' Centre Website Verification", () => {
     await page.goto("/");
     await expect(page).toHaveTitle(/Starehe Girls' Centre/);
 
-    // Verify School Name & Motto in banner or navigation
+    // Verify School Name & Motto in banner or navigation, and confirm subtitle removal
+    await expect(page.locator("header").first()).toContainText("Starehe Girls' Centre");
+    await expect(page.locator("header").first()).not.toContainText("National Girls' High School");
+    await expect(page).not.toHaveTitle(/National Girls' High School/);
     await expect(page.locator("text=Elimu Yetu, Nguvu Yetu").first()).toBeVisible();
-    await expect(page.locator("text=National Girls' High School").first()).toBeVisible();
 
     // Verify Core Statistics
     await expect(page.locator("text=800+").first()).toBeVisible();
@@ -151,5 +155,31 @@ test.describe("Starehe Girls' Centre Website Verification", () => {
     await expect(kcseLink).toBeVisible();
     await kcseLink.click();
     await expect(page).toHaveURL(/\/academics\/performance/);
+  });
+
+  test("Admin portal login works with configured admin credentials", async ({ page }) => {
+    let adminEmail = process.env.ADMIN_SEED_EMAIL || "";
+    let adminPass = process.env.ADMIN_SEED_PASSWORD || "";
+
+    const envLocalPath = path.join(process.cwd(), ".env.local");
+    if ((!adminEmail || !adminPass) && fs.existsSync(envLocalPath)) {
+      const envText = fs.readFileSync(envLocalPath, "utf8");
+      for (const line of envText.split(/\r?\n/)) {
+        const [k, ...rest] = line.split("=");
+        const val = rest.join("=").trim();
+        if (k?.trim() === "ADMIN_SEED_EMAIL" && !adminEmail) adminEmail = val;
+        if (k?.trim() === "ADMIN_SEED_PASSWORD" && !adminPass) adminPass = val;
+      }
+    }
+
+    test.skip(!adminEmail || !adminPass, "Admin credentials not configured in env");
+
+    await page.goto("/admin/login");
+    await page.fill("#username", adminEmail);
+    await page.fill("#password", adminPass);
+    await page.click('button[type="submit"]');
+
+    await expect(page).toHaveURL(/\/admin$/, { timeout: 10000 });
+    await expect(page.locator("body")).not.toContainText("Sign-in failed");
   });
 });

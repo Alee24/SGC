@@ -24,6 +24,7 @@ export const metadata: Metadata = {
 
 const ADMISSIONS_SIDEBAR_LINKS = [
   { label: "Admissions Overview", href: "/admissions" },
+  { label: "Online Grade 10 Application", href: "/admissions/apply" },
   { label: "Form 1 & The Blue Form", href: "/admissions/form-one", active: true },
   { label: "CBC Senior School (Grade 10)", href: "/admissions/senior-school" },
   { label: "Fees & Sponsorship Aid", href: "/admissions/fees-aid" },

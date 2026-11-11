@@ -2,6 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   output: process.env.DOCKER_BUILD ? 'standalone' : undefined,
+  experimental: {
+    serverComponentsExternalPackages: ['sql.js'],
+  },
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [

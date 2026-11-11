@@ -7,7 +7,7 @@ import { Footer } from "@/components/layout/Footer";
 export const metadata: Metadata = {
   metadataBase: new URL("https://starehegirlscentre.sc.ke"),
   title: {
-    default: "Starehe Girls' Centre | National Girls' High School & Charitable Institution",
+    default: "Starehe Girls' Centre | Charitable Educational Institution",
     template: "%s | Starehe Girls' Centre",
   },
   description:
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Starehe Girls' Centre",
-    description: "National Girls' High School & Charitable Institution — Nairobi, Kenya",
+    description: "Premier Charitable Educational Institution — Nairobi, Kenya",
     images: ["/images/hero/hero-students-assembly.jpg"],
   },
   icons: {

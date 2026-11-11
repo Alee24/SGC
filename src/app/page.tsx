@@ -52,7 +52,7 @@ export default function HomePage() {
             {/* National School Status Pill */}
             <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-starehe-blue-900/90 border border-white/20 text-xs font-semibold text-starehe-gold-300 mb-6 shadow-sm">
               <Award className="w-4 h-4 text-starehe-gold-accent" />
-              <span>National Girls&apos; High School &amp; Charitable Trust</span>
+              <span>Charitable Educational Institution &amp; Trust</span>
             </div>
 
             {/* Main Headline */}

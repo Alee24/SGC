@@ -34,7 +34,7 @@ export const Footer: React.FC = () => {
                   Starehe Girls&apos; Centre
                 </h3>
                 <p className="text-xs text-starehe-gold-400 font-semibold tracking-wide uppercase">
-                  National Girls&apos; High School
+                  Charitable Trust &bull; Nairobi
                 </p>
               </div>
             </div>

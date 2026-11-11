@@ -312,13 +312,10 @@ export const Navbar: React.FC = () => {
               />
             </div>
             <div className="flex flex-col">
-              <span className="font-serif font-bold text-lg md:text-xl text-starehe-blue-950 group-hover:text-starehe-maroon-800 transition-colors tracking-tight leading-tight whitespace-nowrap">
+              <span className="font-serif font-bold text-lg md:text-xl text-starehe-blue-950 group-hover:text-brand-primary transition-colors tracking-tight leading-tight whitespace-nowrap">
                 Starehe Girls&apos; Centre
               </span>
-              <span className="text-[11px] text-starehe-maroon-800 font-semibold tracking-wide whitespace-nowrap mt-0.5">
-                National Girls&apos; High School
-              </span>
-              <span className="text-[10px] text-slate-500 font-serif italic hidden sm:block whitespace-nowrap">
+              <span className="text-[11px] text-slate-500 font-serif italic whitespace-nowrap mt-0.5">
                 &ldquo;Elimu Yetu, Nguvu Yetu&rdquo;
               </span>
             </div>

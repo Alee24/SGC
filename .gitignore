@@ -37,3 +37,6 @@ next-env.d.ts
 
 # site crawl source archives
 site-crawl-*
+
+# runtime application database (Docker volume)
+/data/
