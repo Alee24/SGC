@@ -55,6 +55,7 @@ const config: Config = {
       },
       fontFamily: {
         serif: ["Merriweather", "Georgia", "serif"],
+        display: ["Cinzel", "Merriweather", "Georgia", "serif"],
         sans: ["Inter", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
       },
       boxShadow: {
