@@ -119,16 +119,26 @@ export default function GalleryPage() {
       />
 
       {/* Hero */}
-      <section className="py-16 sm:py-20 bg-starehe-blue-950 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-14 sm:py-18 bg-starehe-blue-950 text-white overflow-hidden border-b-4 border-starehe-maroon-800">
+        <div className="absolute right-0 top-0 bottom-0 w-1/3 opacity-10 pointer-events-none hidden lg:block">
+          <Image
+            src="/images/brand/logo.png"
+            alt="Starehe Crest Watermark"
+            fill
+            className="object-contain object-right"
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-starehe-blue-950 via-starehe-blue-950/95 to-starehe-blue-900/70" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-starehe-gold-accent/20 text-starehe-gold-300 border border-starehe-gold-accent/30 mb-4">
               Visual Archives
             </span>
-            <h1 className="font-serif text-4xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
+            <h1 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
               Campus Photo Gallery
             </h1>
-            <p className="mt-4 text-base sm:text-lg text-slate-200 leading-relaxed font-light">
+            <p className="mt-3 text-sm sm:text-base text-slate-200 leading-relaxed font-light">
               Explore authentic glimpses into life at Starehe Girls&apos; Centre:
               from daily morning assemblies to academic wings, serene botanical grounds,
               and our distinguished leadership team.

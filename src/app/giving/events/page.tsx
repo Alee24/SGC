@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Metadata } from "next";
-import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { EditorialPageLayout } from "@/components/layout/EditorialPageLayout";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { SCHOOL_INFO } from "@/data/school-data";
 import { Calendar, Sparkles, Trophy, Users, HeartHandshake, ArrowRight } from "lucide-react";
@@ -12,109 +12,105 @@ export const metadata: Metadata = {
     "Annual fundraising traditions at Starehe Girls' Centre: Charity Golf Tournament (March), Annual Charity Walk (June), and Annual Gala Dinner (October/November).",
 };
 
+const GIVING_SIDEBAR_LINKS = [
+  { label: "Giving & Sponsorship", href: "/giving" },
+  { label: "Capital Infrastructure Needs", href: "/giving/projects" },
+  { label: "Annual Fundraising Traditions", href: "/giving/events", active: true },
+];
+
 export default function CharityEventsPage() {
   const eventIcons = [
-    <Trophy key="golf" className="w-6 h-6 text-starehe-gold-600" />,
-    <Users key="walk" className="w-6 h-6 text-starehe-maroon-700" />,
-    <Sparkles key="dinner" className="w-6 h-6 text-starehe-blue-900" />,
+    <Trophy key="golf" className="w-5 h-5 text-starehe-gold-600" />,
+    <Users key="walk" className="w-5 h-5 text-starehe-maroon-700" />,
+    <Sparkles key="dinner" className="w-5 h-5 text-starehe-blue-900" />,
   ];
 
   return (
-    <div>
-      <Breadcrumb
-        items={[
-          { label: "Support a Cause", href: "/giving" },
-          { label: "Annual Events" },
-        ]}
-      />
-
-      {/* Hero */}
-      <section className="py-16 sm:py-20 bg-starehe-blue-950 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-starehe-gold-accent/20 text-starehe-gold-300 border border-starehe-gold-accent/30 mb-4">
-              Fundraising Traditions
-            </span>
-            <h1 className="font-serif text-4xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
-              Annual Signature Charity Events
-            </h1>
-            <p className="mt-4 text-base sm:text-lg text-slate-200 leading-relaxed font-light">
-              Each term, the Starehe Girls&apos; Centre fraternity gathers with corporate
-              partners, trustees, alumni, and friends for signature events that celebrate
-              achievement and mobilize vital funding for our girls.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* 3 Events Grid */}
-      <section className="py-20 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <EditorialPageLayout
+      breadcrumbs={[
+        { label: "Support a Cause", href: "/giving" },
+        { label: "Annual Events" },
+      ]}
+      kicker="Fundraising Traditions"
+      title="Annual Signature Charity Events"
+      description="Each term, the Starehe Girls' Centre fraternity gathers with corporate partners, trustees, alumni, and friends for signature fundraising traditions that celebrate achievement and mobilize essential scholarship funding."
+      heroFacts={[
+        { label: "Term 1 (March)", value: "Charity Golf Tournament" },
+        { label: "Term 2 (June)", value: "Annual Charity Walk" },
+        { label: "Term 3 (Oct/Nov)", value: "Annual Gala Dinner" },
+        { label: "Corporate CSR", value: "Tax Deductible Giving" },
+      ]}
+      sidebarTitle="Giving & Partnerships"
+      sidebarLinks={GIVING_SIDEBAR_LINKS}
+    >
+      <div className="space-y-10">
+        <div>
           <SectionHeading
             badge="Three Termly Events"
             title="The Starehe Annual Calendar"
-            description="Participation is open to individual supporters, running clubs, golfers, and corporate sponsorship teams."
+            description="Participation is open to individual supporters, running clubs, golfers, and corporate teams."
           />
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {SCHOOL_INFO.annualEvents.map((evt, idx) => (
-              <div
-                key={evt.name}
-                className="bg-white rounded-3xl p-8 border border-slate-200 shadow-subtle hover:shadow-elevation transition-all flex flex-col justify-between"
-              >
-                <div>
-                  <div className="w-12 h-12 rounded-2xl bg-slate-100 flex items-center justify-center mb-5">
-                    {eventIcons[idx]}
-                  </div>
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-starehe-maroon-800 bg-starehe-maroon-50 px-2.5 py-1 rounded-full">
-                    {evt.period}
-                  </span>
-                  <h3 className="font-serif text-2xl font-bold text-starehe-blue-950 mt-3 mb-2">
-                    {evt.name}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    {evt.purpose}
-                  </p>
-                </div>
-
-                <div className="mt-8 pt-5 border-t border-slate-100">
-                  <a
-                    href="mailto:info@starehegirlscentre.co.ke?subject=RSVP%20or%20Sponsorship%20for%20"
-                    className="inline-flex items-center space-x-1.5 text-xs font-bold text-starehe-blue-900 hover:text-starehe-maroon-800"
-                  >
-                    <span>Register / Sponsor a Team</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Corporate Sponsorship Invitation */}
-          <div className="mt-16 bg-white rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-subtle flex flex-col lg:flex-row items-center justify-between gap-8">
-            <div className="max-w-2xl">
-              <span className="text-xs uppercase font-bold tracking-wider text-starehe-blue-900">
-                Corporate Social Responsibility (CSR)
-              </span>
-              <h3 className="font-serif text-2xl font-bold text-starehe-blue-950 mt-1">
-                Corporate Partnership Packages
-              </h3>
-              <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Platinum, Gold, Silver, and Bronze corporate packages are available for
-                the Charity Golf and Gala Dinner. Partner logos are prominently featured
-                in all media releases, event banners, and annual institutional reports.
-              </p>
-            </div>
-
-            <a
-              href="mailto:info@starehegirlscentre.co.ke?subject=Corporate%20CSR%20Partnership"
-              className="flex-shrink-0 px-8 py-3.5 rounded-full bg-starehe-blue-900 hover:bg-starehe-blue-800 text-white font-bold text-xs uppercase tracking-wider transition-colors shadow-sm"
-            >
-              Request Corporate CSR Deck
-            </a>
-          </div>
         </div>
-      </section>
-    </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {SCHOOL_INFO.annualEvents.map((evt, idx) => (
+            <div
+              key={evt.name}
+              className="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-subtle hover:border-starehe-blue-300 transition-all flex flex-col justify-between"
+            >
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center mb-4">
+                  {eventIcons[idx]}
+                </div>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-starehe-maroon-800 bg-starehe-maroon-50 px-2 py-0.5 rounded-full">
+                  {evt.period}
+                </span>
+                <h3 className="font-serif text-lg font-bold text-starehe-blue-950 mt-2.5 mb-2">
+                  {evt.name}
+                </h3>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  {evt.purpose}
+                </p>
+              </div>
+
+              <div className="mt-6 pt-4 border-t border-slate-100">
+                <a
+                  href={`mailto:info@starehegirlscentre.co.ke?subject=Inquiry%20Regarding%20${encodeURIComponent(
+                    evt.name
+                  )}`}
+                  className="inline-flex items-center space-x-1 text-xs font-bold text-starehe-blue-900 hover:text-starehe-maroon-800 transition-colors"
+                >
+                  <span>Register / Sponsor a Team</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Corporate Sponsorship Invitation */}
+        <section className="bg-slate-50 rounded-2xl p-6 sm:p-8 border border-slate-200 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div className="max-w-xl">
+            <span className="text-[11px] uppercase font-bold tracking-wider text-starehe-blue-900">
+              Corporate Social Responsibility (CSR)
+            </span>
+            <h3 className="font-serif text-lg font-bold text-starehe-blue-950 mt-1">
+              Corporate Sponsorship &amp; Team Branding
+            </h3>
+            <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+              We offer branded visibility across event banners, golf tee boxes, promotional jerseys,
+              and gala dinner programs for corporate sponsors funding our scholarship beneficiaries.
+            </p>
+          </div>
+
+          <a
+            href="mailto:info@starehegirlscentre.co.ke?subject=Corporate%20CSR%20Event%20Sponsorship"
+            className="px-5 py-2.5 rounded-full bg-starehe-blue-900 hover:bg-starehe-blue-800 text-white font-bold text-xs uppercase tracking-wider transition-colors shadow-sm flex-shrink-0"
+          >
+            Request CSR Pack
+          </a>
+        </section>
+      </div>
+    </EditorialPageLayout>
   );
 }

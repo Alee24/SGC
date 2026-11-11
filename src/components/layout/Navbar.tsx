@@ -14,15 +14,18 @@ import {
   Users,
   Compass,
   FileText,
-  PhoneCall,
   Sparkles,
+  ArrowRight,
+  ShieldCheck,
+  Building,
+  Trophy,
 } from "lucide-react";
 
 interface NavDropdownItem {
   title: string;
   href: string;
   description: string;
-  icon?: React.ReactNode;
+  icon: React.ReactNode;
 }
 
 interface NavItem {
@@ -40,13 +43,12 @@ export const Navbar: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 15);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile drawer on route change
   useEffect(() => {
     setIsOpen(false);
     setActiveDropdown(null);
@@ -61,25 +63,25 @@ export const Navbar: React.FC = () => {
           title: "About the Centre",
           href: "/about",
           description: "Mission, vision, motto, and the core doctrine of 'The Starehe Way'.",
-          icon: <Compass className="w-4 h-4 text-starehe-maroon-700" />,
+          icon: <Compass className="w-4 h-4 text-starehe-blue-700" />,
         },
         {
           title: "Story & Heritage",
           href: "/about/history",
-          description: "From Dr. Geoffrey Griffin's 1990s vision to the 2005 pioneer intake.",
-          icon: <BookOpen className="w-4 h-4 text-starehe-blue-700" />,
+          description: "From Dr. Geoffrey Griffin's 1990s vision to the 2005 inaugural itega.",
+          icon: <BookOpen className="w-4 h-4 text-starehe-maroon-700" />,
         },
         {
           title: "Board of Trustees",
           href: "/about/trustees",
-          description: "Custodians of governance led by Mrs. Eunice Mathu & Dr. Manu Chandaria.",
+          description: "Fiduciary custodians led by Mrs. Eunice Mathu & Dr. Manu Chandaria.",
           icon: <Users className="w-4 h-4 text-starehe-gold-600" />,
         },
         {
           title: "Board of Management",
           href: "/about/management",
           description: "Strategic academic and operational oversight led by Prof. Mary Getui.",
-          icon: <Users className="w-4 h-4 text-starehe-blue-600" />,
+          icon: <ShieldCheck className="w-4 h-4 text-starehe-blue-800" />,
         },
         {
           title: "Administration & Principal",
@@ -108,19 +110,19 @@ export const Navbar: React.FC = () => {
         {
           title: "Curriculum & CBC Transition",
           href: "/academics/curriculum",
-          description: "8-4-4 transition into Senior School STEM, Social Sciences & Arts.",
+          description: "Senior School Grade 10 pathways: STEM, Social Sciences & Arts.",
           icon: <BookOpen className="w-4 h-4 text-starehe-maroon-700" />,
         },
         {
-          title: "Departments",
+          title: "Academic Departments",
           href: "/academics/departments",
           description: "Sciences, Mathematics, Languages, Humanities, and Technical Studies.",
           icon: <FileText className="w-4 h-4 text-starehe-blue-600" />,
         },
         {
-          title: "KUCCPS University Placement",
+          title: "KUCCPS Placement Advisory",
           href: "/academics/kuccps",
-          description: "Career advisory, university portal guidance, and TVET placement.",
+          description: "Advisory, university portal procedures, and campus IT Office support.",
           icon: <Compass className="w-4 h-4 text-starehe-gold-700" />,
         },
       ],
@@ -136,21 +138,21 @@ export const Navbar: React.FC = () => {
           icon: <Compass className="w-4 h-4 text-starehe-blue-700" />,
         },
         {
-          title: "Form 1 Admission & Blue Form",
+          title: "Form 1 (The Blue Form)",
           href: "/admissions/form-one",
-          description: "Eligibility criteria (<15 yrs, 1st choice), needs score 1-10, county quotas.",
+          description: "Criteria (<15 yrs, 1st choice), needs assessment 1-10, county quotas.",
           icon: <FileText className="w-4 h-4 text-starehe-maroon-700" />,
         },
         {
           title: "Senior School CBC (Grade 10)",
           href: "/admissions/senior-school",
-          description: "2026/2027 Grade 10 CBE transition criteria and pathway placement.",
+          description: "CBE transition pathways and 2027 self-supported enrollment.",
           icon: <GraduationCap className="w-4 h-4 text-starehe-blue-600" />,
         },
         {
           title: "Sponsorship & Fees Policy",
           href: "/admissions/fees-aid",
-          description: "Comprehensive charitable support, free application policy, and aid.",
+          description: "Charitable full sponsorship breakdown, tuition, and zero hidden costs.",
           icon: <HeartHandshake className="w-4 h-4 text-starehe-gold-600" />,
         },
       ],
@@ -160,34 +162,34 @@ export const Navbar: React.FC = () => {
       href: "/student-life",
       dropdown: [
         {
-          title: "Student Life & Sisterhood",
+          title: "Life at Starehe",
           href: "/student-life",
-          description: "Holistic character cultivation, spiritual nourishment, and daily routines.",
+          description: "Daily routines, spiritual care, and the enduring Sisterhood tradition.",
           icon: <Users className="w-4 h-4 text-starehe-maroon-700" />,
         },
         {
           title: "Clubs & Societies",
           href: "/student-life/clubs",
-          description: "Robotics, Presidential Award, Model UN, Red Cross, Journalism & Drama.",
+          description: "Robotics, Presidential Award, Model UN, Red Cross, Journalism, Drama.",
           icon: <Sparkles className="w-4 h-4 text-starehe-gold-600" />,
         },
         {
           title: "Sports & Athletics",
           href: "/student-life/sports",
-          description: "Basketball, Volleyball, Football, Athletics, Badminton, and Tennis.",
-          icon: <Compass className="w-4 h-4 text-starehe-blue-700" />,
+          description: "Basketball, Volleyball, Football, Athletics, Badminton, Tennis.",
+          icon: <Trophy className="w-4 h-4 text-starehe-blue-700" />,
         },
         {
           title: "Campus Facilities",
           href: "/student-life/facilities",
-          description: "55-acre sanctuary: Griffin Dormitory, Science Labs, Library, Playing Fields.",
-          icon: <BookOpen className="w-4 h-4 text-starehe-blue-600" />,
+          description: "55-acre sanctuary: Griffin Dormitory, Science Labs, Library, Grounds.",
+          icon: <Building className="w-4 h-4 text-starehe-blue-600" />,
         },
         {
           title: "Photo Gallery",
           href: "/student-life/gallery",
-          description: "High-resolution photo collection of campus life and ceremonies.",
-          icon: <Sparkles className="w-4 h-4 text-starehe-gold-600" />,
+          description: "Visual archive of student assemblies, campus grounds, and ceremonies.",
+          icon: <Sparkles className="w-4 h-4 text-purple-700" />,
         },
       ],
     },
@@ -198,14 +200,14 @@ export const Navbar: React.FC = () => {
         {
           title: "Ways to Give",
           href: "/giving",
-          description: "Student sponsorship, Endowment Fund at KCDF, and gifts in kind.",
+          description: "Student sponsorship, KCDF Endowment Fund, grants, and gifts in kind.",
           icon: <HeartHandshake className="w-4 h-4 text-starehe-maroon-700" />,
         },
         {
           title: "Capital Projects",
           href: "/giving/projects",
-          description: "Multipurpose Hall, Twin Science Labs, Library Extension & Dormitory.",
-          icon: <BookOpen className="w-4 h-4 text-starehe-blue-700" />,
+          description: "Twin Science Labs, Multipurpose Hall, 160-Bed Dormitory, Library.",
+          icon: <Building className="w-4 h-4 text-starehe-blue-700" />,
         },
         {
           title: "Annual Charity Events",
@@ -228,17 +230,19 @@ export const Navbar: React.FC = () => {
   return (
     <header
       className={`sticky top-0 z-50 bg-white transition-all duration-300 ${
-        scrolled ? "shadow-elevation py-2" : "py-3 border-b border-slate-100"
+        scrolled
+          ? "shadow-elevation py-2 border-b border-slate-200/80"
+          : "py-3.5 border-b border-slate-100"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Brand Logo & Title */}
-          <Link href="/" className="flex items-center space-x-3 group">
+          {/* Institutional Brand Identity */}
+          <Link href="/" className="flex items-center space-x-3.5 group flex-shrink-0">
             <div className="relative w-12 h-14 md:w-14 md:h-16 flex-shrink-0">
               <Image
                 src="/images/brand/logo.png"
-                alt="Starehe Girls' Centre Logo"
+                alt="Starehe Girls' Centre Crest"
                 fill
                 priority
                 className="object-contain"
@@ -246,20 +250,20 @@ export const Navbar: React.FC = () => {
               />
             </div>
             <div className="flex flex-col">
-              <span className="font-serif font-bold text-lg md:text-xl text-starehe-blue-900 group-hover:text-starehe-maroon-800 transition-colors tracking-tight leading-snug">
+              <span className="font-serif font-bold text-lg md:text-xl text-starehe-blue-950 group-hover:text-starehe-maroon-800 transition-colors tracking-tight leading-tight whitespace-nowrap">
                 Starehe Girls&apos; Centre
               </span>
-              <span className="text-[11px] md:text-xs text-starehe-maroon-800 font-semibold tracking-wider uppercase">
+              <span className="text-[10px] md:text-[11px] text-starehe-maroon-800 font-bold tracking-wider uppercase whitespace-nowrap mt-0.5">
                 National Girls&apos; High School
               </span>
-              <span className="text-[10px] text-slate-500 italic hidden sm:block">
+              <span className="text-[10px] text-slate-500 font-serif italic hidden sm:block whitespace-nowrap">
                 &ldquo;Elimu Yetu, Nguvu Yetu&rdquo;
               </span>
             </div>
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center space-x-1">
+          <nav className="hidden xl:flex items-center space-x-1">
             {navItems.map((item) => {
               const isActive =
                 item.href === "/"
@@ -267,6 +271,8 @@ export const Navbar: React.FC = () => {
                   : pathname.startsWith(item.href);
 
               if (item.dropdown) {
+                const isOpenMenu = activeDropdown === item.label;
+
                 return (
                   <div
                     key={item.label}
@@ -275,39 +281,39 @@ export const Navbar: React.FC = () => {
                     onMouseLeave={() => setActiveDropdown(null)}
                   >
                     <button
-                      className={`flex items-center space-x-1 px-3 py-2 text-sm font-medium rounded-md transition-colors ${
+                      className={`inline-flex items-center space-x-1 px-3 py-2 text-xs font-semibold tracking-wide uppercase transition-colors whitespace-nowrap ${
                         isActive
-                          ? "text-starehe-maroon-800 font-semibold bg-starehe-maroon-50"
-                          : "text-slate-700 hover:text-starehe-blue-900 hover:bg-slate-50"
+                          ? "text-starehe-maroon-800 border-b-2 border-starehe-maroon-800"
+                          : "text-slate-700 hover:text-starehe-blue-950 hover:bg-slate-50 rounded-md"
                       }`}
-                      aria-expanded={activeDropdown === item.label}
+                      aria-expanded={isOpenMenu}
                     >
-                      <span>{item.label}</span>
+                      <span className="whitespace-nowrap">{item.label}</span>
                       <ChevronDown
-                        className={`w-4 h-4 transition-transform duration-200 ${
-                          activeDropdown === item.label ? "rotate-180 text-starehe-maroon-700" : ""
+                        className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                          isOpenMenu ? "rotate-180 text-starehe-maroon-800" : "text-slate-400"
                         }`}
                       />
                     </button>
 
                     {/* Mega Dropdown Panel */}
-                    {activeDropdown === item.label && (
-                      <div className="absolute top-full left-0 w-80 bg-white rounded-lg shadow-elevation border border-slate-100 p-2 mt-1 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
+                    {isOpenMenu && (
+                      <div className="absolute top-full left-0 w-84 bg-white rounded-2xl shadow-elevation border border-slate-200/90 p-3 mt-1.5 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
                         <div className="space-y-1">
                           {item.dropdown.map((subItem) => (
                             <Link
                               key={subItem.title}
                               href={subItem.href}
-                              className="flex items-start p-2.5 rounded-md hover:bg-slate-50 transition-colors group"
+                              className="flex items-start p-2.5 rounded-xl hover:bg-slate-50 transition-colors group/item"
                             >
-                              <div className="p-1.5 rounded-md bg-slate-100 group-hover:bg-white group-hover:shadow-sm mr-3 mt-0.5 transition-all">
+                              <div className="p-2 rounded-lg bg-slate-100 group-hover/item:bg-white group-hover/item:shadow-sm mr-3 mt-0.5 transition-all flex-shrink-0">
                                 {subItem.icon}
                               </div>
                               <div>
-                                <div className="text-sm font-semibold text-slate-900 group-hover:text-starehe-maroon-800 transition-colors">
+                                <div className="text-xs font-bold text-slate-900 group-hover/item:text-starehe-maroon-800 transition-colors whitespace-nowrap">
                                   {subItem.title}
                                 </div>
-                                <p className="text-xs text-slate-500 leading-snug line-clamp-2 mt-0.5">
+                                <p className="text-[11px] text-slate-500 leading-snug line-clamp-2 mt-0.5">
                                   {subItem.description}
                                 </p>
                               </div>
@@ -324,10 +330,10 @@ export const Navbar: React.FC = () => {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
+                  className={`px-3 py-2 text-xs font-semibold tracking-wide uppercase transition-colors whitespace-nowrap ${
                     isActive
-                      ? "text-starehe-maroon-800 font-semibold bg-starehe-maroon-50"
-                      : "text-slate-700 hover:text-starehe-blue-900 hover:bg-slate-50"
+                      ? "text-starehe-maroon-800 border-b-2 border-starehe-maroon-800"
+                      : "text-slate-700 hover:text-starehe-blue-950 hover:bg-slate-50 rounded-md"
                   }`}
                 >
                   {item.label}
@@ -337,27 +343,29 @@ export const Navbar: React.FC = () => {
           </nav>
 
           {/* Action CTAs */}
-          <div className="hidden sm:flex items-center space-x-3">
+          <div className="hidden lg:flex items-center space-x-3 flex-shrink-0">
             <Link
               href="/giving"
-              className="inline-flex items-center space-x-1.5 text-xs font-semibold text-starehe-maroon-800 hover:text-starehe-maroon-900 border border-starehe-maroon-200 hover:border-starehe-maroon-400 px-3.5 py-2 rounded-full transition-all"
+              className="inline-flex items-center space-x-1.5 text-xs font-bold text-starehe-maroon-800 hover:text-white bg-starehe-maroon-50 hover:bg-starehe-maroon-800 border border-starehe-maroon-200 hover:border-starehe-maroon-800 px-3.5 py-2 rounded-full transition-all whitespace-nowrap"
             >
-              <HeartHandshake className="w-3.5 h-3.5 text-starehe-maroon-700" />
+              <HeartHandshake className="w-3.5 h-3.5 text-starehe-maroon-700 group-hover:text-white" />
               <span>Support a Girl</span>
             </Link>
+
             <Link
               href="/admissions"
-              className="inline-flex items-center space-x-1.5 text-xs font-semibold text-white bg-starehe-blue-900 hover:bg-starehe-blue-800 px-4 py-2 rounded-full shadow-sm hover:shadow transition-all"
+              className="inline-flex items-center space-x-1.5 text-xs font-bold text-white bg-starehe-blue-950 hover:bg-starehe-blue-900 px-4 py-2 rounded-full shadow-subtle hover:shadow transition-all whitespace-nowrap border border-starehe-blue-900"
             >
               <span>Admissions</span>
+              <ArrowRight className="w-3.5 h-3.5 text-starehe-gold-accent" />
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="lg:hidden flex items-center">
+          <div className="xl:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-md text-slate-700 hover:text-starehe-blue-900 hover:bg-slate-100 transition-colors"
+              className="p-2.5 rounded-xl text-slate-800 hover:text-starehe-blue-950 hover:bg-slate-100 transition-colors"
               aria-label="Toggle navigation menu"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -368,38 +376,36 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Drawer */}
       {isOpen && (
-        <div className="lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 max-h-[85vh] overflow-y-auto shadow-elevation animate-in slide-in-from-top-4 duration-200">
+        <div className="xl:hidden bg-white border-b border-slate-200 px-5 pt-3 pb-8 max-h-[85vh] overflow-y-auto shadow-elevation animate-in slide-in-from-top-4 duration-200">
           <div className="space-y-1">
             {navItems.map((item) => {
               if (item.dropdown) {
                 const isExpanded = mobileExpanded === item.label;
                 return (
-                  <div key={item.label} className="border-b border-slate-100 py-1">
+                  <div key={item.label} className="border-b border-slate-100 py-1.5">
                     <button
                       onClick={() =>
                         setMobileExpanded(isExpanded ? null : item.label)
                       }
-                      className="flex items-center justify-between w-full py-2 text-left font-medium text-slate-800"
+                      className="flex items-center justify-between w-full py-2 text-left font-semibold text-starehe-blue-950 text-sm"
                     >
-                      <span className="text-base font-semibold text-starehe-blue-950">
-                        {item.label}
-                      </span>
+                      <span>{item.label}</span>
                       <ChevronDown
-                        className={`w-4 h-4 text-slate-500 transition-transform ${
-                          isExpanded ? "rotate-180 text-starehe-maroon-700" : ""
+                        className={`w-4 h-4 text-slate-400 transition-transform ${
+                          isExpanded ? "rotate-180 text-starehe-maroon-800" : ""
                         }`}
                       />
                     </button>
                     {isExpanded && (
-                      <div className="pl-3 py-1 space-y-2 bg-slate-50/70 rounded-md">
+                      <div className="pl-3 py-2 space-y-2 bg-slate-50/80 rounded-xl my-1">
                         {item.dropdown.map((subItem) => (
                           <Link
                             key={subItem.title}
                             href={subItem.href}
-                            className="block py-1.5 text-sm font-medium text-slate-700 hover:text-starehe-maroon-800"
+                            className="block py-1.5 text-xs font-semibold text-slate-700 hover:text-starehe-maroon-800"
                           >
-                            <div className="font-semibold">{subItem.title}</div>
-                            <div className="text-xs text-slate-500 line-clamp-1">
+                            <div>{subItem.title}</div>
+                            <div className="text-[11px] text-slate-500 font-normal line-clamp-1 mt-0.5">
                               {subItem.description}
                             </div>
                           </Link>
@@ -414,7 +420,7 @@ export const Navbar: React.FC = () => {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="block py-2.5 text-base font-semibold text-starehe-blue-950 hover:text-starehe-maroon-800 border-b border-slate-100"
+                  className="block py-3 text-sm font-semibold text-starehe-blue-950 hover:text-starehe-maroon-800 border-b border-slate-100"
                 >
                   {item.label}
                 </Link>
@@ -423,23 +429,23 @@ export const Navbar: React.FC = () => {
           </div>
 
           {/* Mobile CTAs */}
-          <div className="mt-5 pt-4 border-t border-slate-200 flex flex-col space-y-2.5">
+          <div className="mt-6 pt-4 border-t border-slate-200 flex flex-col space-y-3">
             <Link
               href="/admissions"
-              className="w-full text-center py-2.5 rounded-lg bg-starehe-blue-900 text-white font-semibold text-sm shadow-sm"
+              className="w-full text-center py-3 rounded-full bg-starehe-blue-950 text-white font-bold text-xs uppercase tracking-wider shadow-sm"
             >
-              Enroll / Form 1 Admissions
+              Admissions &amp; Blue Form
             </Link>
             <Link
               href="/giving"
-              className="w-full text-center py-2.5 rounded-lg border border-starehe-maroon-700 text-starehe-maroon-800 font-semibold text-sm hover:bg-starehe-maroon-50"
+              className="w-full text-center py-3 rounded-full border border-starehe-maroon-800 text-starehe-maroon-800 font-bold text-xs uppercase tracking-wider hover:bg-starehe-maroon-50"
             >
               Support a Disadvantaged Girl
             </Link>
           </div>
 
-          <div className="mt-4 pt-3 text-xs text-slate-500 text-center">
-            Hotlines: <a href="tel:0707900852" className="text-starehe-blue-900 font-medium">0707 900 852</a> / <a href="tel:0738255448" className="text-starehe-blue-900 font-medium">0738 255 448</a>
+          <div className="mt-5 text-xs text-slate-500 text-center">
+            Admissions Desk: <a href="tel:0707900852" className="text-starehe-blue-950 font-bold">0707 900 852</a>
           </div>
         </div>
       )}

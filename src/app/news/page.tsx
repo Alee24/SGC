@@ -1,8 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Metadata } from "next";
-import { Breadcrumb } from "@/components/ui/Breadcrumb";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { EditorialPageLayout } from "@/components/layout/EditorialPageLayout";
 import { Calendar, Bell, ArrowRight, Tag } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -10,6 +9,14 @@ export const metadata: Metadata = {
   description:
     "Read the latest official news, examination bulletins, admissions notices, and event announcements from Starehe Girls' Centre.",
 };
+
+const NEWS_SIDEBAR_LINKS = [
+  { label: "All Bulletins", href: "/news", active: true },
+  { label: "KCSE 2025 Performance", href: "/academics/performance" },
+  { label: "KUCCPS Placement Advisory", href: "/academics/kuccps" },
+  { label: "Careers & Open Tenders", href: "/careers-tenders" },
+  { label: "Annual Fundraising Events", href: "/giving/events" },
+];
 
 export default function NewsPage() {
   const newsItems = [
@@ -70,70 +77,60 @@ export default function NewsPage() {
   ];
 
   return (
-    <div>
-      <Breadcrumb items={[{ label: "News & Announcements" }]} />
-
-      {/* Hero */}
-      <section className="py-16 sm:py-20 bg-starehe-blue-950 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-starehe-gold-accent/20 text-starehe-gold-300 border border-starehe-gold-accent/30 mb-4">
-              Bulletins &amp; Press
-            </span>
-            <h1 className="font-serif text-4xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
-              News &amp; Official Bulletins
-            </h1>
-            <p className="mt-4 text-base sm:text-lg text-slate-200 leading-relaxed font-light">
-              Stay informed with verified institutional announcements, academic milestones,
-              admissions reminders, and upcoming charity events.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* News Grid */}
-      <section className="py-20 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {newsItems.map((item) => (
-              <div
-                key={item.id}
-                className="bg-white rounded-3xl p-8 border border-slate-200 shadow-subtle hover:shadow-elevation transition-all flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between text-xs text-slate-500 mb-3">
-                    <span className="px-2.5 py-0.5 rounded-full font-semibold bg-slate-100 text-slate-800">
-                      {item.category}
-                    </span>
-                    <span className="flex items-center space-x-1">
-                      <Calendar className="w-3.5 h-3.5" />
-                      <span>{item.date}</span>
-                    </span>
-                  </div>
-
-                  <h3 className="font-serif text-xl font-bold text-starehe-blue-950 mb-3 leading-snug">
-                    {item.title}
-                  </h3>
-
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
-                    {item.summary}
-                  </p>
+    <EditorialPageLayout
+      breadcrumbs={[{ label: "News & Announcements" }]}
+      kicker="Institutional Bulletins"
+      title="News & Official Announcements"
+      description="Stay informed with authenticated institutional communications, academic examination milestones, admissions schedules, and community charity events."
+      heroFacts={[
+        { label: "Latest Exam Record", value: "8.90 (B) KCSE 2025" },
+        { label: "Admissions Notice", value: "Blue Forms are Free" },
+        { label: "Active Advisory", value: "KUCCPS Placement Open" },
+        { label: "Procurement Cycle", value: "FY 2026/2027 Tenders" },
+      ]}
+      sidebarTitle="News & Media"
+      sidebarLinks={NEWS_SIDEBAR_LINKS}
+    >
+      <div className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {newsItems.map((item) => (
+            <div
+              key={item.id}
+              className="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-subtle hover:border-starehe-blue-300 transition-all flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center justify-between text-xs text-slate-500 mb-2.5">
+                  <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-slate-100 text-slate-800">
+                    {item.category}
+                  </span>
+                  <span className="flex items-center space-x-1 text-[11px]">
+                    <Calendar className="w-3 h-3 text-slate-400" />
+                    <span>{item.date}</span>
+                  </span>
                 </div>
 
-                <div className="pt-4 border-t border-slate-100">
-                  <Link
-                    href={item.link}
-                    className="inline-flex items-center space-x-1.5 text-xs font-bold text-starehe-blue-900 hover:text-starehe-maroon-800 transition-colors"
-                  >
-                    <span>Read Full Bulletin</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
+                <h3 className="font-serif text-base font-bold text-starehe-blue-950 mb-2 leading-snug">
+                  {item.title}
+                </h3>
+
+                <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                  {item.summary}
+                </p>
               </div>
-            ))}
-          </div>
+
+              <div className="pt-3 border-t border-slate-100">
+                <Link
+                  href={item.link}
+                  className="inline-flex items-center space-x-1 text-xs font-bold text-starehe-blue-900 hover:text-starehe-maroon-800 transition-colors"
+                >
+                  <span>Read Full Notice</span>
+                  <ArrowRight className="w-3 h-3" />
+                </Link>
+              </div>
+            </div>
+          ))}
         </div>
-      </section>
-    </div>
+      </div>
+    </EditorialPageLayout>
   );
 }

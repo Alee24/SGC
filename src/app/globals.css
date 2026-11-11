@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,17 +6,19 @@
 
 :root {
   --font-serif: 'Merriweather', Georgia, serif;
+  --font-display: 'Cinzel', 'Merriweather', Georgia, serif;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --color-primary: #0c2340;
   --color-maroon: #8b1e22;
   --color-gold: #d4af37;
+  --bg-sand: #faf8f5;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
     color: #1e293b;
-    background-color: #fafaf9;
+    background-color: #faf8f5;
     font-family: var(--font-sans);
   }
 
@@ -25,21 +27,23 @@
   }
 }
 
-/* Custom Institutional Accent utilities */
-.gold-gradient {
-  background: linear-gradient(135deg, #d4af37 0%, #f6e27a 50%, #b8860b 100%);
-}
-
-.navy-gradient {
-  background: linear-gradient(135deg, #0c2340 0%, #173863 100%);
-}
-
-.maroon-gradient {
-  background: linear-gradient(135deg, #8b1e22 0%, #5c1013 100%);
+/* Institutional accents */
+.font-display {
+  font-family: var(--font-display);
 }
 
 /* Editorial selection */
 ::selection {
   background-color: #8b1e22;
   color: #ffffff;
+}
+
+/* Clean focus visible for high accessibility standards */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #8b1e22;
+  outline-offset: 2px;
 }

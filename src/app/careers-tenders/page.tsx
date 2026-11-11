@@ -1,6 +1,6 @@
 import React from "react";
 import { Metadata } from "next";
-import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { EditorialPageLayout } from "@/components/layout/EditorialPageLayout";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TENDERS_LIST, JOB_VACANCIES } from "@/data/school-data";
 import {
@@ -20,77 +20,76 @@ export const metadata: Metadata = {
     "Official procurement tenders (FY 2026/2027) and employment vacancies at Starehe Girls' Centre. Apply for Administration Officer and School Cateress positions.",
 };
 
+const CAREERS_SIDEBAR_LINKS = [
+  { label: "Current Job Vacancies", href: "#careers", active: true },
+  { label: "Procurement Tenders", href: "#tenders" },
+  { label: "Board of Management", href: "/about/management" },
+  { label: "General Contact", href: "/contact" },
+];
+
 export default function CareersTendersPage() {
   return (
-    <div>
-      <Breadcrumb items={[{ label: "Careers & Tenders" }]} />
-
-      {/* Hero */}
-      <section className="py-16 sm:py-20 bg-starehe-blue-950 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-starehe-gold-accent/20 text-starehe-gold-300 border border-starehe-gold-accent/30 mb-4">
-              Governance &amp; Opportunities
-            </span>
-            <h1 className="font-serif text-4xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
-              Careers &amp; Procurement Tenders
-            </h1>
-            <p className="mt-4 text-base sm:text-lg text-slate-200 leading-relaxed font-light">
-              Starehe Girls&apos; Centre is an equal opportunity employer committed to merit-based
-              recruitment, competitive compensation, and transparent public procurement in compliance
-              with the Basic Education Act 2013 and our Trust Deed.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* 1. Job Vacancies Section */}
-      <section className="py-20 bg-white border-b border-slate-200" id="careers">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <EditorialPageLayout
+      breadcrumbs={[{ label: "Careers & Tenders" }]}
+      kicker="Institutional Opportunities"
+      title="Careers & Procurement Tenders"
+      description="Starehe Girls' Centre is an equal opportunity employer committed to merit-based recruitment, competitive compensation, and transparent public procurement in strict compliance with the Basic Education Act 2013 and our Trust Deed."
+      heroFacts={[
+        { label: "Recruitment Policy", value: "Merit-Based Equal Opportunity" },
+        { label: "Procurement Law", value: "Public Procurement Act" },
+        { label: "Current Openings", value: "2 Positions (Admin, Catering)" },
+        { label: "Tender Dossiers", value: "Free Online Request" },
+      ]}
+      sidebarTitle="Opportunities"
+      sidebarLinks={CAREERS_SIDEBAR_LINKS}
+    >
+      <div className="space-y-12">
+        {/* 1. Job Vacancies Section */}
+        <section id="careers" className="space-y-6">
           <SectionHeading
             badge="Employment Opportunities"
             title="Current Job Vacancies"
             description="Join our dedicated faculty and support staff community to inspire young women towards exemplary citizenship."
           />
 
-          <div className="space-y-8">
+          <div className="space-y-6">
             {JOB_VACANCIES.map((job) => (
               <div
                 key={job.id}
-                className="bg-slate-50 rounded-3xl p-8 border border-slate-200 shadow-subtle hover:border-starehe-blue-300 transition-all"
+                className="bg-white rounded-2xl p-6 sm:p-7 border border-slate-200/90 shadow-subtle hover:border-starehe-blue-300 transition-all"
               >
-                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-200 pb-5 mb-6">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-slate-100 pb-4 mb-4">
                   <div>
-                    <span className="text-xs uppercase font-mono font-bold text-starehe-blue-900">
+                    <span className="text-[11px] uppercase font-mono font-bold text-starehe-blue-900">
                       Ref: {job.id}
                     </span>
-                    <h3 className="font-serif text-2xl font-bold text-starehe-blue-950 mt-1">
+                    <h3 className="font-serif text-xl font-bold text-starehe-blue-950 mt-0.5">
                       {job.title} — {job.posts} Post
                     </h3>
                   </div>
                   <div className="flex items-center space-x-2 text-xs">
-                    <span className="px-3 py-1 rounded-full bg-starehe-maroon-50 text-starehe-maroon-800 font-semibold border border-starehe-maroon-200">
+                    <span className="px-2.5 py-0.5 rounded-full bg-starehe-maroon-50 text-starehe-maroon-800 font-bold border border-starehe-maroon-200 text-[10px]">
                       Deadline: {job.deadline}
                     </span>
-                    <span className="px-3 py-1 rounded-full bg-starehe-blue-50 text-starehe-blue-900 font-semibold border border-starehe-blue-200">
+                    <span className="px-2.5 py-0.5 rounded-full bg-starehe-blue-50 text-starehe-blue-900 font-bold border border-starehe-blue-200 text-[10px]">
                       {job.type}
                     </span>
                   </div>
                 </div>
 
-                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed mb-6">
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed mb-5">
                   {job.description}
                 </p>
 
                 {/* Requirements */}
-                <div className="mb-6">
-                  <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider mb-3">
+                <div className="mb-5">
+                  <h4 className="text-[11px] font-bold text-slate-900 uppercase tracking-wider mb-2">
                     Key Requirements &amp; Qualifications:
                   </h4>
-                  <ul className="space-y-2 text-xs sm:text-sm text-slate-700">
+                  <ul className="space-y-1.5 text-xs text-slate-700">
                     {job.requirements.map((req, i) => (
-                      <li key={i} className="flex items-start space-x-2.5">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+                      <li key={i} className="flex items-start space-x-2">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
                         <span>{req}</span>
                       </li>
                     ))}
@@ -98,62 +97,48 @@ export default function CareersTendersPage() {
                 </div>
 
                 {/* Application Procedure Box */}
-                <div className="p-5 rounded-2xl bg-white border border-slate-200 text-xs text-slate-700 space-y-2">
-                  <div className="font-bold text-starehe-blue-950 uppercase tracking-wider text-[11px]">
-                    Standard Application Procedure:
+                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 text-xs text-slate-700 space-y-1.5">
+                  <div className="font-bold text-starehe-blue-950 uppercase tracking-wider text-[10px]">
+                    Application Procedure:
                   </div>
-                  <p>
-                    <strong>Step 1:</strong> Prepare an official application letter accompanied by an updated
-                    Curriculum Vitae that includes the contact information of three (3) professional referees.
-                  </p>
-                  <p>
-                    <strong>Step 2:</strong> Attach verified copies of your academic certificates, testimonials,
-                    National ID card, and KRA PIN certificate.
-                  </p>
-                  <p>
-                    <strong>Step 3:</strong> Send all documents via email to{" "}
+                  <p className="text-[11px]">
+                    Send cover letter, CV with 3 referees, academic certificates, National ID, and KRA PIN to{" "}
                     <a
                       href={`mailto:${job.submissionEmail}`}
                       className="font-mono font-bold text-starehe-maroon-800 underline"
                     >
                       {job.submissionEmail}
                     </a>{" "}
-                    on or before <strong>{job.deadline}</strong>.
+                    by <strong>{job.deadline}</strong>.
                   </p>
-                  <div className="text-[11px] text-slate-500 italic pt-1">
-                    * Only applications submitted through the specified procedure will be considered.
-                    Only shortlisted candidates will be contacted.
-                  </div>
                 </div>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* 2. Procurement Tenders Section */}
-      <section className="py-20 bg-slate-50" id="tenders">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* 2. Procurement Tenders Section */}
+        <section id="tenders" className="space-y-6 pt-6 border-t border-slate-200">
           <SectionHeading
             badge="Public Procurement"
             title="Tenders &amp; Requests for Proposals (RFP)"
-            description="Starehe Girls' Centre invites eligible, competent, and registered firms for annual tenders and specialized professional consultancy services."
+            description="Starehe Girls' Centre invites eligible, tax-compliant, and registered firms for annual supply tenders and specialized services."
           />
 
-          <div className="space-y-6">
+          <div className="space-y-5">
             {TENDERS_LIST.map((tender) => (
               <div
                 key={tender.id}
-                className="bg-white rounded-3xl p-8 border border-slate-200 shadow-subtle hover:shadow-elevation transition-all"
+                className="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-subtle hover:border-starehe-blue-300 transition-all"
               >
-                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 pb-4 mb-4">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-slate-100 pb-3 mb-3">
                   <div>
                     <div className="flex items-center space-x-2">
                       <span className="font-mono text-xs font-bold text-starehe-blue-900">
                         {tender.id}
                       </span>
                       <span
-                        className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${
+                        className={`text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${
                           tender.status === "Open"
                             ? "bg-emerald-100 text-emerald-800"
                             : "bg-slate-100 text-slate-600"
@@ -162,11 +147,11 @@ export default function CareersTendersPage() {
                         {tender.status}
                       </span>
                     </div>
-                    <h3 className="font-serif text-xl font-bold text-starehe-blue-950 mt-1">
+                    <h3 className="font-serif text-lg font-bold text-starehe-blue-950 mt-1">
                       {tender.title}
                     </h3>
                   </div>
-                  <div className="text-xs text-slate-500 flex flex-col items-start sm:items-end">
+                  <div className="text-[11px] text-slate-500 flex flex-col items-start sm:items-end">
                     <span>Published: {tender.publishedDate}</span>
                     {tender.closingDate && (
                       <span className="font-bold text-starehe-maroon-800 mt-0.5">
@@ -176,20 +161,20 @@ export default function CareersTendersPage() {
                   </div>
                 </div>
 
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-5">
+                <p className="text-xs text-slate-600 leading-relaxed mb-4">
                   {tender.description}
                 </p>
 
-                <div className="p-4 rounded-xl bg-slate-50 border border-slate-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
-                  <div className="text-slate-600">
+                <div className="p-3 rounded-xl bg-slate-50 border border-slate-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs">
+                  <div className="text-slate-600 text-[11px]">
                     Category: <strong>{tender.category}</strong>
                   </div>
                   <a
                     href="mailto:info@starehegirlscentre.co.ke?subject=Tender%20Document%20Request%20for%20"
-                    className="inline-flex items-center space-x-1.5 font-bold text-starehe-blue-900 hover:text-starehe-maroon-800"
+                    className="inline-flex items-center space-x-1 font-bold text-starehe-blue-900 hover:text-starehe-maroon-800 text-[11px]"
                   >
                     <span>Request Tender Dossier</span>
-                    <ExternalLink className="w-3.5 h-3.5" />
+                    <ExternalLink className="w-3 h-3" />
                   </a>
                 </div>
               </div>
@@ -197,14 +182,14 @@ export default function CareersTendersPage() {
           </div>
 
           {/* Statutory Notice */}
-          <div className="mt-12 bg-white rounded-2xl p-6 border border-slate-200 text-xs text-slate-600 leading-relaxed">
+          <div className="bg-slate-50 rounded-2xl p-5 border border-slate-200 text-xs text-slate-600 leading-relaxed">
             <strong>Statutory Disclosure:</strong> Starehe Girls&apos; Centre is established as a
             Trust Organization under the Trustees (Perpetual Succession) Act, Cap 164 of the
             Laws of Kenya, and registered with the Ministry of Education under the Basic Education
             Act 2013. Tenders are evaluated strictly according to statutory public procurement regulations.
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    </EditorialPageLayout>
   );
 }

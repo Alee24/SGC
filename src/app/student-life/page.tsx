@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Metadata } from "next";
-import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { EditorialPageLayout } from "@/components/layout/EditorialPageLayout";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import {
   Users,
@@ -10,7 +10,6 @@ import {
   Trophy,
   Building,
   Heart,
-  Compass,
   ArrowRight,
   CheckCircle2,
 } from "lucide-react";
@@ -21,193 +20,185 @@ export const metadata: Metadata = {
     "Life at Starehe Girls' Centre blends academic discipline with sisterhood, leadership, clubs, sports, and spiritual wellness on our 55-acre serene campus in Nairobi.",
 };
 
+const STUDENT_LIFE_SIDEBAR_LINKS = [
+  { label: "Student Life Overview", href: "/student-life", active: true },
+  { label: "Clubs & Societies", href: "/student-life/clubs" },
+  { label: "Sports & Athletics", href: "/student-life/sports" },
+  { label: "Campus Facilities", href: "/student-life/facilities" },
+  { label: "Photo & Campus Gallery", href: "/student-life/gallery" },
+];
+
 export default function StudentLifePage() {
   return (
-    <div>
-      <Breadcrumb
-        items={[
-          { label: "Student Life", href: "/student-life" },
-          { label: "Overview" },
-        ]}
-      />
-
-      {/* Hero */}
-      <section className="py-16 sm:py-20 bg-starehe-blue-950 text-white relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-starehe-gold-accent/20 text-starehe-gold-300 border border-starehe-gold-accent/30 mb-4">
-              Holistic Secondary Experience
-            </span>
-            <h1 className="font-serif text-4xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
-              Life at Starehe: Sisterhood, Service &amp; Character
-            </h1>
-            <p className="mt-4 text-base sm:text-lg text-slate-200 leading-relaxed font-light">
-              Student life at Starehe Girls&apos; Centre is designed to form the whole person:
-              intellectual brilliance, moral fortitude, empathy, athletic fitness, and a
-              lifelong bond of sisterhood uniting young women from every corner of Kenya.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Student Life Dimensions */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <EditorialPageLayout
+      breadcrumbs={[{ label: "Student Life", href: "/student-life" }, { label: "Overview" }]}
+      kicker="Holistic Formation"
+      title="Life at Starehe: Sisterhood, Service & Character"
+      description="Student life at Starehe Girls' Centre is crafted to nurture the whole person: intellectual brilliance, moral fortitude, empathy, athletic fitness, and an enduring bond of sisterhood uniting young women from every corner of Kenya."
+      heroFacts={[
+        { label: "Student Body", value: "800 Boarding Girls" },
+        { label: "Campus Scope", value: "55 Acres in Njathaini" },
+        { label: "Active Clubs", value: "8 Specialized Societies" },
+        { label: "Mentorship", value: "Big Sister Pairing System" },
+      ]}
+      sidebarTitle="Student Life"
+      sidebarLinks={STUDENT_LIFE_SIDEBAR_LINKS}
+    >
+      <div className="space-y-10">
+        <div>
           <SectionHeading
             badge="Holistic Formation"
             title="Beyond the Classroom Walls"
             description="Our students cultivate courage, leadership, and emotional resilience through a balanced calendar of extracurricular activities."
           />
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Clubs & Societies */}
-            <div className="p-7 rounded-2xl bg-slate-50 border border-slate-200 hover:border-starehe-blue-300 shadow-subtle hover:shadow-elevation transition-all flex flex-col justify-between">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-starehe-blue-100 text-starehe-blue-900 flex items-center justify-center mb-5">
-                  <Sparkles className="w-6 h-6" />
-                </div>
-                <h3 className="font-serif text-xl font-bold text-starehe-blue-950 mb-2">
-                  Clubs &amp; Societies
-                </h3>
-                <p className="text-xs text-slate-600 leading-relaxed mb-4">
-                  From Robotics and Science Innovation to Model UN, Journalism, and the
-                  Presidential Award Kenya.
-                </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          {/* Clubs & Societies */}
+          <div className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-subtle hover:border-starehe-blue-300 transition-all flex flex-col justify-between">
+            <div>
+              <div className="w-10 h-10 rounded-xl bg-starehe-blue-100 text-starehe-blue-900 flex items-center justify-center mb-4">
+                <Sparkles className="w-5 h-5" />
               </div>
-              <Link
-                href="/student-life/clubs"
-                className="text-xs font-bold text-starehe-blue-900 hover:underline flex items-center space-x-1"
-              >
-                <span>Explore Clubs</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
+              <h3 className="font-serif text-lg font-bold text-starehe-blue-950 mb-1.5">
+                Clubs &amp; Societies
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                From Robotics and Science Innovation to Model UN, Journalism, and the
+                Presidential Award Kenya.
+              </p>
             </div>
+            <Link
+              href="/student-life/clubs"
+              className="text-xs font-bold text-starehe-blue-900 hover:underline inline-flex items-center space-x-1 pt-3 border-t border-slate-100"
+            >
+              <span>Explore Clubs</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
 
-            {/* Sports & Wellness */}
-            <div className="p-7 rounded-2xl bg-slate-50 border border-slate-200 hover:border-starehe-maroon-300 shadow-subtle hover:shadow-elevation transition-all flex flex-col justify-between">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-starehe-maroon-100 text-starehe-maroon-800 flex items-center justify-center mb-5">
-                  <Trophy className="w-6 h-6" />
-                </div>
-                <h3 className="font-serif text-xl font-bold text-starehe-blue-950 mb-2">
-                  Sports &amp; Athletics
-                </h3>
-                <p className="text-xs text-slate-600 leading-relaxed mb-4">
-                  Basketball, volleyball, football, cross-country athletics, badminton, netball,
-                  and lawn tennis on campus pitches.
-                </p>
+          {/* Sports & Wellness */}
+          <div className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-subtle hover:border-starehe-maroon-300 transition-all flex flex-col justify-between">
+            <div>
+              <div className="w-10 h-10 rounded-xl bg-starehe-maroon-100 text-starehe-maroon-800 flex items-center justify-center mb-4">
+                <Trophy className="w-5 h-5" />
               </div>
-              <Link
-                href="/student-life/sports"
-                className="text-xs font-bold text-starehe-maroon-800 hover:underline flex items-center space-x-1"
-              >
-                <span>View Sports</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
+              <h3 className="font-serif text-lg font-bold text-starehe-blue-950 mb-1.5">
+                Sports &amp; Athletics
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                Basketball, volleyball, football, cross-country athletics, badminton, netball,
+                and lawn tennis on campus pitches.
+              </p>
             </div>
+            <Link
+              href="/student-life/sports"
+              className="text-xs font-bold text-starehe-maroon-800 hover:underline inline-flex items-center space-x-1 pt-3 border-t border-slate-100"
+            >
+              <span>View Sports</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
 
-            {/* Campus Sanctuary */}
-            <div className="p-7 rounded-2xl bg-slate-50 border border-slate-200 hover:border-starehe-gold-300 shadow-subtle hover:shadow-elevation transition-all flex flex-col justify-between">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-starehe-gold-100 text-starehe-gold-800 flex items-center justify-center mb-5">
-                  <Building className="w-6 h-6" />
-                </div>
-                <h3 className="font-serif text-xl font-bold text-starehe-blue-950 mb-2">
-                  55-Acre Sanctuary
-                </h3>
-                <p className="text-xs text-slate-600 leading-relaxed mb-4">
-                  Griffin Dormitories, digital library, twin science laboratories, dining hall,
-                  and organic farm.
-                </p>
+          {/* Campus Sanctuary */}
+          <div className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-subtle hover:border-starehe-gold-300 transition-all flex flex-col justify-between">
+            <div>
+              <div className="w-10 h-10 rounded-xl bg-starehe-gold-100 text-starehe-gold-800 flex items-center justify-center mb-4">
+                <Building className="w-5 h-5" />
               </div>
-              <Link
-                href="/student-life/facilities"
-                className="text-xs font-bold text-starehe-gold-700 hover:underline flex items-center space-x-1"
-              >
-                <span>Campus Facilities</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
+              <h3 className="font-serif text-lg font-bold text-starehe-blue-950 mb-1.5">
+                55-Acre Sanctuary
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                Griffin Dormitories, digital library, twin science laboratories, dining hall,
+                and botanical reading gardens.
+              </p>
             </div>
+            <Link
+              href="/student-life/facilities"
+              className="text-xs font-bold text-starehe-gold-700 hover:underline inline-flex items-center space-x-1 pt-3 border-t border-slate-100"
+            >
+              <span>Campus Facilities</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
 
-            {/* Photo Gallery */}
-            <div className="p-7 rounded-2xl bg-slate-50 border border-slate-200 hover:border-purple-300 shadow-subtle hover:shadow-elevation transition-all flex flex-col justify-between">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-purple-100 text-purple-800 flex items-center justify-center mb-5">
-                  <Users className="w-6 h-6" />
-                </div>
-                <h3 className="font-serif text-xl font-bold text-starehe-blue-950 mb-2">
-                  Photo Gallery
-                </h3>
-                <p className="text-xs text-slate-600 leading-relaxed mb-4">
-                  High-resolution photo archive capturing assemblies, national celebrations,
-                  itega ceremonies, and daily life.
-                </p>
+          {/* Photo Gallery */}
+          <div className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-subtle hover:border-purple-300 transition-all flex flex-col justify-between">
+            <div>
+              <div className="w-10 h-10 rounded-xl bg-purple-100 text-purple-800 flex items-center justify-center mb-4">
+                <Users className="w-5 h-5" />
               </div>
-              <Link
-                href="/student-life/gallery"
-                className="text-xs font-bold text-purple-800 hover:underline flex items-center space-x-1"
-              >
-                <span>View Photo Archive</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
+              <h3 className="font-serif text-lg font-bold text-starehe-blue-950 mb-1.5">
+                Photo Gallery
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                High-resolution photo archive capturing assemblies, national celebrations,
+                itega ceremonies, and daily life.
+              </p>
             </div>
+            <Link
+              href="/student-life/gallery"
+              className="text-xs font-bold text-purple-800 hover:underline inline-flex items-center space-x-1 pt-3 border-t border-slate-100"
+            >
+              <span>View Photo Archive</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
           </div>
         </div>
-      </section>
 
-      {/* The Sisterhood Culture */}
-      <section className="py-20 bg-slate-50 border-t border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-6 relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-elevation border-4 border-white aspect-[4/3]">
+        {/* The Sisterhood Culture */}
+        <section className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/90 shadow-subtle">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+            <div className="md:col-span-5 relative">
+              <div className="relative rounded-2xl overflow-hidden shadow-md border-2 border-slate-100 aspect-[4/3]">
                 <Image
                   src="/images/hero/hero-students-assembly.jpg"
                   alt="Starehe Girls' Centre Student Community"
                   fill
                   className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  sizes="(max-width: 768px) 100vw, 35vw"
                 />
               </div>
             </div>
 
-            <div className="lg:col-span-6">
-              <span className="text-xs uppercase font-bold tracking-wider text-starehe-maroon-800 bg-starehe-maroon-50 px-3 py-1 rounded-full border border-starehe-maroon-200">
+            <div className="md:col-span-7">
+              <span className="text-[10px] uppercase font-bold tracking-wider text-starehe-maroon-800 bg-starehe-maroon-50 px-2.5 py-0.5 rounded-full border border-starehe-maroon-200 inline-block mb-2">
                 Enduring Sisterhood
               </span>
-              <h2 className="font-serif text-3xl font-bold text-starehe-blue-950 mt-4 leading-tight">
+              <h2 className="font-serif text-xl sm:text-2xl font-bold text-starehe-blue-950 leading-snug">
                 The Big Sister Mentorship Tradition
               </h2>
-              <p className="mt-4 text-slate-700 leading-relaxed text-sm sm:text-base">
+              <p className="mt-3 text-slate-700 leading-relaxed text-xs sm:text-sm">
                 From the moment a Form 1 student steps onto campus during the ceremonial{" "}
                 <em>itega</em> welcoming, she is assigned an older &ldquo;sister&rdquo;—a senior
                 student who assists her with settling in, understanding campus routines,
                 navigating academic prep, and embracing &ldquo;The Starehe Way&rdquo;.
               </p>
-              <p className="mt-3 text-slate-600 leading-relaxed text-xs sm:text-sm">
+              <p className="mt-2 text-slate-600 leading-relaxed text-xs">
                 This cherished peer-mentoring bond eliminates bullying, fosters emotional
                 safety, and creates an empowering network of supportive sisters that endures
                 long after graduation into university and professional life.
               </p>
 
-              <div className="mt-6 space-y-2.5 text-xs text-slate-700">
+              <div className="mt-4 space-y-2 text-xs text-slate-700 border-t border-slate-100 pt-3">
                 <div className="flex items-center space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
                   <span>Zero-tolerance policy towards bullying or hazing</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
                   <span>Student leadership council with elected captains and prefects</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
                   <span>Weekly ecumenical and inter-faith spiritual guidance</span>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    </EditorialPageLayout>
   );
 }

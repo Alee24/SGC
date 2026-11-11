@@ -20,8 +20,8 @@ test.describe("Starehe Girls' Centre Website Verification", () => {
     await expect(page.locator("h1")).toContainText("Form 1 Admission & The Blue Form");
 
     // Critical Integrity fraud warning check
-    await expect(page.locator("text=CRITICAL NOTICE TO ALL PARENTS & GUARDIANS")).toBeVisible();
-    await expect(page.locator("text=NEVER SOLD")).toBeVisible();
+    await expect(page.locator("text=CRITICAL NOTICE TO ALL PARENTS & GUARDIANS").first()).toBeVisible();
+    await expect(page.locator("text=NEVER SOLD").first()).toBeVisible();
   });
 
   test("Academic Performance page displays official 2025 KCSE data", async ({ page }) => {

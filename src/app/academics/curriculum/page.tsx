@@ -1,6 +1,6 @@
 import React from "react";
 import { Metadata } from "next";
-import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { EditorialPageLayout } from "@/components/layout/EditorialPageLayout";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ACADEMIC_TRACK_RECORD } from "@/data/school-data";
 import {
@@ -11,6 +11,7 @@ import {
   CheckCircle2,
   FileText,
   Lightbulb,
+  FlaskConical,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -19,75 +20,86 @@ export const metadata: Metadata = {
     "Comprehensive overview of Starehe Girls' Centre curriculum: 8-4-4 secondary framework transitioning into Senior School Competency-Based Education (CBE) across STEM, Social Sciences, and Arts & Sports.",
 };
 
+const ACADEMICS_SIDEBAR_LINKS = [
+  { label: "Academics Overview", href: "/academics" },
+  { label: "KCSE Performance & Data", href: "/academics/performance" },
+  { label: "Curriculum & CBC Pathways", href: "/academics/curriculum", active: true },
+  { label: "Academic Departments", href: "/academics/departments" },
+  { label: "KUCCPS & University Prep", href: "/academics/kuccps" },
+];
+
 export default function CurriculumPage() {
   const pathwayIcons = [
-    <Cpu key="stem" className="w-6 h-6 text-starehe-blue-700" />,
-    <Briefcase key="social" className="w-6 h-6 text-starehe-maroon-700" />,
-    <Palette key="arts" className="w-6 h-6 text-starehe-gold-600" />,
+    <Cpu key="stem" className="w-5 h-5 text-starehe-blue-700" />,
+    <Briefcase key="social" className="w-5 h-5 text-starehe-maroon-700" />,
+    <Palette key="arts" className="w-5 h-5 text-starehe-gold-600" />,
   ];
 
   return (
-    <div>
-      <Breadcrumb
-        items={[
-          { label: "Academics", href: "/academics" },
-          { label: "Curriculum & CBC Transition" },
-        ]}
-      />
+    <EditorialPageLayout
+      breadcrumbs={[
+        { label: "Academics", href: "/academics" },
+        { label: "Curriculum & CBC Transition" },
+      ]}
+      kicker="Academic Framework"
+      title="Curriculum & Senior School CBE Transition"
+      description="Guiding our students through both Kenya's 8-4-4 curriculum and the transformative Competency-Based Education (CBE) framework, fostering analytical depth, problem-solving, and vocational readiness."
+      heroFacts={[
+        { label: "Curriculum Models", value: "8-4-4 & CBC Senior" },
+        { label: "Senior Pathways", value: "3 National Tracks" },
+        { label: "Science Labs", value: "Fully Equipped STEM" },
+        { label: "Pedagogy", value: "Inquiry-Based Learning" },
+      ]}
+      sidebarTitle="Academics Hub"
+      sidebarLinks={ACADEMICS_SIDEBAR_LINKS}
+    >
+      <div className="space-y-10">
+        {/* Intro */}
+        <section className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/80 shadow-subtle">
+          <h2 className="font-serif text-xl sm:text-2xl font-bold text-starehe-blue-950 mb-3">
+            Dual-System Excellence: Harmonizing 8-4-4 and CBE
+          </h2>
+          <p className="text-slate-700 leading-relaxed text-sm sm:text-base">
+            As the education system in Kenya evolves, Starehe Girls&apos; Centre ensures that current
+            8-4-4 candidates receive world-class preparation for the Kenya Certificate of Secondary
+            Education (KCSE), while simultaneously preparing Senior School Grade 10 scholars with
+            practical, multidisciplinary competencies across our three accredited pathways.
+          </p>
+        </section>
 
-      {/* Hero */}
-      <section className="py-16 sm:py-20 bg-starehe-blue-950 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-starehe-gold-accent/20 text-starehe-gold-300 border border-starehe-gold-accent/30 mb-4">
-              Academic Framework
-            </span>
-            <h1 className="font-serif text-4xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
-              Curriculum &amp; Senior School CBE Transition
-            </h1>
-            <p className="mt-4 text-base sm:text-lg text-slate-200 leading-relaxed font-light">
-              Guiding our students through both Kenya&apos;s 8-4-4 curriculum and the
-              transformative Competency-Based Education (CBE) framework, fostering
-              critical thinking, problem-solving, and practical vocational competency.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Three CBC Pathways */}
-      <section className="py-20 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Three CBC Pathways */}
+        <section className="space-y-6">
           <SectionHeading
             badge="Senior School (Grade 10–12)"
             title="Competency-Based Education (CBE) Pathways"
-            description="Starehe Girls' Centre has completed extensive infrastructural and teacher-readiness investments to offer all three premier Senior School pathways."
+            description="Infrastructural readiness and teacher capacity across all three career pathways."
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {ACADEMIC_TRACK_RECORD.pathwaysCBC.map((pathway, idx) => (
               <div
                 key={pathway.name}
-                className="bg-white rounded-2xl p-8 border border-slate-200 shadow-subtle hover:shadow-elevation transition-all flex flex-col justify-between"
+                className="bg-white rounded-2xl p-6 border border-slate-200 shadow-subtle hover:border-starehe-blue-300 transition-all flex flex-col justify-between"
               >
                 <div>
-                  <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center mb-6">
+                  <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center mb-4">
                     {pathwayIcons[idx]}
                   </div>
-                  <h3 className="font-serif text-2xl font-bold text-starehe-blue-950 mb-3">
+                  <h3 className="font-serif text-lg font-bold text-starehe-blue-950 mb-2">
                     {pathway.name}
                   </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
+                  <p className="text-xs text-slate-600 leading-relaxed mb-4">
                     {pathway.description}
                   </p>
 
-                  <div className="border-t border-slate-100 pt-5">
-                    <div className="text-xs font-bold text-slate-900 uppercase tracking-wider mb-3">
+                  <div className="border-t border-slate-100 pt-4">
+                    <div className="text-[10px] font-bold text-slate-900 uppercase tracking-wider mb-2">
                       Subject Combinations &amp; Tracks:
                     </div>
-                    <ul className="space-y-2 text-xs text-slate-700">
+                    <ul className="space-y-1.5 text-xs text-slate-700">
                       {pathway.tracks.map((track) => (
-                        <li key={track} className="flex items-center space-x-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+                        <li key={track} className="flex items-start space-x-1.5">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0 mt-0.5" />
                           <span>{track}</span>
                         </li>
                       ))}
@@ -97,53 +109,52 @@ export default function CurriculumPage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Assessment Framework */}
-      <section className="py-20 bg-white border-t border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto">
-            <SectionHeading
-              badge="Evaluation &amp; Metrics"
-              title="Assessment Methodologies &amp; Mentorship"
-              description="Continuous feedback ensures every student's learning gaps are detected early and addressed with tailored remediation."
-            />
+        {/* Assessment Framework */}
+        <section className="bg-slate-50 rounded-2xl p-6 sm:p-8 border border-slate-200 space-y-6">
+          <div>
+            <h3 className="font-serif text-xl font-bold text-starehe-blue-950">
+              Assessment Methodologies &amp; Mentorship
+            </h3>
+            <p className="text-xs text-slate-600 mt-1">
+              Continuous assessment ensures learning gaps are identified early and resolved systematically.
+            </p>
+          </div>
 
-            <div className="space-y-6">
-              <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200">
-                <h3 className="font-serif text-lg font-bold text-starehe-blue-950 mb-2">
-                  1. Continuous Assessment Tests (CATs)
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  Administered twice every term to track progress in every syllabus unit.
-                  Scores form the basis of personal goal-setting in &ldquo;Operation Plus 5&rdquo;.
-                </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="p-4 rounded-xl bg-white border border-slate-200/80 shadow-subtle">
+              <div className="flex items-center space-x-2 text-starehe-blue-900 font-bold text-xs uppercase tracking-wider mb-1.5">
+                <FileText className="w-4 h-4 text-starehe-gold-accent" />
+                <span>1. Bi-Termly CATs</span>
               </div>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Administered twice per term to evaluate syllabus mastery and set individual &ldquo;Operation Plus 5&rdquo; targets.
+              </p>
+            </div>
 
-              <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200">
-                <h3 className="font-serif text-lg font-bold text-starehe-blue-950 mb-2">
-                  2. Joint National School Mocks
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  Form 4 examination candidates participate in rigorous multi-county national
-                  school trial examinations, benchmarking against Kenya&apos;s leading academies.
-                </p>
+            <div className="p-4 rounded-xl bg-white border border-slate-200/80 shadow-subtle">
+              <div className="flex items-center space-x-2 text-starehe-blue-900 font-bold text-xs uppercase tracking-wider mb-1.5">
+                <Lightbulb className="w-4 h-4 text-starehe-gold-accent" />
+                <span>2. National Joint Mocks</span>
               </div>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Form 4 candidates benchmark with fellow national academies across Nairobi, Central, and Rift Valley counties.
+              </p>
+            </div>
 
-              <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200">
-                <h3 className="font-serif text-lg font-bold text-starehe-blue-950 mb-2">
-                  3. Practical Science Laboratory Practicals
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  Hands-on experimentation in Biology, Chemistry, and Physics laboratories,
-                  fostering empirical scientific thinking and mastery of laboratory apparatus.
-                </p>
+            <div className="p-4 rounded-xl bg-white border border-slate-200/80 shadow-subtle">
+              <div className="flex items-center space-x-2 text-starehe-blue-900 font-bold text-xs uppercase tracking-wider mb-1.5">
+                <FlaskConical className="w-4 h-4 text-starehe-gold-accent" />
+                <span>3. Science Practicals</span>
               </div>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Empirical laboratory investigations in Physics, Chemistry, and Biology to build true scientific mastery.
+              </p>
             </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    </EditorialPageLayout>
   );
 }
