@@ -121,7 +121,7 @@ test.describe("Starehe Girls' Centre Website Verification", () => {
     ];
 
     for (const route of routes) {
-      const response = await page.goto(route);
+      const response = await page.goto(route, { waitUntil: "domcontentloaded" });
       expect(response?.status()).toBe(200);
       await expect(page.locator("text=Internal Server Error")).not.toBeVisible();
     }
@@ -195,6 +195,7 @@ test.describe("Starehe Girls' Centre Website Verification", () => {
     await page.goto("/", { waitUntil: "domcontentloaded" });
     await page.waitForSelector("header");
     await expect(page.locator("header")).not.toContainText("Careers & Tenders");
+    await expect(page.locator('a[href="/careers-tenders"]', { hasText: "Careers & Tenders" }).first()).toBeVisible();
 
     for (const vp of viewports) {
       await page.setViewportSize(vp);
