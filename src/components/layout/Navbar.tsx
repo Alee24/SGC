@@ -19,7 +19,7 @@ import {
   ShieldCheck,
   Building,
   Trophy,
-  Sparkles,
+  Calendar,
 } from "lucide-react";
 
 interface NavDropdownItem {
@@ -190,7 +190,7 @@ export const Navbar: React.FC = () => {
           title: "Photo Gallery",
           href: "/student-life/gallery",
           description: "Visual archive of student assemblies, campus grounds, and ceremonies.",
-          icon: <Sparkles className="w-4 h-4 text-purple-700" />,
+          icon: <Compass className="w-4 h-4 text-starehe-blue-700" />,
         },
       ],
     },
@@ -214,7 +214,7 @@ export const Navbar: React.FC = () => {
           title: "Annual Charity Events",
           href: "/giving/events",
           description: "Charity Golf (March), Charity Walk (June), Gala Dinner (October).",
-          icon: <Sparkles className="w-4 h-4 text-starehe-gold-600" />,
+          icon: <Calendar className="w-4 h-4 text-starehe-gold-600" />,
         },
       ],
     },

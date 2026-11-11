@@ -65,7 +65,7 @@ export default function DepartmentsPage() {
     },
     {
       name: "Department of Humanities",
-      icon: <Globe2 className="w-5 h-5 text-emerald-700" />,
+      icon: <Globe2 className="w-5 h-5 text-starehe-blue-800" />,
       subjects: [
         "History & Government",
         "Geography",
@@ -165,7 +165,7 @@ export default function DepartmentsPage() {
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-700">
                   {dept.highlights.map((h) => (
                     <li key={h} className="flex items-start space-x-2">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-starehe-maroon-800 mt-0.5 flex-shrink-0" />
                       <span className="text-[11px]">{h}</span>
                     </li>
                   ))}

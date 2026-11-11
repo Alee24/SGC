@@ -48,7 +48,7 @@ export default function HistoryPage() {
             &ldquo;The journey to establish a sister institution to the celebrated Starehe
             Boys&apos; Centre began with a solemn conviction: that academically gifted girls
             born into dire poverty across Kenya deserved an equal sanctuary of discipline,
-            love, and world-class secondary education.&rdquo;
+            love, and transformative secondary education.&rdquo;
           </p>
         </div>
 

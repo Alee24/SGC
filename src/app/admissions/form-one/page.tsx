@@ -158,8 +158,8 @@ export default function FormOneAdmissionPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="p-4 rounded-xl bg-white border border-slate-200/80 shadow-subtle">
-              <div className="font-bold text-xs uppercase tracking-wider text-starehe-blue-950 mb-1 flex items-center space-x-1.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+              <div className="font-bold text-xs tracking-wide text-starehe-blue-950 mb-1 flex items-center space-x-1.5">
+                <CheckCircle2 className="w-4 h-4 text-starehe-maroon-800" />
                 <span>1. Parent / Guardian Declaration</span>
               </div>
               <p className="text-xs text-slate-600">
@@ -168,8 +168,8 @@ export default function FormOneAdmissionPage() {
             </div>
 
             <div className="p-4 rounded-xl bg-white border border-slate-200/80 shadow-subtle">
-              <div className="font-bold text-xs uppercase tracking-wider text-starehe-blue-950 mb-1 flex items-center space-x-1.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+              <div className="font-bold text-xs tracking-wide text-starehe-blue-950 mb-1 flex items-center space-x-1.5">
+                <CheckCircle2 className="w-4 h-4 text-starehe-maroon-800" />
                 <span>2. Primary School Headteacher</span>
               </div>
               <p className="text-xs text-slate-600">
@@ -178,8 +178,8 @@ export default function FormOneAdmissionPage() {
             </div>
 
             <div className="p-4 rounded-xl bg-white border border-slate-200/80 shadow-subtle">
-              <div className="font-bold text-xs uppercase tracking-wider text-starehe-blue-950 mb-1 flex items-center space-x-1.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+              <div className="font-bold text-xs tracking-wide text-starehe-blue-950 mb-1 flex items-center space-x-1.5">
+                <CheckCircle2 className="w-4 h-4 text-starehe-maroon-800" />
                 <span>3. Local Area Chief / Assistant Chief</span>
               </div>
               <p className="text-xs text-slate-600">
@@ -188,8 +188,8 @@ export default function FormOneAdmissionPage() {
             </div>
 
             <div className="p-4 rounded-xl bg-white border border-slate-200/80 shadow-subtle">
-              <div className="font-bold text-xs uppercase tracking-wider text-starehe-blue-950 mb-1 flex items-center space-x-1.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+              <div className="font-bold text-xs tracking-wide text-starehe-blue-950 mb-1 flex items-center space-x-1.5">
+                <CheckCircle2 className="w-4 h-4 text-starehe-maroon-800" />
                 <span>4. Religious Minister (Priest/Pastor/Imam)</span>
               </div>
               <p className="text-xs text-slate-600">

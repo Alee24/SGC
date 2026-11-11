@@ -77,7 +77,7 @@ export default function ClubsPage() {
               <div>
                 <div className="flex items-start space-x-3 mb-3">
                   <div className="p-2.5 rounded-xl bg-slate-100 flex-shrink-0">
-                    {clubIcons[club.name] || <Sparkles className="w-5 h-5 text-starehe-blue-900" />}
+                    {clubIcons[club.name] || <Award className="w-5 h-5 text-starehe-blue-900" />}
                   </div>
                   <div>
                     <h3 className="font-serif text-base font-bold text-starehe-blue-950">

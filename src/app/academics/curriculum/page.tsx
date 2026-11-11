@@ -61,7 +61,7 @@ export default function CurriculumPage() {
           </h2>
           <p className="text-slate-700 leading-relaxed text-sm sm:text-base">
             As the education system in Kenya evolves, Starehe Girls&apos; Centre ensures that current
-            8-4-4 candidates receive world-class preparation for the Kenya Certificate of Secondary
+            8-4-4 candidates receive rigorous preparation for the Kenya Certificate of Secondary
             Education (KCSE), while simultaneously preparing Senior School Grade 10 scholars with
             practical, multidisciplinary competencies across our three accredited pathways.
           </p>
@@ -99,7 +99,7 @@ export default function CurriculumPage() {
                     <ul className="space-y-1.5 text-xs text-slate-700">
                       {pathway.tracks.map((track) => (
                         <li key={track} className="flex items-start space-x-1.5">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                          <CheckCircle2 className="w-3.5 h-3.5 text-starehe-maroon-800 flex-shrink-0 mt-0.5" />
                           <span>{track}</span>
                         </li>
                       ))}

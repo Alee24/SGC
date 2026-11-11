@@ -10,23 +10,23 @@ export default function GlobalError({
   reset: () => void;
 }) {
   useEffect(() => {
-    console.error("Global system error captured:", error);
+    console.error("Global system diagnostic:", error);
   }, [error]);
 
   return (
     <html lang="en">
-      <body className="min-h-screen bg-stone-100 flex items-center justify-center p-4 font-sans text-stone-900">
-        <div className="max-w-md w-full bg-white rounded-2xl border border-stone-200 shadow-lg p-8 text-center">
-          <div className="w-12 h-12 rounded-full bg-red-100 text-red-800 mx-auto flex items-center justify-center mb-4 text-xl font-bold">
-            !
+      <body className="min-h-screen bg-[#faf8f5] flex items-center p-6 text-slate-900">
+        <div className="max-w-xl mx-auto w-full bg-white rounded-2xl border border-stone-200 shadow-sm p-8 space-y-4">
+          <div className="text-xs font-semibold text-[#8b1e22]">
+            Starehe Girls&apos; Centre • System Notice
           </div>
-          <h1 className="text-xl font-bold text-stone-900 mb-2">
-            Starehe Girls&apos; Centre
+          <h1 className="font-serif text-2xl font-bold text-[#0c2340]">
+            Portal Temporarily Offline
           </h1>
-          <p className="text-sm text-stone-600 mb-6">
-            The application experienced an unexpected interruption. Please refresh to restore the session.
+          <p className="text-sm text-slate-600 leading-relaxed">
+            The application experienced an unexpected interruption. Please reload the portal to resume your session.
           </p>
-          <div className="flex justify-center gap-3">
+          <div className="pt-2 flex gap-3">
             <button
               onClick={() => reset()}
               className="px-5 py-2.5 bg-[#8b1e22] text-white rounded-full text-xs font-semibold hover:bg-[#751e22] transition-colors"
@@ -35,9 +35,9 @@ export default function GlobalError({
             </button>
             <a
               href="/"
-              className="px-5 py-2.5 border border-stone-300 text-stone-700 rounded-full text-xs font-semibold hover:bg-stone-50 transition-colors"
+              className="px-5 py-2.5 border border-stone-300 text-[#0c2340] rounded-full text-xs font-semibold hover:bg-stone-50 transition-colors"
             >
-              Go to Homepage
+              Return Home
             </a>
           </div>
         </div>

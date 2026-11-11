@@ -89,7 +89,7 @@ export default function CareersTendersPage() {
                   <ul className="space-y-1.5 text-xs text-slate-700">
                     {job.requirements.map((req, i) => (
                       <li key={i} className="flex items-start space-x-2">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
+                        <CheckCircle2 className="w-3.5 h-3.5 text-starehe-maroon-800 mt-0.5 flex-shrink-0" />
                         <span>{req}</span>
                       </li>
                     ))}
@@ -138,9 +138,9 @@ export default function CareersTendersPage() {
                         {tender.id}
                       </span>
                       <span
-                        className={`text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${
+                        className={`text-[10px] font-semibold tracking-wide px-2 py-0.5 rounded-full ${
                           tender.status === "Open"
-                            ? "bg-emerald-100 text-emerald-800"
+                            ? "bg-starehe-blue-50 text-starehe-blue-900 border border-starehe-blue-200"
                             : "bg-slate-100 text-slate-600"
                         }`}
                       >

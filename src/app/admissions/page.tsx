@@ -86,19 +86,19 @@ export default function AdmissionsOverviewPage() {
 
                 <div className="space-y-2 mb-6 text-xs text-slate-700">
                   <div className="flex items-start space-x-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-starehe-maroon-800 mt-0.5 flex-shrink-0" />
                     <span>Candidate must be 15 years old or younger</span>
                   </div>
                   <div className="flex items-start space-x-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-starehe-maroon-800 mt-0.5 flex-shrink-0" />
                     <span>Must select Starehe Girls&apos; as 1st Choice National School</span>
                   </div>
                   <div className="flex items-start space-x-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-starehe-maroon-800 mt-0.5 flex-shrink-0" />
                     <span>Needs assessment scale 1–10 &amp; home verification visit</span>
                   </div>
                   <div className="flex items-start space-x-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-starehe-maroon-800 mt-0.5 flex-shrink-0" />
                     <span>Authentication by Headteacher, Area Chief &amp; Clergy</span>
                   </div>
                 </div>
@@ -106,7 +106,7 @@ export default function AdmissionsOverviewPage() {
 
               <Link
                 href="/admissions/form-one"
-                className="w-full inline-flex items-center justify-center space-x-2 py-2.5 px-5 rounded-full bg-starehe-maroon-800 hover:bg-starehe-maroon-700 text-white font-bold text-xs uppercase tracking-wider transition-colors shadow-sm"
+                className="w-full inline-flex items-center justify-center space-x-2 py-2.5 px-5 rounded-full bg-starehe-maroon-800 hover:bg-starehe-maroon-700 text-white font-semibold text-xs tracking-wide transition-colors shadow-sm"
               >
                 <span>Read Full Blue Form Process</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -117,7 +117,7 @@ export default function AdmissionsOverviewPage() {
             <div className="bg-white rounded-2xl p-6 sm:p-7 border border-slate-200/90 shadow-subtle hover:border-starehe-blue-300 transition-all flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-starehe-blue-800 bg-starehe-blue-50 px-2.5 py-0.5 rounded-full border border-starehe-blue-200">
+                  <span className="text-xs font-semibold tracking-wide text-starehe-blue-800 bg-starehe-blue-50 px-2.5 py-0.5 rounded-full border border-starehe-blue-200">
                     CBE Senior School Track
                   </span>
                   <GraduationCap className="w-5 h-5 text-starehe-blue-900" />
@@ -134,19 +134,19 @@ export default function AdmissionsOverviewPage() {
 
                 <div className="space-y-2 mb-6 text-xs text-slate-700">
                   <div className="flex items-start space-x-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-starehe-maroon-800 mt-0.5 flex-shrink-0" />
                     <span>STEM Pathway (Pure Sciences, Robotics, Health Sciences)</span>
                   </div>
                   <div className="flex items-start space-x-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-starehe-maroon-800 mt-0.5 flex-shrink-0" />
                     <span>Social Sciences Pathway (Humanities, Business Studies)</span>
                   </div>
                   <div className="flex items-start space-x-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-starehe-maroon-800 mt-0.5 flex-shrink-0" />
                     <span>Arts &amp; Sports Science (Music, Visual Arts, Athletics)</span>
                   </div>
                   <div className="flex items-start space-x-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-starehe-maroon-800 mt-0.5 flex-shrink-0" />
                     <span>Self-supported enrollment opens beginning 2027</span>
                   </div>
                 </div>
@@ -154,7 +154,7 @@ export default function AdmissionsOverviewPage() {
 
               <Link
                 href="/admissions/senior-school"
-                className="w-full inline-flex items-center justify-center space-x-2 py-2.5 px-5 rounded-full bg-starehe-blue-900 hover:bg-starehe-blue-800 text-white font-bold text-xs uppercase tracking-wider transition-colors shadow-sm"
+                className="w-full inline-flex items-center justify-center space-x-2 py-2.5 px-5 rounded-full bg-starehe-blue-900 hover:bg-starehe-blue-800 text-white font-semibold text-xs tracking-wide transition-colors shadow-sm"
               >
                 <span>Senior School CBC Guide</span>
                 <ArrowRight className="w-3.5 h-3.5" />

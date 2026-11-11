@@ -15,6 +15,28 @@ test.describe("Starehe Girls' Centre Website Verification", () => {
     await expect(page.locator("text=95%").first()).toBeVisible();
   });
 
+  test("Board of Management (BOM) page loads with leadership oversight and no errors", async ({ page }) => {
+    const response = await page.goto("/about/management");
+    expect(response?.status()).toBe(200);
+
+    await expect(page.locator("h1")).toContainText("The Board of Management (BOM)");
+    await expect(page.locator("text=Prof. Mary Getui").first()).toBeVisible();
+    await expect(page.locator("text=Basic Education Act 2013").first()).toBeVisible();
+    await expect(page.locator("text=Internal Server Error")).not.toBeVisible();
+  });
+
+  test("Board of Trustees and Administration leadership pages load properly", async ({ page }) => {
+    await page.goto("/about/trustees");
+    await expect(page.locator("h1")).toContainText("The Board of Trustees");
+    await expect(page.locator("text=Mrs. Eunice Mathu").first()).toBeVisible();
+    await expect(page.locator("text=Dr. Manu Chandaria").first()).toBeVisible();
+
+    await page.goto("/about/administration");
+    await expect(page.locator("h1")).toContainText("School Leadership & Administration");
+    await expect(page.locator("text=Sister Jane Soita").first()).toBeVisible();
+    await expect(page.locator("text=Beatrice Shirao").first()).toBeVisible();
+  });
+
   test("Admissions Suite & Form 1 Blue Form are accessible and complete", async ({ page }) => {
     await page.goto("/admissions/form-one");
     await expect(page.locator("h1")).toContainText("Form 1 Admission & The Blue Form");
@@ -31,18 +53,6 @@ test.describe("Starehe Girls' Centre Website Verification", () => {
     // Verify 2025 KCSE Mean Score & Operation Plus 5
     await expect(page.locator("text=8.90 (B)").first()).toBeVisible();
     await expect(page.locator("text=Operation Plus 5").first()).toBeVisible();
-  });
-
-  test("Board of Trustees and Administration leadership pages load properly", async ({ page }) => {
-    await page.goto("/about/trustees");
-    await expect(page.locator("h1")).toContainText("The Board of Trustees");
-    await expect(page.locator("text=Mrs. Eunice Mathu").first()).toBeVisible();
-    await expect(page.locator("text=Dr. Manu Chandaria").first()).toBeVisible();
-
-    await page.goto("/about/administration");
-    await expect(page.locator("h1")).toContainText("School Leadership & Administration");
-    await expect(page.locator("text=Sister Jane Soita").first()).toBeVisible();
-    await expect(page.locator("text=Beatrice Shirao").first()).toBeVisible();
   });
 
   test("Contact form validates inputs and displays success state", async ({ page }) => {
@@ -77,5 +87,39 @@ test.describe("Starehe Girls' Centre Website Verification", () => {
     // Close lightbox
     await modal.locator('button[aria-label="Close image lightbox"]').click();
     await expect(modal).not.toBeVisible();
+  });
+
+  test("All Institutional Routes respond with HTTP 200 without crashes", async ({ page }) => {
+    const routes = [
+      "/about",
+      "/about/history",
+      "/about/management",
+      "/about/trustees",
+      "/about/administration",
+      "/academics",
+      "/academics/curriculum",
+      "/academics/departments",
+      "/academics/kuccps",
+      "/academics/performance",
+      "/admissions",
+      "/admissions/fees-aid",
+      "/admissions/form-one",
+      "/admissions/senior-school",
+      "/careers-tenders",
+      "/giving",
+      "/giving/events",
+      "/giving/projects",
+      "/news",
+      "/student-life",
+      "/student-life/clubs",
+      "/student-life/facilities",
+      "/student-life/sports",
+    ];
+
+    for (const route of routes) {
+      const response = await page.goto(route);
+      expect(response?.status()).toBe(200);
+      await expect(page.locator("text=Internal Server Error")).not.toBeVisible();
+    }
   });
 });

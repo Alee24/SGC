@@ -86,7 +86,7 @@ export default function HomePage() {
               </Link>
               <Link
                 href="/giving"
-                className="inline-flex items-center space-x-2 px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/30 backdrop-blur-md font-semibold text-sm transition-all"
+                className="inline-flex items-center space-x-2 px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/30 font-semibold text-sm transition-all"
               >
                 <HeartHandshake className="w-4 h-4 text-starehe-gold-accent" />
                 <span>Support a Cause</span>
@@ -123,7 +123,7 @@ export default function HomePage() {
               <div className="text-xs font-semibold text-slate-900 mt-0.5">
                 2025 KCSE Mean Score
               </div>
-              <div className="text-[11px] text-emerald-600 font-medium mt-0.5">
+              <div className="text-[11px] text-starehe-blue-900 font-semibold mt-0.5">
                 +0.07 positive deviation
               </div>
             </div>
@@ -284,7 +284,7 @@ export default function HomePage() {
               <div className="font-serif text-4xl font-extrabold text-starehe-blue-950">
                 8.90 Mean (B)
               </div>
-              <p className="text-xs text-emerald-700 font-semibold mt-1">
+              <p className="text-xs text-starehe-blue-900 font-bold mt-1">
                 +0.07 Positive Deviation from 8.83 in 2024
               </p>
               <p className="mt-4 text-xs text-slate-600 leading-relaxed">
@@ -563,7 +563,7 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Pillar 1: Student Sponsorship */}
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/15">
+            <div className="bg-starehe-maroon-950/70 rounded-2xl p-6 border border-white/15 shadow-subtle">
               <div className="w-10 h-10 rounded-lg bg-starehe-gold-accent/20 flex items-center justify-center text-starehe-gold-300 mb-4">
                 <HeartHandshake className="w-5 h-5" />
               </div>
@@ -586,7 +586,7 @@ export default function HomePage() {
             </div>
 
             {/* Pillar 2: Endowment Fund at KCDF */}
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/15">
+            <div className="bg-starehe-maroon-950/70 rounded-2xl p-6 border border-white/15 shadow-subtle">
               <div className="w-10 h-10 rounded-lg bg-starehe-gold-accent/20 flex items-center justify-center text-starehe-gold-300 mb-4">
                 <Shield className="w-5 h-5" />
               </div>
@@ -610,7 +610,7 @@ export default function HomePage() {
             </div>
 
             {/* Pillar 3: Urgent Capital Infrastructure */}
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/15">
+            <div className="bg-starehe-maroon-950/70 rounded-2xl p-6 border border-white/15 shadow-subtle">
               <div className="w-10 h-10 rounded-lg bg-starehe-gold-accent/20 flex items-center justify-center text-starehe-gold-300 mb-4">
                 <Building className="w-5 h-5" />
               </div>
@@ -692,7 +692,7 @@ export default function HomePage() {
                   >
                     <div className="flex items-center justify-between text-xs text-slate-500 mb-1">
                       <span className="font-mono">{tender.id}</span>
-                      <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-100 text-emerald-800">
+                      <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-starehe-blue-50 text-starehe-blue-900 border border-starehe-blue-200">
                         {tender.status}
                       </span>
                     </div>

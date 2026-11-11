@@ -183,7 +183,7 @@ export default function GivingPage() {
                     <p className="text-xs text-slate-500">Official Institutional Account</p>
                   </div>
                 </div>
-                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-800">
+                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-starehe-blue-50 text-starehe-blue-900 border border-starehe-blue-200">
                   Verified Trust Account
                 </span>
               </div>
@@ -216,7 +216,7 @@ export default function GivingPage() {
             <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-subtle">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center space-x-3">
-                  <div className="p-2.5 rounded-xl bg-emerald-50 text-emerald-800">
+                  <div className="p-2.5 rounded-xl bg-starehe-maroon-50 text-starehe-maroon-800">
                     <Phone className="w-6 h-6" />
                   </div>
                   <div>

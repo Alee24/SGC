@@ -57,9 +57,9 @@ export default function TrusteesPage() {
 
           <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4 pt-6 border-t border-slate-100">
             <div className="flex items-start space-x-3">
-              <FileCheck2 className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" />
+              <FileCheck2 className="w-5 h-5 text-starehe-maroon-800 mt-0.5 flex-shrink-0" />
               <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-starehe-blue-950">
+                <h4 className="text-xs font-semibold tracking-wide text-starehe-blue-950">
                   Perpetual Succession
                 </h4>
                 <p className="text-xs text-slate-600 mt-1">
@@ -70,7 +70,7 @@ export default function TrusteesPage() {
             <div className="flex items-start space-x-3">
               <HeartHandshake className="w-5 h-5 text-starehe-blue-900 mt-0.5 flex-shrink-0" />
               <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-starehe-blue-950">
+                <h4 className="text-xs font-semibold tracking-wide text-starehe-blue-950">
                   Donor Accountability
                 </h4>
                 <p className="text-xs text-slate-600 mt-1">
