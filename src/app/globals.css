@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-serif: 'Merriweather', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --color-primary: #0c2340;
+  --color-maroon: #8b1e22;
+  --color-gold: #d4af37;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color: #1e293b;
+    background-color: #fafaf9;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4, .font-serif {
+    font-family: var(--font-serif);
+  }
+}
+
+/* Custom Institutional Accent utilities */
+.gold-gradient {
+  background: linear-gradient(135deg, #d4af37 0%, #f6e27a 50%, #b8860b 100%);
+}
+
+.navy-gradient {
+  background: linear-gradient(135deg, #0c2340 0%, #173863 100%);
+}
+
+.maroon-gradient {
+  background: linear-gradient(135deg, #8b1e22 0%, #5c1013 100%);
+}
+
+/* Editorial selection */
+::selection {
+  background-color: #8b1e22;
+  color: #ffffff;
+}
