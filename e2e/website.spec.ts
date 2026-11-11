@@ -122,4 +122,34 @@ test.describe("Starehe Girls' Centre Website Verification", () => {
       await expect(page.locator("text=Internal Server Error")).not.toBeVisible();
     }
   });
+
+  test("Desktop main menu submenus stay open on hover & click and navigate cleanly", async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto("/");
+
+    // 1. Hover over "About Us" trigger
+    const aboutTrigger = page.locator("nav button", { hasText: "About Us" });
+    await aboutTrigger.hover();
+
+    const historyLink = page.locator('nav [role="menuitem"]', { hasText: "Story & Heritage" });
+    await expect(historyLink).toBeVisible();
+
+    // Move mouse slowly across seam onto submenu item to verify zero disappear gap
+    const box = await historyLink.boundingBox();
+    expect(box).not.toBeNull();
+    if (box) {
+      await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2, { steps: 10 });
+    }
+    await expect(historyLink).toBeVisible();
+    await historyLink.click();
+    await expect(page).toHaveURL(/\/about\/history/);
+
+    // 2. Click-to-open "Academics" menu and click "KCSE Performance"
+    const academicsTrigger = page.locator("nav button", { hasText: "Academics" });
+    await academicsTrigger.click();
+    const kcseLink = page.locator('nav [role="menuitem"]', { hasText: "KCSE Performance" });
+    await expect(kcseLink).toBeVisible();
+    await kcseLink.click();
+    await expect(page).toHaveURL(/\/academics\/performance/);
+  });
 });

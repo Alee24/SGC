@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -41,6 +41,33 @@ export const Navbar: React.FC = () => {
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const navRef = useRef<HTMLElement | null>(null);
+  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const openDropdown = (label: string) => {
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
+    setActiveDropdown(label);
+  };
+
+  const scheduleCloseDropdown = () => {
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current);
+    }
+    closeTimerRef.current = setTimeout(() => {
+      setActiveDropdown(null);
+    }, 180);
+  };
+
+  const closeDropdownImmediately = () => {
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
+    setActiveDropdown(null);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,8 +78,30 @@ export const Navbar: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        closeDropdownImmediately();
+      }
+    };
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeDropdownImmediately();
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleKeyDown);
+      if (closeTimerRef.current) {
+        clearTimeout(closeTimerRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
     setIsOpen(false);
-    setActiveDropdown(null);
+    closeDropdownImmediately();
   }, [pathname]);
 
   const navItems: NavItem[] = [
@@ -149,6 +198,12 @@ export const Navbar: React.FC = () => {
           href: "/admissions/form-one",
           description: "Criteria (<15 yrs, 1st choice), needs assessment 1-10, county quotas.",
           icon: <FileText className="w-4 h-4 text-starehe-maroon-700" />,
+        },
+        {
+          title: "Apply for Grade 10 (Online & PDF)",
+          href: "/admissions/apply",
+          description: "Complete Senior School admission form & download official 4-page PDF.",
+          icon: <FileText className="w-4 h-4 text-starehe-maroon-800" />,
         },
         {
           title: "Senior School CBC (Grade 10)",
@@ -270,7 +325,7 @@ export const Navbar: React.FC = () => {
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden xl:flex items-center space-x-1">
+          <nav ref={navRef} className="hidden xl:flex items-center space-x-1">
             {navItems.map((item) => {
               const isActive =
                 item.href === "/"
@@ -284,15 +339,22 @@ export const Navbar: React.FC = () => {
                   <div
                     key={item.label}
                     className="relative"
-                    onMouseEnter={() => setActiveDropdown(item.label)}
-                    onMouseLeave={() => setActiveDropdown(null)}
+                    onMouseEnter={() => openDropdown(item.label)}
+                    onMouseLeave={scheduleCloseDropdown}
                   >
                     <button
+                      type="button"
+                      onClick={() =>
+                        isOpenMenu
+                          ? closeDropdownImmediately()
+                          : openDropdown(item.label)
+                      }
                       className={`inline-flex items-center space-x-1 px-3 py-2 text-xs font-semibold tracking-wide transition-colors whitespace-nowrap ${
-                        isActive
+                        isActive || isOpenMenu
                           ? "text-starehe-maroon-800 border-b-2 border-starehe-maroon-800"
                           : "text-slate-700 hover:text-starehe-blue-950 hover:bg-slate-50 rounded-md"
                       }`}
+                      aria-haspopup="true"
                       aria-expanded={isOpenMenu}
                     >
                       <span className="whitespace-nowrap">{item.label}</span>
@@ -303,29 +365,40 @@ export const Navbar: React.FC = () => {
                       />
                     </button>
 
-                    {/* Mega Dropdown Panel */}
+                    {/* Mega Dropdown Panel with seamless pt-2 hover bridge (no gap) */}
                     {isOpenMenu && (
-                      <div className="absolute top-full left-0 w-84 bg-white rounded-2xl shadow-elevation border border-slate-200/90 p-3 mt-1.5 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
-                        <div className="space-y-1">
-                          {item.dropdown.map((subItem) => (
-                            <Link
-                              key={subItem.title}
-                              href={subItem.href}
-                              className="flex items-start p-2.5 rounded-xl hover:bg-slate-50 transition-colors group/item"
-                            >
-                              <div className="p-2 rounded-lg bg-slate-100 group-hover/item:bg-white group-hover/item:shadow-sm mr-3 mt-0.5 transition-all flex-shrink-0">
-                                {subItem.icon}
-                              </div>
-                              <div>
-                                <div className="text-xs font-bold text-slate-900 group-hover/item:text-starehe-maroon-800 transition-colors whitespace-nowrap">
-                                  {subItem.title}
+                      <div
+                        className="absolute top-full left-0 pt-2 z-50"
+                        onMouseEnter={() => openDropdown(item.label)}
+                        onMouseLeave={scheduleCloseDropdown}
+                      >
+                        <div
+                          role="menu"
+                          className="w-[340px] max-w-[calc(100vw-2rem)] bg-white rounded-2xl shadow-elevation border border-slate-200/90 p-3 animate-in fade-in slide-in-from-top-1 duration-150"
+                        >
+                          <div className="space-y-1">
+                            {item.dropdown.map((subItem) => (
+                              <Link
+                                key={subItem.title}
+                                href={subItem.href}
+                                role="menuitem"
+                                onClick={closeDropdownImmediately}
+                                className="flex items-start p-2.5 rounded-xl hover:bg-slate-50 transition-colors group/item"
+                              >
+                                <div className="p-2 rounded-lg bg-slate-100 group-hover/item:bg-white group-hover/item:shadow-sm mr-3 mt-0.5 transition-all flex-shrink-0">
+                                  {subItem.icon}
                                 </div>
-                                <p className="text-[11px] text-slate-500 leading-snug line-clamp-2 mt-0.5">
-                                  {subItem.description}
-                                </p>
-                              </div>
-                            </Link>
-                          ))}
+                                <div>
+                                  <div className="text-xs font-bold text-slate-900 group-hover/item:text-starehe-maroon-800 transition-colors whitespace-nowrap">
+                                    {subItem.title}
+                                  </div>
+                                  <p className="text-[11px] text-slate-500 leading-snug line-clamp-2 mt-0.5">
+                                    {subItem.description}
+                                  </p>
+                                </div>
+                              </Link>
+                            ))}
+                          </div>
                         </div>
                       </div>
                     )}
@@ -353,9 +426,9 @@ export const Navbar: React.FC = () => {
           <div className="hidden lg:flex items-center space-x-3 flex-shrink-0">
             <Link
               href="/giving"
-              className="inline-flex items-center space-x-1.5 text-xs font-bold text-starehe-maroon-800 hover:text-white bg-starehe-maroon-50 hover:bg-starehe-maroon-800 border border-starehe-maroon-200 hover:border-starehe-maroon-800 px-3.5 py-2 rounded-full transition-all whitespace-nowrap"
+              className="group inline-flex items-center space-x-1.5 text-xs font-bold text-starehe-maroon-800 hover:text-white bg-starehe-maroon-50 hover:bg-starehe-maroon-800 border border-starehe-maroon-200 hover:border-starehe-maroon-800 px-3.5 py-2 rounded-full transition-all whitespace-nowrap"
             >
-              <HeartHandshake className="w-3.5 h-3.5 text-starehe-maroon-700 group-hover:text-white" />
+              <HeartHandshake className="w-3.5 h-3.5 text-starehe-maroon-700 group-hover:text-white transition-colors" />
               <span>Support a Girl</span>
             </Link>
 
