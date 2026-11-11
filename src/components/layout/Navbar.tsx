@@ -280,10 +280,6 @@ export const Navbar: React.FC = () => {
       ],
     },
     {
-      label: "Careers & Tenders",
-      href: "/careers-tenders",
-    },
-    {
       label: "Contact",
       href: "/contact",
     },
@@ -322,7 +318,7 @@ export const Navbar: React.FC = () => {
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav ref={navRef} className="hidden xl:flex items-center gap-0.5 2xl:gap-1 min-w-0">
+          <nav ref={navRef} className="hidden xl:flex items-center gap-1 2xl:gap-2 flex-shrink-0">
             {navItems.map((item, idx) => {
               const isActive =
                 item.href === "/"

@@ -194,6 +194,7 @@ test.describe("Starehe Girls' Centre Website Verification", () => {
 
     await page.goto("/", { waitUntil: "domcontentloaded" });
     await page.waitForSelector("header");
+    await expect(page.locator("header")).not.toContainText("Careers & Tenders");
 
     for (const vp of viewports) {
       await page.setViewportSize(vp);
@@ -206,20 +207,33 @@ test.describe("Starehe Girls' Centre Website Verification", () => {
         const headerContainerWidth = headerEl ? headerEl.getBoundingClientRect().width : 0;
 
         const clippedItems: string[] = [];
+        const visibleBoxes: { label: string; left: number; right: number }[] = [];
         const controls = document.querySelectorAll("header a, header button");
         controls.forEach((el) => {
           const rect = el.getBoundingClientRect();
           if (rect.width === 0 || rect.height === 0) return;
+          const label = el.textContent?.trim() || "icon";
           if (rect.left < -1 || rect.right > vw + 1) {
-            clippedItems.push(`${el.textContent?.trim() || "icon"}: left=${Math.round(rect.left)}, right=${Math.round(rect.right)}, vw=${vw}`);
+            clippedItems.push(`${label}: left=${Math.round(rect.left)}, right=${Math.round(rect.right)}, vw=${vw}`);
           }
+          visibleBoxes.push({ label, left: rect.left, right: rect.right });
         });
 
-        return { vw, docScrollWidth, headerContainerWidth, clippedItems };
+        const overlaps: string[] = [];
+        for (let i = 0; i < visibleBoxes.length - 1; i++) {
+          const curr = visibleBoxes[i];
+          const next = visibleBoxes[i + 1];
+          if (curr.right > next.left + 1) {
+            overlaps.push(`${curr.label} (right=${Math.round(curr.right)}) overlaps ${next.label} (left=${Math.round(next.left)})`);
+          }
+        }
+
+        return { vw, docScrollWidth, headerContainerWidth, clippedItems, overlaps };
       });
 
       expect(audit.docScrollWidth).toBeLessThanOrEqual(audit.vw);
       expect(audit.clippedItems).toEqual([]);
+      expect(audit.overlaps).toEqual([]);
       if (vp.width >= 1280) {
         const ratio = audit.headerContainerWidth / audit.vw;
         expect(ratio).toBeGreaterThanOrEqual(0.88);

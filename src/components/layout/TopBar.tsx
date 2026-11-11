@@ -57,15 +57,6 @@ export const TopBar: React.FC = () => {
           <span className="text-slate-600 hidden lg:inline">|</span>
 
           <Link
-            href="/careers-tenders"
-            className="hover:text-white transition-colors text-slate-300 hidden lg:inline"
-          >
-            Tenders &amp; Careers
-          </Link>
-
-          <span className="text-slate-600 hidden lg:inline">|</span>
-
-          <Link
             href="/admin"
             className="inline-flex items-center space-x-1 hover:text-white transition-colors text-slate-300"
           >
