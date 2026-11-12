@@ -84,15 +84,24 @@ if [[ ! -f "${APP_DIR}/.env" ]]; then
   SESSION_SECRET="$(openssl rand -hex 32)"
 
   if [[ -z "${ADMIN_SEED_EMAIL:-}" ]]; then
-    read -r -p "Enter Admin Email (e.g. admin@starehegirlscentre.co.ke): " ADMIN_SEED_EMAIL
+    if [[ -r /dev/tty ]]; then
+      read -r -p "Enter Admin Email (e.g. admin@starehegirlscentre.co.ke): " ADMIN_SEED_EMAIL < /dev/tty
+    else
+      read -r -p "Enter Admin Email (e.g. admin@starehegirlscentre.co.ke): " ADMIN_SEED_EMAIL
+    fi
   fi
   if [[ -z "${ADMIN_SEED_PASSWORD:-}" ]]; then
-    read -r -s -p "Enter Admin Password: " ADMIN_SEED_PASSWORD
-    printf '\n'
+    if [[ -r /dev/tty ]]; then
+      read -r -s -p "Enter Admin Password: " ADMIN_SEED_PASSWORD < /dev/tty
+      printf '\n' > /dev/tty
+    else
+      read -r -s -p "Enter Admin Password: " ADMIN_SEED_PASSWORD
+      printf '\n'
+    fi
   fi
 
-  [[ -n "${ADMIN_SEED_EMAIL}" ]] || fail "ADMIN_SEED_EMAIL cannot be empty."
-  [[ -n "${ADMIN_SEED_PASSWORD}" ]] || fail "ADMIN_SEED_PASSWORD cannot be empty."
+  [[ -n "${ADMIN_SEED_EMAIL}" ]] || fail "ADMIN_SEED_EMAIL cannot be empty. Pass it via: sudo ADMIN_SEED_EMAIL='you@example.com' ADMIN_SEED_PASSWORD='YourPassword' ./scripts/install-sgc.sh"
+  [[ -n "${ADMIN_SEED_PASSWORD}" ]] || fail "ADMIN_SEED_PASSWORD cannot be empty. Pass it via: sudo ADMIN_SEED_EMAIL='you@example.com' ADMIN_SEED_PASSWORD='YourPassword' ./scripts/install-sgc.sh"
 
   cat > "${APP_DIR}/.env" <<EOF
 DOMAIN=${DOMAIN}
