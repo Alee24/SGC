@@ -1,0 +1,16 @@
+{$DOMAIN:sgc.kkdes.co.ke} {
+	encode zstd gzip
+
+	header {
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "SAMEORIGIN"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		-Server
+	}
+
+	reverse_proxy web:3000 {
+		health_uri /
+		health_interval 30s
+		health_timeout 5s
+	}
+}
