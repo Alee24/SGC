@@ -209,9 +209,9 @@ fi
 
 # 7. Install complete Apache VirtualHost config (ports 80, 443, 2896, 2685)
 sed \
-  -e "s|__DOMAIN__|${DOMAIN}|g" \
-  -e "s|__SSL_CERT__|${SSL_CERT}|g" \
-  -e "s|__SSL_KEY__|${SSL_KEY}|g" \
+  -e "s|/etc/letsencrypt/live/sgc\.kkdes\.co\.ke/fullchain\.pem|${SSL_CERT}|g" \
+  -e "s|/etc/letsencrypt/live/sgc\.kkdes\.co\.ke/privkey\.pem|${SSL_KEY}|g" \
+  -e "s|sgc\.kkdes\.co\.ke|${DOMAIN}|g" \
   "${APP_DIR}/apache/sgc.kkdes.co.ke.conf" > "${APACHE_SITE}"
 
 a2dissite 000-default.conf default-ssl.conf >/dev/null 2>&1 || true
