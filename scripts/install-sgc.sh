@@ -20,7 +20,7 @@ set -euo pipefail
 DOMAIN="${DOMAIN:-sgc.kkdes.co.ke}"
 APP_DIR="${APP_DIR:-/var/www/${DOMAIN}}"
 BRANCH="${BRANCH:-master}"
-REPO_URL="${REPO_URL:-}"
+REPO_URL="${REPO_URL:-https://github.com/Alee24/SGC.git}"
 COMPOSE_FILE="docker-compose.prod.yml"
 APACHE_SITE="/etc/apache2/sites-available/${DOMAIN}.conf"
 
