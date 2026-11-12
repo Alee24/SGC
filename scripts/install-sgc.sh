@@ -175,7 +175,7 @@ if [[ ! -f "${LE_CERT}" ]]; then
     ProxyPassReverse / http://127.0.0.1:3001/
 </VirtualHost>
 EOF
-  a2dissite 000-default.conf >/dev/null 2>&1 || true
+  a2dissite 000-default.conf default-ssl.conf >/dev/null 2>&1 || true
   a2ensite "${DOMAIN}.conf" >/dev/null
   apache2ctl configtest
   systemctl enable --now apache2
@@ -214,7 +214,7 @@ sed \
   -e "s|__SSL_KEY__|${SSL_KEY}|g" \
   "${APP_DIR}/apache/sgc.kkdes.co.ke.conf" > "${APACHE_SITE}"
 
-a2dissite 000-default.conf >/dev/null 2>&1 || true
+a2dissite 000-default.conf default-ssl.conf >/dev/null 2>&1 || true
 a2ensite "${DOMAIN}.conf" >/dev/null
 apache2ctl configtest
 systemctl enable --now apache2
@@ -229,12 +229,12 @@ if command -v ufw >/dev/null 2>&1 && ufw status | grep -q "Status: active"; then
   ufw allow 2685/tcp >/dev/null
 fi
 
-# 9. Verify endpoints
+# 9. Verify endpoints (forcing Host header & local SNI resolution)
 log "Verifying endpoints..."
 printf '  Docker backend (127.0.0.1:3001) : HTTP %s\n' "$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:3001/ || echo '000')"
-printf '  Apache Port 2896 (HTTP)         : HTTP %s\n' "$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:2896/ || echo '000')"
-printf '  Apache Port 2685 (HTTPS)        : HTTP %s\n' "$(curl -sk -o /dev/null -w '%{http_code}' https://127.0.0.1:2685/ || echo '000')"
-printf '  Apache Port 443 (HTTPS)         : HTTP %s\n' "$(curl -sk -o /dev/null -w '%{http_code}' "https://${DOMAIN}/" || echo '000')"
+printf '  Apache Port 2896 (HTTP)         : HTTP %s\n' "$(curl -s -o /dev/null -w '%{http_code}' -H "Host: ${DOMAIN}" http://127.0.0.1:2896/ || echo '000')"
+printf '  Apache Port 2685 (HTTPS)        : HTTP %s\n' "$(curl -sk -o /dev/null -w '%{http_code}' --resolve "${DOMAIN}:2685:127.0.0.1" "https://${DOMAIN}:2685/" || echo '000')"
+printf '  Apache Port 443 (HTTPS)         : HTTP %s\n' "$(curl -sk -o /dev/null -w '%{http_code}' --resolve "${DOMAIN}:443:127.0.0.1" "https://${DOMAIN}/" || echo '000')"
 
 cat <<EOF
 
