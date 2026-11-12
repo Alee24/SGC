@@ -295,4 +295,50 @@ test.describe("Starehe Girls' Centre Website Verification", () => {
     const mobileOverflow = await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth);
     expect(mobileOverflow).toBe(true);
   });
+
+  test("Board of Trustees and Board of Management render hierarchy chart with centered circular portraits", async ({ page }) => {
+    const pages = [
+      {
+        url: "/about/trustees",
+        sectionLabel: "Distinguished Trustees",
+        chair: "Mrs. Eunice Mathu",
+        clickMember: "Dr. Manu Chandaria, OBE, EBS",
+        expectedBioSnippet: "55-acre Limuru Girls",
+      },
+      {
+        url: "/about/management",
+        sectionLabel: "Board of Management Members",
+        chair: "Prof. Mary Getui",
+        clickMember: "Sister Jane Soita",
+        expectedBioSnippet: "Executive custodian of school strategy",
+      },
+    ];
+
+    for (const p of pages) {
+      await page.setViewportSize({ width: 1280, height: 800 });
+      await page.goto(p.url, { waitUntil: "domcontentloaded" });
+
+      const section = page.locator(`section[aria-label="${p.sectionLabel}"]`);
+      await expect(section).toBeVisible();
+
+      // Verify centered circular images inside hierarchy nodes
+      const imgs = section.locator("img");
+      const imgCount = await imgs.count();
+      expect(imgCount).toBeGreaterThanOrEqual(6);
+      const firstImgClass = await imgs.first().getAttribute("class");
+      expect(firstImgClass).toContain("object-center");
+
+      // Click another member node and verify the bio panel updates
+      await section.getByRole("button", { name: new RegExp(p.clickMember) }).click();
+      await expect(section).toContainText(p.expectedBioSnippet);
+
+      // Verify no horizontal overflow on desktop and mobile
+      const desktopNoOverflow = await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth);
+      expect(desktopNoOverflow).toBe(true);
+
+      await page.setViewportSize({ width: 375, height: 812 });
+      const mobileNoOverflow = await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth);
+      expect(mobileNoOverflow).toBe(true);
+    }
+  });
 });

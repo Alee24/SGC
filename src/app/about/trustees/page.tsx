@@ -1,8 +1,7 @@
 import React from "react";
 import { Metadata } from "next";
 import { EditorialPageLayout } from "@/components/layout/EditorialPageLayout";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { LeaderCard } from "@/components/ui/LeaderCard";
+import { HierarchyOrgChart } from "@/components/ui/HierarchyOrgChart";
 import { TRUSTEES } from "@/data/school-data";
 import { ShieldCheck, HeartHandshake, FileCheck2, Scale } from "lucide-react";
 
@@ -82,22 +81,14 @@ export default function TrusteesPage() {
           </div>
         </section>
 
-        {/* Trustees Grid */}
-        <section>
-          <div className="mb-6">
-            <SectionHeading
-              badge="Institutional Custodians"
-              title="Distinguished Trustees"
-              description="Eminent leaders safeguarding governance, fiscal integrity, and strategic growth for Starehe Girls' Centre."
-            />
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {TRUSTEES.map((trustee) => (
-              <LeaderCard key={trustee.name} leader={trustee} />
-            ))}
-          </div>
-        </section>
+        {/* Trustees Hierarchy Chart */}
+        <HierarchyOrgChart
+          title="Distinguished Trustees"
+          subtitle="Eminent leaders safeguarding governance, fiscal integrity, and strategic growth for Starehe Girls' Centre."
+          chairperson={TRUSTEES[0]}
+          executiveTier={[TRUSTEES[1], TRUSTEES[9]]}
+          membersTier={TRUSTEES.slice(2, 9)}
+        />
 
         {/* Governance Commitment */}
         <section className="bg-gradient-to-br from-starehe-blue-950 to-starehe-blue-900 text-white rounded-2xl p-6 sm:p-8 shadow-md">

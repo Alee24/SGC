@@ -1,8 +1,7 @@
 import React from "react";
 import { Metadata } from "next";
 import { EditorialPageLayout } from "@/components/layout/EditorialPageLayout";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { LeaderCard } from "@/components/ui/LeaderCard";
+import { HierarchyOrgChart } from "@/components/ui/HierarchyOrgChart";
 import { BOARD_OF_MANAGEMENT } from "@/data/school-data";
 import { ShieldCheck, BookOpen, Users, CheckCircle2 } from "lucide-react";
 
@@ -89,22 +88,14 @@ export default function ManagementPage() {
           </div>
         </section>
 
-        {/* Members Grid */}
-        <section>
-          <div className="mb-6">
-            <SectionHeading
-              badge="BOM Council"
-              title="Board of Management Members"
-              description="A multidisciplinary council of educational leaders, alumni representatives, parents, and community stakeholders."
-            />
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {BOARD_OF_MANAGEMENT.map((member) => (
-              <LeaderCard key={member.name} leader={member} />
-            ))}
-          </div>
-        </section>
+        {/* BOM Hierarchy Chart */}
+        <HierarchyOrgChart
+          title="Board of Management Members"
+          subtitle="A multidisciplinary council of educational leaders, alumni representatives, parents, and community stakeholders."
+          chairperson={BOARD_OF_MANAGEMENT[0]}
+          executiveTier={[BOARD_OF_MANAGEMENT[5], BOARD_OF_MANAGEMENT[4]]}
+          membersTier={BOARD_OF_MANAGEMENT.slice(1, 4)}
+        />
 
         {/* Accountability Banner */}
         <section className="bg-starehe-blue-50/70 rounded-2xl p-6 sm:p-8 border border-starehe-blue-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">

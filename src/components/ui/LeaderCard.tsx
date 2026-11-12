@@ -14,7 +14,7 @@ export const LeaderCard: React.FC<LeaderCardProps> = ({ leader }) => {
           src={leader.image}
           alt={leader.name}
           fill
-          className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+          className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-starehe-blue-950/85 via-starehe-blue-950/20 to-transparent" />
