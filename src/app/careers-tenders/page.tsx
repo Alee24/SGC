@@ -58,8 +58,8 @@ export default function CareersTendersPage() {
                 key={job.id}
                 className="bg-white rounded-2xl p-6 sm:p-7 border border-slate-200/90 shadow-subtle hover:border-starehe-blue-300 transition-all"
               >
-                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-slate-100 pb-4 mb-4">
-                  <div>
+                <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 border-b border-slate-100 pb-4 mb-4">
+                  <div className="min-w-0">
                     <span className="text-[11px] uppercase font-mono font-bold text-starehe-blue-900">
                       Ref: {job.id}
                     </span>
@@ -67,11 +67,11 @@ export default function CareersTendersPage() {
                       {job.title} — {job.posts} Post
                     </h3>
                   </div>
-                  <div className="flex items-center space-x-2 text-xs">
-                    <span className="px-2.5 py-0.5 rounded-full bg-starehe-maroon-50 text-starehe-maroon-800 font-bold border border-starehe-maroon-200 text-[10px]">
+                  <div className="flex flex-wrap items-center gap-2 shrink-0 text-xs">
+                    <span className="whitespace-nowrap px-3 py-1 rounded-full bg-starehe-maroon-50 text-starehe-maroon-800 font-bold border border-starehe-maroon-200 text-[10px]">
                       Deadline: {job.deadline}
                     </span>
-                    <span className="px-2.5 py-0.5 rounded-full bg-starehe-blue-50 text-starehe-blue-900 font-bold border border-starehe-blue-200 text-[10px]">
+                    <span className="whitespace-nowrap px-3 py-1 rounded-full bg-starehe-blue-50 text-starehe-blue-900 font-bold border border-starehe-blue-200 text-[10px]">
                       {job.type}
                     </span>
                   </div>
@@ -131,14 +131,14 @@ export default function CareersTendersPage() {
                 key={tender.id}
                 className="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-subtle hover:border-starehe-blue-300 transition-all"
               >
-                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-slate-100 pb-3 mb-3">
-                  <div>
-                    <div className="flex items-center space-x-2">
-                      <span className="font-mono text-xs font-bold text-starehe-blue-900">
+                <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 border-b border-slate-100 pb-3 mb-3">
+                  <div className="min-w-0">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="font-mono text-xs font-bold text-starehe-blue-900 whitespace-nowrap">
                         {tender.id}
                       </span>
                       <span
-                        className={`text-[10px] font-semibold tracking-wide px-2 py-0.5 rounded-full ${
+                        className={`whitespace-nowrap text-[10px] font-semibold tracking-wide px-2.5 py-0.5 rounded-full ${
                           tender.status === "Open"
                             ? "bg-starehe-blue-50 text-starehe-blue-900 border border-starehe-blue-200"
                             : "bg-slate-100 text-slate-600"
@@ -151,7 +151,7 @@ export default function CareersTendersPage() {
                       {tender.title}
                     </h3>
                   </div>
-                  <div className="text-[11px] text-slate-500 flex flex-col items-start sm:items-end">
+                  <div className="text-[11px] text-slate-500 flex flex-col items-start md:items-end shrink-0 whitespace-nowrap">
                     <span>Published: {tender.publishedDate}</span>
                     {tender.closingDate && (
                       <span className="font-bold text-starehe-maroon-800 mt-0.5">

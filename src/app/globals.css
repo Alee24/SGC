@@ -79,3 +79,15 @@ textarea:focus-visible {
 .editorial-main table {
   display: flow-root;
 }
+
+/* Keep all pill labels, status badges, and inline action buttons on a single line */
+@layer components {
+  span[class*="rounded-full"][class*="px-"],
+  div[class*="inline-flex"][class*="rounded-full"][class*="px-"],
+  a[class*="rounded-full"][class*="px-"],
+  a[class*="rounded-lg"][class*="px-"],
+  button:not([class*="flex-col"]):not([class*="text-left"]):not([class*="whitespace-normal"]) {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+}

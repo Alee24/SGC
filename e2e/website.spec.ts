@@ -341,4 +341,43 @@ test.describe("Starehe Girls' Centre Website Verification", () => {
       expect(mobileNoOverflow).toBe(true);
     }
   });
+
+  test("Buttons and pill labels stay on a single line without wrapping onto a second line", async ({ page }) => {
+    const routesToCheck = ["/careers-tenders", "/admissions", "/about/principal", "/giving"];
+
+    for (const route of routesToCheck) {
+      await page.setViewportSize({ width: 1280, height: 800 });
+      await page.goto(route, { waitUntil: "domcontentloaded" });
+
+      const wrappedPills = await page.evaluate(() => {
+        const pills = Array.from(
+          document.querySelectorAll<HTMLElement>(
+            'span[class*="rounded-full"][class*="px-"], a[class*="rounded-full"][class*="px-"]'
+          )
+        );
+        return pills
+          .filter((el) => el.offsetParent !== null)
+          .map((el) => {
+            const style = window.getComputedStyle(el);
+            const rect = el.getBoundingClientRect();
+            return {
+              text: el.innerText.trim(),
+              whiteSpace: style.whiteSpace,
+              height: rect.height,
+            };
+          })
+          .filter((item) => item.whiteSpace !== "nowrap" || item.height > 48);
+      });
+
+      expect(wrappedPills, `Wrapped pills on ${route}: ${JSON.stringify(wrappedPills)}`).toEqual([]);
+
+      // Ensure no horizontal overflow on desktop or mobile
+      const desktopNoOverflow = await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth);
+      expect(desktopNoOverflow).toBe(true);
+
+      await page.setViewportSize({ width: 375, height: 812 });
+      const mobileNoOverflow = await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth);
+      expect(mobileNoOverflow).toBe(true);
+    }
+  });
 });
